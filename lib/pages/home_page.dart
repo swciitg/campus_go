@@ -11,6 +11,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("HomePage"),);
+    return Center(child: GestureDetector(child: Text("HomePage"),onTap: () {
+      Navigator.of(context).pushNamed('/ps');
+    },),);
   }
 }
