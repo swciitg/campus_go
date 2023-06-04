@@ -1,6 +1,7 @@
 import 'package:campus_go/functions/utility/validator.dart';
 import 'package:campus_go/globals/my_colors.dart';
 import 'package:campus_go/widgets/profile/custom_text_field.dart';
+import 'package:campus_go/widgets/ui/appbar.dart';
 import 'package:flutter/material.dart';
 
 import '../functions/utility/show_snackbar.dart';
@@ -40,20 +41,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
       }
     }
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kBlack,
-        centerTitle: true,
-        title: Text(
-          "Profile Setup",
-          style: MyFonts.w400.setColor(kWhite).size(24),
-        ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
+      appBar: appBar(context, "Profile Setup",displayProfileIcon: false),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         height: 56,

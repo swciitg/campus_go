@@ -1,6 +1,6 @@
 import 'package:campus_go/pages/profile_setup_page.dart';
 
-import 'pages/home_page.dart';
+import 'pages/home/home_page.dart';
 import 'pages/login_page.dart';
 
 
