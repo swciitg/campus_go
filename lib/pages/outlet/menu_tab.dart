@@ -13,7 +13,7 @@ class MenuTab extends StatefulWidget {
 class _MenuTabState extends State<MenuTab> {
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.all(16),child: SingleChildScrollView(
+    return Padding(padding: const EdgeInsets.all(16),child: SingleChildScrollView(
       child: Column(children: [
         Container(
           height: 48,
@@ -24,8 +24,8 @@ class _MenuTabState extends State<MenuTab> {
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                   Row(
                     children: [
-                    Icon(Icons.menu_book_outlined, color: kBlack, size:22 ,),
-                    SizedBox(width: 8,),
+                    const Icon(Icons.menu_book_outlined, color: kBlack, size:22 ,),
+                    const SizedBox(width: 8,),
                     Text("Explore Menu", style: MyFonts.w600.setColor(kBlack).size(18),)
 
                   ],),
@@ -39,9 +39,9 @@ class _MenuTabState extends State<MenuTab> {
             ],
           ),
         ),
-        SizedBox(height: 8,),
-        MenuTile(veg: true,isAdded: true,),
-        MenuTile(veg: false,isAdded: false,),
+        const SizedBox(height: 8,),
+        const MenuTile(veg: true,isAdded: true,),
+        const MenuTile(veg: false,isAdded: false,),
       ]),
     ),);
   }

@@ -129,7 +129,7 @@ class _OutletPageState extends State<OutletPage> {
                 thickness: 1,
                 height: 1,
               ),
-              TabBar(indicatorColor: kBlack, tabs: [
+              TabBar(indicatorColor: kBlack,  tabs: [
                 Container(
                   height: 48,
                   alignment: Alignment.center,
@@ -147,6 +147,11 @@ class _OutletPageState extends State<OutletPage> {
                   ),
                 ),
               ]),
+              const Divider(
+                color: Colors.black12,
+                thickness: 1,
+                height: 1,
+              ),
               Expanded(
                 child: TabBarView(children: [
                   MenuTab(),
