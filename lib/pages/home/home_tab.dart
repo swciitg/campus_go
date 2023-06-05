@@ -11,7 +11,7 @@ class HomeTab extends StatefulWidget {
 class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         OutletTile(outletName: "Lohit Canteen",location: "Lohit Hostel", veg: true,open: true,),
       ],

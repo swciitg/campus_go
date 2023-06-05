@@ -48,26 +48,29 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              RichText(
-                text: const TextSpan(
-                  children: [
-                    TextSpan(
-                        text: 'Out',
-                        style: TextStyle(
-                            fontFamily: "Poppins",
-                            // decoration: TextDecoration.underline,
-                            // decorationThickness: 2,
-                            fontSize: 18,
-                            color: kBlack,
-                            fontWeight: FontWeight.w500)),
-                    TextSpan(
-                        text: "lets Available",
-                        style: TextStyle(
-                            fontFamily: "Poppins",
-                            fontSize: 18,
-                            color: kBlack,
-                            fontWeight: FontWeight.w500)),
-                  ],
+              Container(
+                height: 24,
+                child: RichText(
+                  text: const TextSpan(
+                    children: [
+                      TextSpan(
+                          text: 'Out',
+                          style: TextStyle(
+                              fontFamily: "Poppins",
+                              // decoration: TextDecoration.underline,
+                              // decorationThickness: 2,
+                              fontSize: 18,
+                              color: kBlack,
+                              fontWeight: FontWeight.w500)),
+                      TextSpan(
+                          text: "lets Available",
+                          style: TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 18,
+                              color: kBlack,
+                              fontWeight: FontWeight.w500)),
+                    ],
+                  ),
                 ),
               ),
               // SizedBox(height: 3,),
