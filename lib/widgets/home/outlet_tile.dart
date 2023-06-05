@@ -71,9 +71,9 @@ class _OutletTileState extends State<OutletTile> {
                 ),
               ),
               Container(
-                width: 80,
                 color: kWhite,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(
                       height: 6,
@@ -89,7 +89,7 @@ class _OutletTileState extends State<OutletTile> {
                           width: 4,
                         ),
                         Text(
-                          widget.veg == false ? "VEG" : "NON-VEG",
+                          widget.veg == true ? "VEG" : "NON-VEG",
                           style: MyFonts.w500.setColor(kBlack).size(12),
                         )
                       ],

@@ -42,49 +42,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: 24,
-                child: RichText(
-                  text: const TextSpan(
-                    children: [
-                      TextSpan(
-                          text: 'Out',
-                          style: TextStyle(
-                              fontFamily: "Poppins",
-                              // decoration: TextDecoration.underline,
-                              // decorationThickness: 2,
-                              fontSize: 18,
-                              color: kBlack,
-                              fontWeight: FontWeight.w500)),
-                      TextSpan(
-                          text: "lets Available",
-                          style: TextStyle(
-                              fontFamily: "Poppins",
-                              fontSize: 18,
-                              color: kBlack,
-                              fontWeight: FontWeight.w500)),
-                    ],
-                  ),
-                ),
-              ),
-              // SizedBox(height: 3,),
-              Padding(
-                padding: const EdgeInsets.only(left: 0),
-                child: Container(height: 2,width: 30,color: kBlack,),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              tabs[index],
-            ],
-          ),
-        ),
+        child: tabs[index],
       ),
     );
   }

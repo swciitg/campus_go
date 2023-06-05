@@ -1,5 +1,4 @@
 import 'package:campus_go/widgets/outlet/change_item_count_tile.dart';
-import 'package:campus_go/widgets/profile/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../globals/my_colors.dart';
@@ -66,11 +65,11 @@ class _CartTabState extends State<CartTab> {
                           selectedRadio = 0;
                         });
                       },
-                      child: Container(
+                      child: SizedBox(
                         width: 90,
                         child: Row(
                           children: [
-                            Container(
+                            SizedBox(
                               width: 20,
                               height: 20,
                               child: Radio(
@@ -101,11 +100,11 @@ class _CartTabState extends State<CartTab> {
                           selectedRadio = 1;
                         });
                       },
-                      child: Container(
+                      child: SizedBox(
                         width: 90,
                         child: Row(
                           children: [
-                            Container(
+                            SizedBox(
                               width: 20,
                               height: 20,
                               child: Radio(
@@ -133,7 +132,7 @@ class _CartTabState extends State<CartTab> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Container(
@@ -157,7 +156,7 @@ class _CartTabState extends State<CartTab> {
                       ]),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               SizedBox(
@@ -171,7 +170,7 @@ class _CartTabState extends State<CartTab> {
                   keyboardType: TextInputType.multiline,
                   decoration: InputDecoration(
                     alignLabelWithHint: true,
-                    label: Text("Any Instruction"),
+                    label: const Text("Any Instruction"),
                     labelStyle: MyFonts.w500.size(14).setColor(kBlack),
                     hintStyle: MyFonts.w500.size(14).setColor(kgrey),
                     contentPadding: const EdgeInsets.symmetric(
@@ -197,10 +196,10 @@ class _CartTabState extends State<CartTab> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
-              Container(
+              SizedBox(
         height: 56,
         width: double.infinity,
         child: ElevatedButton(
