@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                 child: Container(height: 2,width: 30,color: kBlack,),
               ),
               const SizedBox(
-                height: 24,
+                height: 12,
               ),
               tabs[index],
             ],
