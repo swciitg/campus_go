@@ -18,7 +18,7 @@ class _OutletPageState extends State<OutletPage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: appBar(context, "CampusGO", displayProfileIcon: false),
+        appBar: appBar(context, "CampusGO", displayProfileIcon: false,displayBackButton: true),
         body: SafeArea(
             child: Container(
           child: Column(
@@ -29,7 +29,7 @@ class _OutletPageState extends State<OutletPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         height: 32,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,7 +40,7 @@ class _OutletPageState extends State<OutletPage> {
                               style: MyFonts.w600.setColor(kBlack).size(24),
                               overflow: TextOverflow.ellipsis,
                             ),
-                            Container(
+                            SizedBox(
                               width: 90,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -64,7 +64,7 @@ class _OutletPageState extends State<OutletPage> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 0),
+                        padding: const EdgeInsets.only(left: 2),
                         child: Container(
                           height: 2,
                           width: 30,
@@ -74,7 +74,7 @@ class _OutletPageState extends State<OutletPage> {
                       const SizedBox(
                         height: 18,
                       ),
-                      Container(
+                      SizedBox(
                         height: 18,
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,7 +98,7 @@ class _OutletPageState extends State<OutletPage> {
                                       )
                                     ]),
                               ),
-                              Container(
+                              SizedBox(
                                 width: 80,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
@@ -152,7 +152,7 @@ class _OutletPageState extends State<OutletPage> {
                 thickness: 1,
                 height: 1,
               ),
-              Expanded(
+              const Expanded(
                 child: TabBarView(children: [
                   MenuTab(),
                   CartTab(),

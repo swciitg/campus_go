@@ -4,15 +4,16 @@ import 'package:flutter_svg/svg.dart';
 import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
 
-class ChangeItemCountTile extends StatefulWidget {
+class ItemCountTile extends StatefulWidget {
   final bool veg;
-  const ChangeItemCountTile({super.key, required this.veg});
+  final bool editing;
+  const ItemCountTile({super.key, required this.veg, required this.editing});
 
   @override
-  State<ChangeItemCountTile> createState() => _ChangeItemCountTileState();
+  State<ItemCountTile> createState() => _ItemCountTileState();
 }
 
-class _ChangeItemCountTileState extends State<ChangeItemCountTile> {
+class _ItemCountTileState extends State<ItemCountTile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -77,7 +78,7 @@ class _ChangeItemCountTileState extends State<ChangeItemCountTile> {
                     ]),
               ),
             ),
-            Container(
+            widget.editing? Container(
               width: 75,
               height: 25,
               decoration: BoxDecoration(
@@ -111,6 +112,12 @@ class _ChangeItemCountTileState extends State<ChangeItemCountTile> {
                   ),
                 )),
               ]),
+            ):Padding(
+              padding: const EdgeInsets.only(right: 18),
+              child: RichText(text: TextSpan(children: [
+                TextSpan(text: "x ",style: MyFonts.w500.setColor(kBlack).size(16),),
+                TextSpan(text: "1",style: MyFonts.w500.setColor(kBlack).size(18),)
+              ]),),
             )
           ]),
         ),

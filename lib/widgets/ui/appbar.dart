@@ -4,7 +4,7 @@ import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
 
 AppBar appBar(BuildContext context, String title,
-    {bool displayProfileIcon = true}) {
+    {bool displayProfileIcon = true,bool displayBackButton=false}) {
   return AppBar(
     backgroundColor: kBlack,
     centerTitle: true,
@@ -12,7 +12,7 @@ AppBar appBar(BuildContext context, String title,
       title,
       style: MyFonts.w400.setColor(kWhite).size(24),
     ),
-    leading: displayProfileIcon == true
+    leading: displayBackButton == false
         ? const Icon(null)
         : IconButton(
             icon: const Icon(Icons.arrow_back_ios_new),

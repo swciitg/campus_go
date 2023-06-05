@@ -1,3 +1,4 @@
+import 'package:campus_go/pages/orders/your_order_page.dart';
 import 'package:campus_go/widgets/outlet/change_item_count_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -41,8 +42,14 @@ class _CartTabState extends State<CartTab> {
               const SizedBox(
                 height: 8,
               ),
-              const ChangeItemCountTile(veg: true),
-              const ChangeItemCountTile(veg: true),
+              const ItemCountTile(
+                veg: true,
+                editing: true,
+              ),
+              const ItemCountTile(
+                veg: true,
+                editing: true,
+              ),
               const SizedBox(
                 height: 16,
               ),
@@ -200,22 +207,23 @@ class _CartTabState extends State<CartTab> {
                 height: 24,
               ),
               SizedBox(
-        height: 56,
-        width: double.infinity,
-        child: ElevatedButton(
-          onPressed: (() {
-            
-          }),
-          style: ElevatedButton.styleFrom(
-              backgroundColor: kBlack,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8))),
-          child: Text(
-            "Make Order",
-            style: MyFonts.w400.setColor(kWhite).size(18),
-          ),
-        ),
-      ),
+                height: 56,
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: (() {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => YourOrderPage()));
+                  }),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: kBlack,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8))),
+                  child: Text(
+                    "Make Order",
+                    style: MyFonts.w400.setColor(kWhite).size(18),
+                  ),
+                ),
+              ),
             ]),
       ),
     );

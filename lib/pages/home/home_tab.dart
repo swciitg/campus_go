@@ -46,13 +46,13 @@ class _HomeTabState extends State<HomeTab> {
               ),
               // SizedBox(height: 3,),
               Padding(
-                padding: const EdgeInsets.only(left: 0),
+                padding: const EdgeInsets.only(left: 2),
                 child: Container(height: 2,width: 30,color: kBlack,),
               ),
               const SizedBox(
                 height: 12,
               ),
-              OutletTile(outletName: "outletName", location: "location", veg: false, open: true),
+              OutletTile(outletName: "Lohit Canteen", location: "Lohit Hostel", veg: false, open: true),
              
             ],
           ),
