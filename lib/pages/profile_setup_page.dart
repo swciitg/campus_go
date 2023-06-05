@@ -41,9 +41,9 @@ class _ProfileSetupState extends State<ProfileSetup> {
       }
     }
     return Scaffold(
-      appBar: appBar(context, "Profile Setup",displayProfileIcon: false),
+      appBar: appBar(context, "Profile Setup",displayProfileIcon: false,displayBackButton: true),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         height: 56,
         width: double.infinity,
         child: Padding(

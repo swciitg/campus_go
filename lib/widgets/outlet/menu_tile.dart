@@ -54,16 +54,16 @@ class _MenuTileState extends State<MenuTile> {
                                   "₹ " + "160",
                                   style: MyFonts.w500.setColor(kBlack).size(12),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 8,
                                 ),
-                                Container(
+                                SizedBox(
                                     height: 8,
                                     width: 8,
                                     child: SvgPicture.asset(widget.veg
                                         ? "assets/images/veg.svg"
                                         : "assets/images/nonveg.svg")),
-                                SizedBox(
+                                const SizedBox(
                                   width: 4,
                                 ),
                                 Text(
@@ -91,8 +91,8 @@ class _MenuTileState extends State<MenuTile> {
                           alignment: Alignment.center,
                           child: Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                            Icon(Icons.close_outlined,size: 12,),
-                            SizedBox(width: 2,),
+                            const Icon(Icons.close_outlined,size: 12,),
+                            const SizedBox(width: 2,),
                             Text("Remove",style: MyFonts.w500.setColor(kBlack).size(12),)
                           ]),
                     ),

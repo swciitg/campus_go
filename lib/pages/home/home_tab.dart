@@ -19,7 +19,7 @@ class _HomeTabState extends State<HomeTab> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: 24,
                 child: RichText(
                   text: const TextSpan(
@@ -52,7 +52,7 @@ class _HomeTabState extends State<HomeTab> {
               const SizedBox(
                 height: 12,
               ),
-              OutletTile(outletName: "Lohit Canteen", location: "Lohit Hostel", veg: false, open: true),
+              const OutletTile(outletName: "Lohit Canteen", location: "Lohit Hostel", veg: false, open: true),
              
             ],
           ),

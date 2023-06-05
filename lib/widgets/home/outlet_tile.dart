@@ -26,7 +26,7 @@ class _OutletTileState extends State<OutletTile> {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: GestureDetector(
         onTap: ((){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>OutletPage()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const OutletPage()));
         }),
         child: Container(
           height: 64,

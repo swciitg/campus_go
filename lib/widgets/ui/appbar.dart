@@ -32,8 +32,9 @@ AppBar appBar(BuildContext context, String title,
                   child: Container(
                       height: 24,
                       width: 24,
-                      child: FittedBox(
-                          fit: BoxFit.scaleDown,
+                      decoration: BoxDecoration(border: Border.all(color: kWhite,width: 1.5),shape: BoxShape.circle),
+                      child: const FittedBox(
+                          fit: BoxFit.contain,
                           child:
                               Icon(Icons.person_outline)
                               )

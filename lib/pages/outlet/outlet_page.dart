@@ -20,68 +20,66 @@ class _OutletPageState extends State<OutletPage> {
       child: Scaffold(
         appBar: appBar(context, "CampusGO", displayProfileIcon: false,displayBackButton: true),
         body: SafeArea(
-            child: Container(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 32,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              "Lohit Canteen",
-                              style: MyFonts.w600.setColor(kBlack).size(24),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            SizedBox(
-                              width: 90,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  const Icon(
-                                    Icons.pin_drop_outlined,
-                                    size: 14,
-                                  ),
-                                  const SizedBox(
-                                    width: 6,
-                                  ),
-                                  Text("Lohit hostel",
-                                      overflow: TextOverflow.ellipsis,
-                                      style: MyFonts.w300
-                                          .setColor(kBlack)
-                                          .size(12)),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 2),
-                        child: Container(
-                          height: 2,
-                          width: 30,
-                          color: kBlack,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 18,
-                      ),
-                      SizedBox(
-                        height: 18,
-                        child: Row(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 32,
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Container(
+                              Text(
+                                "Lohit Canteen",
+                                style: MyFonts.w600.setColor(kBlack).size(24),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              SizedBox(
+                                width: 90,
                                 child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    const Icon(
+                                      Icons.pin_drop_outlined,
+                                      size: 14,
+                                    ),
+                                    const SizedBox(
+                                      width: 6,
+                                    ),
+                                    Text("Lohit hostel",
+                                        overflow: TextOverflow.ellipsis,
+                                        style: MyFonts.w300
+                                            .setColor(kBlack)
+                                            .size(12)),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 2),
+                          child: Container(
+                            height: 2,
+                            width: 30,
+                            color: kBlack,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 18,
+                        ),
+                        SizedBox(
+                          height: 18,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Row(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       const Icon(
@@ -97,70 +95,68 @@ class _OutletPageState extends State<OutletPage> {
                                         overflow: TextOverflow.ellipsis,
                                       )
                                     ]),
-                              ),
-                              SizedBox(
-                                width: 80,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    const Icon(
-                                      Icons.circle,
-                                      size: 14,
-                                    ),
-                                    const SizedBox(
-                                      width: 4,
-                                    ),
-                                    Text(
-                                      "OPEN",
-                                      style: MyFonts.w500
-                                          .setColor(kBlack)
-                                          .size(12),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ]),
-                      ),
-                      // SizedBox(height: 16,),
-                    ]),
-              ),
-              const Divider(
-                color: kBlack,
-                thickness: 1,
-                height: 1,
-              ),
-              TabBar(indicatorColor: kBlack,  tabs: [
-                Container(
-                  height: 48,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Menu",
-                    style: MyFonts.w500.setColor(kBlack).size(14),
-                  ),
+                                SizedBox(
+                                  width: 80,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      const Icon(
+                                        Icons.circle,
+                                        size: 14,
+                                      ),
+                                      const SizedBox(
+                                        width: 4,
+                                      ),
+                                      Text(
+                                        "OPEN",
+                                        style: MyFonts.w500
+                                            .setColor(kBlack)
+                                            .size(12),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ]),
+                        ),
+                        // SizedBox(height: 16,),
+                      ]),
                 ),
-                Container(
-                  height: 48,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Cart",
-                    style: MyFonts.w500.setColor(kBlack).size(14),
-                  ),
+                const Divider(
+                  color: kBlack,
+                  thickness: 1,
+                  height: 1,
                 ),
-              ]),
-              const Divider(
-                color: Colors.black12,
-                thickness: 1,
-                height: 1,
-              ),
-              const Expanded(
-                child: TabBarView(children: [
-                  MenuTab(),
-                  CartTab(),
+                TabBar(indicatorColor: kBlack,  tabs: [
+                  Container(
+                    height: 48,
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Menu",
+                      style: MyFonts.w500.setColor(kBlack).size(14),
+                    ),
+                  ),
+                  Container(
+                    height: 48,
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Cart",
+                      style: MyFonts.w500.setColor(kBlack).size(14),
+                    ),
+                  ),
                 ]),
-              )
-            ],
-          ),
-        )),
+                const Divider(
+                  color: Colors.black12,
+                  thickness: 1,
+                  height: 1,
+                ),
+                const Expanded(
+                  child: TabBarView(children: [
+                    MenuTab(),
+                    CartTab(),
+                  ]),
+                )
+              ],
+            )),
       ),
     );
   }

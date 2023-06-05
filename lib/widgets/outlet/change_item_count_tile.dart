@@ -57,7 +57,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                                 const SizedBox(
                                   width: 8,
                                 ),
-                                Container(
+                                SizedBox(
                                     height: 8,
                                     width: 8,
                                     child: SvgPicture.asset(widget.veg
@@ -91,7 +91,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                     child: Container(
                   color: kBlack,
                   alignment: Alignment.center,
-                  child: Icon(
+                  child: const Icon(
                     Icons.remove_outlined,
                     color: kWhite,
                   ),
@@ -106,7 +106,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                     child: Container(
                   color: kBlack,
                   alignment: Alignment.center,
-                  child: Icon(
+                  child: const Icon(
                     Icons.add_outlined,
                     color: kWhite,
                   ),
