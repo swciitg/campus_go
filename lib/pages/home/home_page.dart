@@ -14,7 +14,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-
 class _HomePageState extends State<HomePage> {
   int index = 0;
   final tabs = [
@@ -26,22 +25,22 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: appBar(context, "CampusGO"),
       bottomNavigationBar: NavigationBarTheme(
-            data: NavigationBarThemeData(
-                indicatorColor: kWhite,
-                labelTextStyle:
-                    MaterialStateProperty.all(MyFonts.w500.setColor(kWhite)),
-                iconTheme: MaterialStateProperty.all(
-                    const IconThemeData(color: kWhite))),
-            child: NavigationBar(
-              backgroundColor: kBlack,
-              selectedIndex: index,
-              onDestinationSelected: (index) => setState(() {
-                this.index = index;
-
-              }),
-              destinations: bottomNavIcons(),
-            ),
-          ),
+        data: NavigationBarThemeData(
+            indicatorColor: kWhite,
+            labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+            labelTextStyle: MaterialStateProperty.all(
+                MyFonts.w500.setColor(kWhite).size(12)),
+            iconTheme:
+                MaterialStateProperty.all(const IconThemeData(color: kWhite))),
+        child: NavigationBar(
+          backgroundColor: kBlack,
+          selectedIndex: index,
+          onDestinationSelected: (index) => setState(() {
+            this.index = index;
+          }),
+          destinations: bottomNavIcons(),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -56,13 +55,13 @@ class _HomePageState extends State<HomePage> {
                         text: 'Out',
                         style: TextStyle(
                             fontFamily: "Poppins",
-                            decoration: TextDecoration.underline,
+                            // decoration: TextDecoration.underline,
+                            // decorationThickness: 2,
                             fontSize: 18,
                             color: kBlack,
                             fontWeight: FontWeight.w500)),
                     TextSpan(
-                        text:
-                            "lets Available",
+                        text: "lets Available",
                         style: TextStyle(
                             fontFamily: "Poppins",
                             fontSize: 18,
@@ -71,9 +70,15 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              SizedBox(height: 24,),
+              // SizedBox(height: 3,),
+              Padding(
+                padding: const EdgeInsets.only(left: 0),
+                child: Container(height: 2,width: 30,color: kBlack,),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
               tabs[index],
-      
             ],
           ),
         ),
@@ -85,10 +90,10 @@ class _HomePageState extends State<HomePage> {
 List<Widget> bottomNavIcons() {
   return [
     const NavigationDestination(
-      icon: Icon(Icons.home_outlined),
+      icon: Icon(Icons.store_mall_directory_outlined),
       label: 'Home',
       selectedIcon: Icon(
-        Icons.home_outlined,
+        Icons.store_mall_directory_outlined,
         color: kBlack,
       ),
     ),
@@ -96,7 +101,7 @@ List<Widget> bottomNavIcons() {
       icon: Icon(Icons.shopping_bag_outlined),
       label: 'Orders',
       selectedIcon: Icon(
-       Icons.shopping_bag_outlined,
+        Icons.shopping_bag_outlined,
         color: kBlack,
       ),
     ),

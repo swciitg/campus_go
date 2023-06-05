@@ -1,3 +1,4 @@
+import 'package:campus_go/widgets/home/outlet_tile.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatefulWidget {
@@ -10,6 +11,10 @@ class HomeTab extends StatefulWidget {
 class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("Home tab"),);
+    return const Column(
+      children: [
+        OutletTile(outletName: "Lohit Canteen",location: "Lohit Hostel", veg: true,open: true,),
+      ],
+    );
   }
 }
