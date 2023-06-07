@@ -1,10 +1,12 @@
+import 'package:campus_go/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
 
 AppBar appBar(BuildContext context, String title,
-    {bool displayProfileIcon = true,bool displayBackButton=false}) {
+    {bool displayProfileIcon = true,bool displayBackButton=false,bool displayLogoutButton=false}) {
   return AppBar(
     backgroundColor: kBlack,
     centerTitle: true,
@@ -21,9 +23,7 @@ AppBar appBar(BuildContext context, String title,
             },
           ),
     actions: [
-      displayProfileIcon == false
-          ? const Icon(null)
-          : Padding(
+      if(displayProfileIcon )Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: GestureDetector(
                 onTap: () {
@@ -32,14 +32,24 @@ AppBar appBar(BuildContext context, String title,
                   child: Container(
                       height: 24,
                       width: 24,
-                      decoration: BoxDecoration(border: Border.all(color: kWhite,width: 1.5),shape: BoxShape.circle),
-                      child: const FittedBox(
+                      // decoration: BoxDecoration(border: Border.all(color: kWhite,width: 1.5),shape: BoxShape.circle),
+                      child: FittedBox(
                           fit: BoxFit.contain,
                           child:
-                              Icon(Icons.person_outline)
+                              // Icon(Icons.person_outline)
+                              SvgPicture.asset("assets/images/profile.svg"),
                               )
                               )),
-            )
+            ),
+            if(displayLogoutButton)Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () {
+                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>const LoginPage()), (route) => false);
+              },
+                      ),
+            ),
     ],
   );
 }

@@ -14,7 +14,7 @@ class CurrentOrdersTab extends StatefulWidget {
 }
 
 class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
-  final ViewType viewType=ViewType.admin;
+  final ViewType viewType=ViewType.user;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

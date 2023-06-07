@@ -1,3 +1,5 @@
+import 'package:campus_go/models/admin_model.dart';
+import 'package:campus_go/pages/outlet/owned_outlets_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../functions/utility/show_snackbar.dart';
@@ -26,8 +28,15 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
         showSnackBar('Please give all the inputs correctly');
         return;
       } else {
-        Navigator.of(context)
-            .pushNamedAndRemoveUntil('/home', (route) => false);
+        // Navigator.of(context)
+        //     .pushNamedAndRemoveUntil('/home', (route) => false);
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => OwnedOutletsPage(
+                adminModel: AdminModel(
+                    id: "id",
+                    username: _usernameController.text,
+                    password: _passwordController.text,
+                    outletsOwned: ["Lohit Canteen", "Florentine"]))));
       }
     }
 
@@ -46,7 +55,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                     CustomTextField(
                       hintText: "Username",
                       isNecessary: true,
-                      prefixIcon: const Icon(Icons.phone_outlined),
+                      prefixIcon: const Icon(Icons.person_outline),
                       controller: _usernameController,
                       isEnabled: true,
                       inputType: TextInputType.phone,
