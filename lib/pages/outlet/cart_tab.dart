@@ -213,7 +213,7 @@ class _CartTabState extends State<CartTab> {
                     acceptanceStatus: AcceptanceStatus.queued.status,
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
-                    orderDateTime: DateTime.now()),)));
+                    orderDateTime: DateTime.now(), id: 'id'),)));
                         }),
                         style: ElevatedButton.styleFrom(
                             backgroundColor: kBlack,

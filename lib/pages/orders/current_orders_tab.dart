@@ -37,6 +37,7 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
             children: [
               OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: OrderModes.delivery.orderMode,
@@ -52,6 +53,7 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
               ),
              OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: OrderModes.takeaway.orderMode,
@@ -67,6 +69,7 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
               ),
               OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: OrderModes.delivery.orderMode,
@@ -101,6 +104,7 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
             children: [
               OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: "Delivery",
@@ -116,6 +120,7 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
               ),
               OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: "Delivery",
@@ -131,6 +136,7 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
               ),
               OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: "Delivery",

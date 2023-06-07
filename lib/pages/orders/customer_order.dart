@@ -59,29 +59,40 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          widget.orderModel.outletID,
-                          overflow: TextOverflow.ellipsis,
-                          style: MyFonts.w600.setColor(kBlack).size(16),
-                        ),
+                        RichText(
+                            text: TextSpan(children: [
+                          TextSpan(
+                              text: "Or. No.: ",
+                              style: MyFonts.w300.size(16).setColor(kBlack)),
+                          TextSpan(
+                              text: widget.orderModel.id,
+                              style: MyFonts.w600.size(16).setColor(kBlack)),
+                        ])),
                         const SizedBox(
                           height: 8,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const Icon(
-                              Icons.pin_drop_outlined,
-                              size: 14,
-                            ),
-                            const SizedBox(
-                              width: 6,
-                            ),
-                            Text("Outlet Location",
-                                overflow: TextOverflow.ellipsis,
-                                style: MyFonts.w300.setColor(kBlack).size(12)),
-                          ],
-                        )
+
+                        RichText(
+                            text: TextSpan(children: [
+                          TextSpan(
+                              text: "Mode: ",
+                              style: MyFonts.w300.size(12).setColor(kBlack)),
+                          TextSpan(
+                              text: widget.orderModel.orderMode,
+                              style: MyFonts.w600.size(12).setColor(kBlack)),
+                        ])),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        RichText(
+                            text: TextSpan(children: [
+                          TextSpan(
+                              text: "Call: ",
+                              style: MyFonts.w300.size(12).setColor(kBlack)),
+                          TextSpan(
+                              text: "Customer phone no",
+                              style: MyFonts.w600.size(12).setColor(kBlack)),
+                        ])),
                       ]),
                 ),
               ),
@@ -93,6 +104,18 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                     RichText(
                         text: TextSpan(children: [
                       TextSpan(
+                          text: "By: ",
+                          style: MyFonts.w300.size(12).setColor(kBlack)),
+                      TextSpan(
+                          text: widget.orderModel.userID,
+                          style: MyFonts.w600.size(12).setColor(kBlack)),
+                    ])),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    RichText(
+                        text: TextSpan(children: [
+                      TextSpan(
                           text: "Order date: ",
                           style: MyFonts.w600.size(12).setColor(kBlack)),
                       TextSpan(
@@ -101,7 +124,7 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                           style: MyFonts.w300.size(12).setColor(kBlack)),
                     ])),
                     const SizedBox(
-                      height: 8,
+                      height: 4,
                     ),
                     RichText(
                         text: TextSpan(children: [

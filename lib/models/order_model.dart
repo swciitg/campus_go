@@ -4,6 +4,7 @@ part 'order_model.g.dart';
 @JsonSerializable(explicitToJson: true)
 class OrderModel {
   @JsonKey(name: '_id')
+  final String id;
   final String outletID;
   final String userID;
   final String orderMode;
@@ -17,8 +18,8 @@ class OrderModel {
   final String qrCodeSecret;
   final DateTime orderDateTime;
 
-  OrderModel(
-      {required this.outletID,
+  OrderModel( 
+      {required this.id,required this.outletID,
       required this.userID,
       required this.orderMode,
       required this.instructions,

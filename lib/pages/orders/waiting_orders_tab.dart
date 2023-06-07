@@ -39,6 +39,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
             children: [
              OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: "Delivery",
@@ -54,6 +55,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
               ),
               OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: "Delivery",
@@ -69,6 +71,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
               ),
                OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: "Delivery",
@@ -105,6 +108,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
              
               OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: "Delivery",
@@ -120,6 +124,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
               ),
               OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: "Delivery",
@@ -135,6 +140,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
               ),
               OrderTile(
                 orderModel: OrderModel(
+                  id: "id",
                     outletID: "Florentine",
                     userID: "userID",
                     orderMode: "Delivery",
