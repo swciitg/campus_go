@@ -5,5 +5,8 @@ part 'cart_store.g.dart';
 class CartStore = _CartStore with _$CartStore;
 
 abstract class _CartStore with Store {
+
+  @observable
+  int totalItemsAdded=0;
  
 }

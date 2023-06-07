@@ -1,12 +1,14 @@
 import 'package:campus_go/globals/my_colors.dart';
 import 'package:campus_go/globals/my_fonts.dart';
+import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/outlet/cart_tab.dart';
 import 'package:campus_go/pages/outlet/menu_tab.dart';
 import 'package:campus_go/widgets/ui/appbar.dart';
 import 'package:flutter/material.dart';
 
 class OutletPage extends StatefulWidget {
-  const OutletPage({super.key});
+  final OutletModel outletModel;
+  const OutletPage({super.key, required this.outletModel});
 
   @override
   State<OutletPage> createState() => _OutletPageState();

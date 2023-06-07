@@ -1,19 +1,14 @@
 import 'package:campus_go/globals/my_colors.dart';
 import 'package:campus_go/globals/my_fonts.dart';
+import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/outlet/outlet_page.dart';
 import 'package:flutter/material.dart';
 
 class OutletTile extends StatefulWidget {
-  final String outletName;
-  final String location;
-  final bool veg;
-  final bool open;
+  final OutletModel outletModel;
   const OutletTile(
-      {super.key,
-      required this.outletName,
-      required this.location,
-      required this.veg,
-      required this.open});
+      {super.key, required this.outletModel,
+      });
 
   @override
   State<OutletTile> createState() => _OutletTileState();
@@ -26,7 +21,7 @@ class _OutletTileState extends State<OutletTile> {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: GestureDetector(
         onTap: ((){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const OutletPage()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>OutletPage(outletModel: widget.outletModel,)));
         }),
         child: Container(
           height: 64,
@@ -44,7 +39,7 @@ class _OutletTileState extends State<OutletTile> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.outletName,
+                          widget.outletModel.outletName,
                           overflow: TextOverflow.ellipsis,
                           style: MyFonts.w600.setColor(kBlack).size(16),
                         ),
@@ -61,7 +56,7 @@ class _OutletTileState extends State<OutletTile> {
                               const SizedBox(
                                 width: 6,
                               ),
-                              Text(widget.location,
+                              Text(widget.outletModel.location,
                                   overflow: TextOverflow.ellipsis,
                                   style: MyFonts.w300.setColor(kBlack).size(12)),
                             ],
@@ -89,7 +84,7 @@ class _OutletTileState extends State<OutletTile> {
                           width: 4,
                         ),
                         Text(
-                          widget.veg == true ? "VEG" : "NON-VEG",
+                          widget.outletModel.category,
                           style: MyFonts.w500.setColor(kBlack).size(12),
                         )
                       ],
@@ -107,7 +102,7 @@ class _OutletTileState extends State<OutletTile> {
                           width: 4,
                         ),
                         Text(
-                          widget.open == true ? "OPEN" : "CLOSE",
+                          widget.outletModel.status? "OPEN" : "CLOSE",
                           style: MyFonts.w500.setColor(kBlack).size(12),
                         )
                       ],

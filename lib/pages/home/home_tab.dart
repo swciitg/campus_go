@@ -1,3 +1,4 @@
+import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/widgets/home/outlet_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +53,7 @@ class _HomeTabState extends State<HomeTab> {
               const SizedBox(
                 height: 12,
               ),
-              const OutletTile(outletName: "Lohit Canteen", location: "Lohit Hostel", veg: false, open: true),
+              OutletTile(outletModel: OutletModel(outletName: "Lohit Canteen", location: "Lohit Hostel", phoneNumber: "8502909980", category: "NON-VEG", status: true, outletKey: "outletKey", id: "id"),),
              
             ],
           ),
