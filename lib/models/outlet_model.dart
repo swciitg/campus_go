@@ -12,7 +12,7 @@ class OutletModel {
   final bool status;
   final String outletKey;
   @JsonKey(defaultValue: [])
-  late List<String> service;
+  final List<String> service;
 
   OutletModel(
       {required this.outletName,
@@ -21,7 +21,8 @@ class OutletModel {
       required this.category,
       required this.status,
       required this.outletKey,
-      required this.id});
+      required this.id,required this.service, 
+      });
   factory OutletModel.fromJson(Map<String, dynamic> map) =>
       _$OutletModelFromJson(map);
 

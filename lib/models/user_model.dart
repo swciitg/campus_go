@@ -18,6 +18,7 @@ class UserModel {
     required this.email,
     required this.phoneNumber,
     required this.alternateEmail,
+    required this.outletsOwned,
   });
   factory UserModel.fromJson(Map<String, dynamic> map) =>
       _$UserModelFromJson(map);

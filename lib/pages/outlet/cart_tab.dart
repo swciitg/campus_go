@@ -1,3 +1,4 @@
+import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/item_model.dart';
 import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/orders/your_order_page.dart';
@@ -16,11 +17,13 @@ class CartTab extends StatefulWidget {
 }
 
 class _CartTabState extends State<CartTab> {
-
-  int selectedRadio = 0;
+  
+int selectedRadio = 0;
+  
   @override
   Widget build(BuildContext context) {
-    int itemCount=0;
+    
+    int itemCount=1;
     return itemCount == 0
         ? Center(
             child: Text(
@@ -192,15 +195,15 @@ class _CartTabState extends State<CartTab> {
                     const SizedBox(
                       height: 24,
                     ),
-                    selectedRadio == 1
-                        ? Column(
+                    widget.outletModel.service[selectedRadio]==OrderModes.delivery.toString()
+                        ? const Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                   child: CustomTextField(
                                 hintText: "Delivery Location",
                                 isNecessary: false,
                               )),
-                              const SizedBox(
+                              SizedBox(
                                 height: 24,
                               ),
                             ],

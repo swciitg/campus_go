@@ -8,10 +8,11 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       email: json['email'] as String,
       phoneNumber: json['phoneNumber'] as String,
       alternateEmail: json['alternateEmail'] as String,
-    )..outletsOwned = (json['outletsOwned'] as List<dynamic>?)
-            ?.map((e) => e as String)
-            .toList() ??
-        [];
+      outletsOwned: (json['outletsOwned'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       '_id': instance.id,

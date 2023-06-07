@@ -8,12 +8,13 @@ class AdminModel {
   final String username;
   final String password;
   @JsonKey(defaultValue: [])
-  late List<String> outletsOwned;
+  final List<String> outletsOwned;
 
   AdminModel({
     required this.id,
     required this.username,
     required this.password,
+    required this.outletsOwned
   });
   factory AdminModel.fromJson(Map<String, dynamic> map) =>
       _$AdminModelFromJson(map);

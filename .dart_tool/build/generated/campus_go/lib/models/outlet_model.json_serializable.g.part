@@ -10,9 +10,11 @@ OutletModel _$OutletModelFromJson(Map<String, dynamic> json) => OutletModel(
       status: json['status'] as bool,
       outletKey: json['outletKey'] as String,
       id: json['_id'] as String,
-    )..service =
-        (json['service'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-            [];
+      service: (json['service'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
 
 Map<String, dynamic> _$OutletModelToJson(OutletModel instance) =>
     <String, dynamic>{
