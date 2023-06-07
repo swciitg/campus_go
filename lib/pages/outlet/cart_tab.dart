@@ -17,13 +17,15 @@ class CartTab extends StatefulWidget {
 }
 
 class _CartTabState extends State<CartTab> {
-  
-int selectedRadio = 0;
-  
+  final TextEditingController _deliveryLocationController =
+      TextEditingController();
+  final TextEditingController _instructionsController = TextEditingController();
+
+  int selectedRadio = 0;
+
   @override
   Widget build(BuildContext context) {
-    
-    int itemCount=1;
+    int itemCount = 1;
     return itemCount == 0
         ? Center(
             child: Text(
@@ -88,86 +90,57 @@ int selectedRadio = 0;
                       height: 16,
                     ),
                     Container(
-                      height: 24,
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedRadio = 0;
-                              });
-                            },
-                            child: SizedBox(
-                              width: 90,
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 20,
-                                    height: 20,
-                                    child: Radio(
-                                      value: 0,
-                                      groupValue: selectedRadio,
-                                      onChanged: (val) {
-                                        setState(() {
-                                          selectedRadio = val!;
-                                        });
-                                      },
-                                      activeColor: kBlack,
+                        height: 24,
+                        alignment: Alignment.center,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                            itemCount: widget.outletModel.service.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (BuildContext context, index) {
+                              return Align(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      selectedRadio = 0;
+                                    });
+                                  },
+                                  child: SizedBox(
+                                    width: MediaQuery.of(context).size.width*0.45,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: 20,
+                                          height: 20,
+                                          child: Radio(
+                                            value: index,
+                                            groupValue: selectedRadio,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                selectedRadio = val!;
+                                              });
+                                            },
+                                            activeColor: kBlack,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 6,
+                                        ),
+                                        Text(
+                                          widget.outletModel.service[index] ==
+                                                  OrderModes.delivery.toString()
+                                              ? "Delivery"
+                                              : "Takeaway",
+                                          style: MyFonts.w400
+                                              .setColor(kBlack)
+                                              .size(12),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  const SizedBox(
-                                    width: 6,
-                                  ),
-                                  Text(
-                                    "Takeaway",
-                                    style:
-                                        MyFonts.w400.setColor(kBlack).size(12),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedRadio = 1;
-                              });
-                            },
-                            child: SizedBox(
-                              width: 90,
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 20,
-                                    height: 20,
-                                    child: Radio(
-                                      value: 1,
-                                      groupValue: selectedRadio,
-                                      onChanged: (val) {
-                                        setState(() {
-                                          selectedRadio = val!;
-                                        });
-                                      },
-                                      activeColor: kBlack,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 6,
-                                  ),
-                                  Text(
-                                    "Delivery",
-                                    style:
-                                        MyFonts.w400.setColor(kBlack).size(12),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                                ),
+                              );
+                            })),
                     const SizedBox(
                       height: 16,
                     ),
@@ -195,21 +168,23 @@ int selectedRadio = 0;
                     const SizedBox(
                       height: 24,
                     ),
-                    widget.outletModel.service[selectedRadio]==OrderModes.delivery.toString()
-                        ? const Column(
+                    widget.outletModel.service[selectedRadio] ==
+                            OrderModes.delivery.toString()
+                        ? Column(
                             children: [
                               SizedBox(
                                   child: CustomTextField(
                                 hintText: "Delivery Location",
                                 isNecessary: false,
+                                controller: _deliveryLocationController,
                               )),
-                              SizedBox(
+                              const SizedBox(
                                 height: 24,
                               ),
                             ],
                           )
                         : Container(),
-                    const SizedBox(
+                    SizedBox(
                         height: 150,
                         child: CustomTextField(
                           hintText: "Any Instruction",
@@ -218,6 +193,7 @@ int selectedRadio = 0;
                           inputType: TextInputType.multiline,
                           expands: true,
                           textAlignVertical: TextAlignVertical.top,
+                          controller: _instructionsController,
                         )),
                     const SizedBox(
                       height: 24,
