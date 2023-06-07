@@ -16,6 +16,10 @@ class OrderTile extends StatefulWidget {
 class _OrderTileState extends State<OrderTile> {
   @override
   Widget build(BuildContext context) {
+    int count=0;
+    for(var cnt in widget.orderModel.items.values) {
+      count=count+cnt;
+    }
     Duration passedDuration =
         DateTime.now().difference(widget.orderModel.orderDateTime);
     String timeagoString =
@@ -63,7 +67,7 @@ class _OrderTileState extends State<OrderTile> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                                text: widget.orderModel.items.length.toString(),
+                                text: count.toString(),
                                 style:
                                     MyFonts.w600.setColor(kBlack).size(16)),
                             TextSpan(
@@ -113,7 +117,7 @@ class _OrderTileState extends State<OrderTile> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                                text: widget.orderModel.items.length.toString(),
+                                text: count.toString(),
                                 style:
                                     MyFonts.w600.setColor(kBlack).size(16)),
                             TextSpan(

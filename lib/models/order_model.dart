@@ -8,8 +8,8 @@ class OrderModel {
   final String userID;
   final String orderMode;
   final String instructions;
-  @JsonKey(defaultValue: [])
-  final List<String> items;
+  @JsonKey(defaultValue: {})
+  final Map<String,int> items;
   final String deliveryLocation;
   final String prepStatus;
   final String acceptanceStatus;

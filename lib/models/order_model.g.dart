@@ -11,9 +11,10 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
       userID: json['userID'] as String,
       orderMode: json['orderMode'] as String,
       instructions: json['instructions'] as String,
-      items:
-          (json['items'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-              [],
+      items: (json['items'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, e as int),
+          ) ??
+          {},
       deliveryLocation: json['deliveryLocation'] as String,
       prepStatus: json['prepStatus'] as String,
       acceptanceStatus: json['acceptanceStatus'] as String,
