@@ -164,6 +164,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_mobx",
+      "rootUri": "file:///Users/y.chanchal/.pub-cache/hosted/pub.dev/flutter_mobx-2.0.6+5",
+      "packageUri": "lib/",
+      "languageVersion": "2.13"
+    },
+    {
       "name": "flutter_svg",
       "rootUri": "file:///Users/y.chanchal/.pub-cache/hosted/pub.dev/flutter_svg-2.0.6",
       "packageUri": "lib/",
@@ -266,6 +272,24 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "mobx",
+      "rootUri": "file:///Users/y.chanchal/.pub-cache/hosted/pub.dev/mobx-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "mobx_codegen",
+      "rootUri": "file:///Users/y.chanchal/.pub-cache/hosted/pub.dev/mobx_codegen-2.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.13"
+    },
+    {
+      "name": "nested",
+      "rootUri": "file:///Users/y.chanchal/.pub-cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "package_config",
       "rootUri": "file:///Users/y.chanchal/.pub-cache/hosted/pub.dev/package_config-2.1.0",
       "packageUri": "lib/",
@@ -292,6 +316,12 @@
     {
       "name": "pool",
       "rootUri": "file:///Users/y.chanchal/.pub-cache/hosted/pub.dev/pool-1.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/y.chanchal/.pub-cache/hosted/pub.dev/provider-6.0.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -446,7 +476,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-07T08:45:26.895532Z",
+  "generated": "2023-06-07T10:05:56.643971Z",
   "generator": "pub",
   "generatorVersion": "3.0.3"
 }
