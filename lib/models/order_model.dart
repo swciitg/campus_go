@@ -15,6 +15,7 @@ class OrderModel {
   final String acceptanceStatus;
   final String paymentStatus;
   final String qrCodeSecret;
+  final DateTime orderDateTime;
 
   OrderModel(
       {required this.outletID,
@@ -26,7 +27,7 @@ class OrderModel {
       required this.prepStatus,
       required this.acceptanceStatus,
       required this.paymentStatus,
-      required this.qrCodeSecret});
+      required this.qrCodeSecret,required this.orderDateTime,});
   factory OrderModel.fromJson(Map<String, dynamic> map) =>
       _$OrderModelFromJson(map);
 

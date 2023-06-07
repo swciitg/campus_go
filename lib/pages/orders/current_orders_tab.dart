@@ -1,3 +1,4 @@
+import 'package:campus_go/models/order_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../globals/enums.dart';
@@ -29,24 +30,51 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
           thickness: 1,
           height: 1,
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
             children: [
               OrderTile(
-                status: Status.successful,
-                prepStatus: PrepStatus.preparing,
-                isDelivery: true,
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode:OrderModes.delivery.toString(),
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.toString(),
+                    acceptanceStatus: AcceptanceStatus.accepted.toString(),
+                    paymentStatus: PaymentStatus.successful.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
               ),
               OrderTile(
-                status: Status.successful,
-                prepStatus: PrepStatus.ready,
-                isDelivery: false,
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: OrderModes.takeaway.toString(),
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.ready.toString(),
+                    acceptanceStatus: AcceptanceStatus.accepted.toString(),
+                    paymentStatus: PaymentStatus.successful.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
               ),
               OrderTile(
-                status: Status.successful,
-                prepStatus: PrepStatus.outForDelivery,
-                isDelivery: true,
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: OrderModes.delivery.toString(),
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.toString(),
+                    acceptanceStatus: AcceptanceStatus.accepted.toString(),
+                    paymentStatus: PaymentStatus.successful.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
               ),
             ],
           ),
@@ -63,18 +91,50 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
           thickness: 1,
           height: 1,
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
             children: [
               OrderTile(
-                status: Status.paymentPending,
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: "Delivery",
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.toString(),
+                    acceptanceStatus: AcceptanceStatus.accepted.toString(),
+                    paymentStatus: PaymentStatus.pending.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
               ),
               OrderTile(
-                status: Status.paymentPending,
-              ),
-              OrderTile(
-                status: Status.paymentPending,
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: "Delivery",
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.toString(),
+                    acceptanceStatus: AcceptanceStatus.accepted.toString(),
+                    paymentStatus: PaymentStatus.pending.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
+              ),OrderTile(
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: "Delivery",
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.toString(),
+                    acceptanceStatus: AcceptanceStatus.accepted.toString(),
+                    paymentStatus: PaymentStatus.pending.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
               ),
             ],
           ),

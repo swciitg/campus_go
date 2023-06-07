@@ -19,6 +19,7 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
       acceptanceStatus: json['acceptanceStatus'] as String,
       paymentStatus: json['paymentStatus'] as String,
       qrCodeSecret: json['qrCodeSecret'] as String,
+      orderDateTime: DateTime.parse(json['orderDateTime'] as String),
     );
 
 Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
@@ -33,4 +34,5 @@ Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
       'acceptanceStatus': instance.acceptanceStatus,
       'paymentStatus': instance.paymentStatus,
       'qrCodeSecret': instance.qrCodeSecret,
+      'orderDateTime': instance.orderDateTime.toIso8601String(),
     };

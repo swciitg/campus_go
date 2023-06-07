@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../globals/enums.dart';
 import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
+import '../../models/order_model.dart';
 import '../../widgets/orders/order_tile.dart';
 
 class WaitingOrdersTab extends StatefulWidget {
@@ -31,30 +32,53 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
           thickness: 1,
           height: 1,
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
             children: [
               OrderTile(
-                status: Status.queued,
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: "Delivery",
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.toString(),
+                    acceptanceStatus: AcceptanceStatus.queued.toString(),
+                    paymentStatus: PaymentStatus.successful.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
+              ),
+              OrderTile(
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: "Delivery",
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.toString(),
+                    acceptanceStatus: AcceptanceStatus.queued.toString(),
+                    paymentStatus: PaymentStatus.successful.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
               ),
                OrderTile(
-                status: Status.queued,
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: "Delivery",
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.toString(),
+                    acceptanceStatus: AcceptanceStatus.queued.toString(),
+                    paymentStatus: PaymentStatus.successful.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
               ),
-               OrderTile(
-                status: Status.queued,
-              ),
-              // OrderTile(
-              //   status: Status.rejected,
-              // ),
-              // OrderTile(
-              //   status: Status.paymentPending,
-              // ),
-              // OrderTile(
-              //   status: Status.successful,
-              //   prepStatus: PrepStatus.ready,
-              //   isDelivery: true,
-              // ),
+             
             ],
           ),
         ),
@@ -70,30 +94,53 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
           thickness: 1,
           height: 1,
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
             children: [
              
-              
               OrderTile(
-                status: Status.rejected,
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: "Delivery",
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.toString(),
+                    acceptanceStatus: AcceptanceStatus.rejected.toString(),
+                    paymentStatus: PaymentStatus.pending.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
               ),
               OrderTile(
-                status: Status.rejected,
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: "Delivery",
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.toString(),
+                    acceptanceStatus: AcceptanceStatus.rejected.toString(),
+                    paymentStatus: PaymentStatus.pending.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
               ),
               OrderTile(
-                status: Status.rejected,
+                orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: "Delivery",
+                    instructions: "instructions",
+                    items: [],
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.toString(),
+                    acceptanceStatus: AcceptanceStatus.rejected.toString(),
+                    paymentStatus: PaymentStatus.pending.toString(),
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),
               ),
-
-              // OrderTile(
-              //   status: Status.paymentPending,
-              // ),
-              // OrderTile(
-              //   status: Status.successful,
-              //   prepStatus: PrepStatus.ready,
-              //   isDelivery: true,
-              // ),
             ],
           ),
         )
