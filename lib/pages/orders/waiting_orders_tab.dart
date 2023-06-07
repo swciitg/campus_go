@@ -14,7 +14,7 @@ class WaitingOrdersTab extends StatefulWidget {
 }
 
 class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
-  final ViewType viewType =ViewType.user;
+  final ViewType viewType =ViewType.admin;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -39,9 +39,9 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
             children: [
              OrderTile(
                 orderModel: OrderModel(
-                  id: "id",
+                  id: "543210",
                     outletID: "Florentine",
-                    userID: "userID",
+                    userID: "Chanchal Yadav",
                     orderMode: "Delivery",
                     instructions: "instructions",
                     items: {},
@@ -55,9 +55,9 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
               ),
               OrderTile(
                 orderModel: OrderModel(
-                  id: "id",
+                  id: "543210",
                     outletID: "Florentine",
-                    userID: "userID",
+                    userID: "Chanchal Yadav",
                     orderMode: "Delivery",
                     instructions: "instructions",
                     items: {},
@@ -71,9 +71,9 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
               ),
                OrderTile(
                 orderModel: OrderModel(
-                  id: "id",
+                  id: "543210",
                     outletID: "Florentine",
-                    userID: "userID",
+                    userID: "Chanchal Yadav",
                     orderMode: "Delivery",
                     instructions: "instructions",
                     items: {},
@@ -108,9 +108,9 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
              
               OrderTile(
                 orderModel: OrderModel(
-                  id: "id",
+                  id: "543210",
                     outletID: "Florentine",
-                    userID: "userID",
+                    userID: "Chanchal Yadav",
                     orderMode: "Delivery",
                     instructions: "instructions",
                     items: {},
@@ -124,9 +124,9 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
               ),
               OrderTile(
                 orderModel: OrderModel(
-                  id: "id",
+                  id: "543210",
                     outletID: "Florentine",
-                    userID: "userID",
+                    userID: "Chanchal Yadav",
                     orderMode: "Delivery",
                     instructions: "instructions",
                     items: {},
@@ -140,9 +140,9 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
               ),
               OrderTile(
                 orderModel: OrderModel(
-                  id: "id",
+                  id: "543210",
                     outletID: "Florentine",
-                    userID: "userID",
+                    userID: "Chanchal Yadav",
                     orderMode: "Delivery",
                     instructions: "instructions",
                     items: {},

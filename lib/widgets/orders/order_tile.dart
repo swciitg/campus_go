@@ -37,8 +37,8 @@ class _OrderTileState extends State<OrderTile> {
         onTap: (() {
           if (widget.viewType == ViewType.admin) {
             Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      CustomerOrderPage(orderModel: widget.orderModel)));
+                builder: (context) =>
+                    CustomerOrderPage(orderModel: widget.orderModel)));
           } else {
             if (widget.orderModel.acceptanceStatus ==
                     AcceptanceStatus.queued.status ||
@@ -67,7 +67,9 @@ class _OrderTileState extends State<OrderTile> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.orderModel.outletID,
+                          widget.viewType == ViewType.admin
+                              ? widget.orderModel.userID
+                              : widget.orderModel.outletID,
                           overflow: TextOverflow.ellipsis,
                           style: MyFonts.w600.setColor(kBlack).size(16),
                         ),
@@ -88,7 +90,16 @@ class _OrderTileState extends State<OrderTile> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       RichText(
-                        text: TextSpan(
+                        text: widget.viewType==ViewType.admin?TextSpan(
+                          children: [
+                            TextSpan(
+                                text: "Or. ID. ",
+                                style: MyFonts.w400.setColor(kBlack).size(16)),
+                            TextSpan(
+                                text: widget.orderModel.id,
+                                style: MyFonts.w600.setColor(kBlack).size(16)),
+                          ],
+                        ): TextSpan(
                           children: [
                             TextSpan(
                                 text: count.toString(),
@@ -109,23 +120,30 @@ class _OrderTileState extends State<OrderTile> {
                               color: kBlack,
                               border: Border.all(color: kBlack),
                               borderRadius: BorderRadius.circular(4)),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const Icon(
-                                  Icons.close_outlined,
-                                  size: 12,
-                                  color: kWhite,
-                                ),
-                                const SizedBox(
-                                  width: 2,
-                                ),
-                                Text(
-                                  "Cancel",
-                                  style: MyFonts.w500.setColor(kWhite).size(12),
+                          child: widget.viewType == ViewType.admin
+                              ? Text(
+                                  "Accept",
+                                  style: MyFonts.w500.size(12).setColor(kWhite),
                                 )
-                              ]),
+                              : Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                      const Icon(
+                                        Icons.close_outlined,
+                                        size: 12,
+                                        color: kWhite,
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Text(
+                                        "Cancel",
+                                        style: MyFonts.w500
+                                            .setColor(kWhite)
+                                            .size(12),
+                                      )
+                                    ]),
                         ),
                       ),
                     ])
@@ -136,7 +154,16 @@ class _OrderTileState extends State<OrderTile> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       RichText(
-                        text: TextSpan(
+                        text: widget.viewType==ViewType.admin?TextSpan(
+                          children: [
+                            TextSpan(
+                                text: "Or. ID. ",
+                                style: MyFonts.w400.setColor(kBlack).size(16)),
+                            TextSpan(
+                                text: widget.orderModel.id,
+                                style: MyFonts.w600.setColor(kBlack).size(16)),
+                          ],
+                        ):TextSpan(
                           children: [
                             TextSpan(
                                 text: count.toString(),
@@ -169,7 +196,7 @@ class _OrderTileState extends State<OrderTile> {
                           ],
                         ),
                       ),
-                      GestureDetector(
+                     if(widget.viewType==ViewType.user) GestureDetector(
                         onTap: () {},
                         child: Container(
                           width: 80,
