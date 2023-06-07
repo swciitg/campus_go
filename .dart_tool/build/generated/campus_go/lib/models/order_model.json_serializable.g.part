@@ -1,0 +1,35 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
+      outletID: json['_id'] as String,
+      userID: json['userID'] as String,
+      orderMode: json['orderMode'] as String,
+      instructions: json['instructions'] as String,
+      items:
+          (json['items'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              [],
+      deliveryLocation: json['deliveryLocation'] as String,
+      prepStatus: json['prepStatus'] as String,
+      acceptanceStatus: json['acceptanceStatus'] as String,
+      paymentStatus: json['paymentStatus'] as String,
+      qrCodeSecret: (json['qrCodeSecret'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
+    <String, dynamic>{
+      '_id': instance.outletID,
+      'userID': instance.userID,
+      'orderMode': instance.orderMode,
+      'instructions': instance.instructions,
+      'items': instance.items,
+      'deliveryLocation': instance.deliveryLocation,
+      'prepStatus': instance.prepStatus,
+      'acceptanceStatus': instance.acceptanceStatus,
+      'paymentStatus': instance.paymentStatus,
+      'qrCodeSecret': instance.qrCodeSecret,
+    };
