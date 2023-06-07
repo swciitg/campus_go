@@ -14,10 +14,7 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
       prepStatus: json['prepStatus'] as String,
       acceptanceStatus: json['acceptanceStatus'] as String,
       paymentStatus: json['paymentStatus'] as String,
-      qrCodeSecret: (json['qrCodeSecret'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
+      qrCodeSecret: json['qrCodeSecret'] as String,
     );
 
 Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>

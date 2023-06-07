@@ -14,8 +14,7 @@ class OrderModel {
   final String prepStatus;
   final String acceptanceStatus;
   final String paymentStatus;
-  @JsonKey(defaultValue: [])
-  final List<String> qrCodeSecret;
+  final String qrCodeSecret;
 
   OrderModel(
       {required this.outletID,
