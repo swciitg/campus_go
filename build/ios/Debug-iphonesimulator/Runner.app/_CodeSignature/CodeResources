@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		GbXMPhqekcsEYwvte2tm94PI+YE=
+		xdB1wDJQJdDiecEsFNKJxm4eLXY=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,15 +54,15 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		2iKKSXWyHwweARhnyfmfhJYWW0Q=
+		jvsX81AIXIOxwnWk0zSVg0LJdxg=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		/Rj68iFC42BVpbbtJ5Hk8tmYvfs=
+		MqMLxmdy0qgnQ389OYCS/mlbjNw=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.smcbin</key>
 		<data>
-		W/pM0JFzfYn4lNj95GayXmwazn4=
+		vFakwOeeHhOvy4oFBACMVqymolE=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		DMGwyXInjK5BstOM2BfxJ+IX1c4=
+		v6ily889bXMdsiR6GhJoHXjmGGQ=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Poppins-Bold.ttf</key>
 		<data>
@@ -96,6 +96,10 @@
 		<data>
 		ikrOk5LQa8t/jqL1FpsH5MODqQ0=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/logo.jpg</key>
+		<data>
+		+7TfA3SZ6ROZJEIfZYqBrD56SZE=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/nonveg.svg</key>
 		<data>
 		zs3gFSVIsAi3fEtNxBGEaSmA+qk=
@@ -118,7 +122,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		yHnMh5o3rx0dpvxwihTAYL27lWk=
+		1gEId2shMj2gDh12f9FH5f0qOyA=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -301,7 +305,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AhF3U0B+uz+dEqgsVIZvdZx6XX8xBs4Roi4Jokr1I4k=
+			BGMArl307G4JY/HGXKAZjrVETHt7RAXP7wiMSNvhjEo=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -315,21 +319,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sNqX6v9EEgYIoKevUirPRZJ2nWfpHPFQxAFdbKed9G0=
+			9T5ioae4iHUcV7TSipWYAjS540TxqZLg6YwdqAQX6L4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			atkChXBPiM0eJFUv9Jt2zgQlt1OfxbJLdd9r1OIv6OI=
+			/YqZWq+8D1CLWIzJK4z6jEmv2AaxD5f711DKIIGdgVc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.smcbin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SnWPqII43F+RrUKyjqqh6hNQnVGe98jA0leMUVCK7K0=
+			O8WBq5EiV1Xbyva4SDNN8cj2TJbvaw+7Z9oK2p+eSkU=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -343,7 +347,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fkVfX0LDzd1Edeavb+XyY/bBDBwVABXrHaFCoIAeKa0=
+			7q76PK7X/ofGMeD6GCHauq1ns2VxeTJKQjzcWefaW5Q=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Poppins-Bold.ttf</key>
@@ -388,6 +392,13 @@
 			JIwCRLNQ7GiICZaqa+bXeWJ0tJmS1fy77+JRkGqk6jY=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/logo.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wLlxFrK8I3YH3UbqHDYsifUJwM+2DYrirH2444pWh6Y=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/nonveg.svg</key>
 		<dict>
 			<key>hash2</key>
@@ -427,7 +438,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			U4O4hQsUzcBD/qHY3RtXSX2VHA4mnGI9kreMEXbMsqI=
+			hjzezAH2fDc+y/3x7czAjwnZTWKkDlrVm8sc0kQ7nus=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

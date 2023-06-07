@@ -1,5 +1,7 @@
 import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/order_model.dart';
+import 'package:campus_go/pages/orders/customer_order.dart';
+import 'package:campus_go/pages/orders/your_order_page.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../../globals/my_colors.dart';
@@ -7,7 +9,12 @@ import '../../globals/my_fonts.dart';
 
 class OrderTile extends StatefulWidget {
   final OrderModel orderModel;
-  const OrderTile({super.key, required this.orderModel, });
+  final ViewType viewType;
+  const OrderTile({
+    super.key,
+    required this.orderModel,
+    required this.viewType,
+  });
 
   @override
   State<OrderTile> createState() => _OrderTileState();
@@ -16,9 +23,9 @@ class OrderTile extends StatefulWidget {
 class _OrderTileState extends State<OrderTile> {
   @override
   Widget build(BuildContext context) {
-    int count=0;
-    for(var cnt in widget.orderModel.items.values) {
-      count=count+cnt;
+    int count = 0;
+    for (var cnt in widget.orderModel.items.values) {
+      count = count + cnt;
     }
     Duration passedDuration =
         DateTime.now().difference(widget.orderModel.orderDateTime);
@@ -27,7 +34,23 @@ class _OrderTileState extends State<OrderTile> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: GestureDetector(
-        onTap: (() {}),
+        onTap: (() {
+          if (widget.viewType == ViewType.admin) {
+            Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      CustomerOrderPage(orderModel: widget.orderModel)));
+          } else {
+            if (widget.orderModel.acceptanceStatus ==
+                    AcceptanceStatus.queued.status ||
+                (widget.orderModel.paymentStatus ==
+                        PaymentStatus.successful.status &&
+                    widget.orderModel.prepStatus == PrepStatus.ready.status)) {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      YourOrderPage(orderModel: widget.orderModel)));
+            }
+          }
+        }),
         child: Container(
           height: 64,
           decoration: BoxDecoration(
@@ -58,7 +81,8 @@ class _OrderTileState extends State<OrderTile> {
                       ]),
                 ),
               ),
-              if (widget.orderModel.acceptanceStatus == AcceptanceStatus.queued.status)
+              if (widget.orderModel.acceptanceStatus ==
+                  AcceptanceStatus.queued.status)
                 Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -68,12 +92,10 @@ class _OrderTileState extends State<OrderTile> {
                           children: [
                             TextSpan(
                                 text: count.toString(),
-                                style:
-                                    MyFonts.w600.setColor(kBlack).size(16)),
+                                style: MyFonts.w600.setColor(kBlack).size(16)),
                             TextSpan(
                                 text: " Items Ordered",
-                                style:
-                                    MyFonts.w300.setColor(kBlack).size(16)),
+                                style: MyFonts.w300.setColor(kBlack).size(16)),
                           ],
                         ),
                       ),
@@ -101,14 +123,14 @@ class _OrderTileState extends State<OrderTile> {
                                 ),
                                 Text(
                                   "Cancel",
-                                  style:
-                                      MyFonts.w500.setColor(kWhite).size(12),
+                                  style: MyFonts.w500.setColor(kWhite).size(12),
                                 )
                               ]),
                         ),
                       ),
                     ])
-              else if (widget.orderModel.acceptanceStatus == AcceptanceStatus.rejected.status)
+              else if (widget.orderModel.acceptanceStatus ==
+                  AcceptanceStatus.rejected.status)
                 Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -118,17 +140,16 @@ class _OrderTileState extends State<OrderTile> {
                           children: [
                             TextSpan(
                                 text: count.toString(),
-                                style:
-                                    MyFonts.w600.setColor(kBlack).size(16)),
+                                style: MyFonts.w600.setColor(kBlack).size(16)),
                             TextSpan(
                                 text: " Items Ordered",
-                                style:
-                                    MyFonts.w300.setColor(kBlack).size(16)),
+                                style: MyFonts.w300.setColor(kBlack).size(16)),
                           ],
                         ),
                       ),
                     ])
-              else if (widget.orderModel.paymentStatus == PaymentStatus.pending.status)
+              else if (widget.orderModel.paymentStatus ==
+                  PaymentStatus.pending.status)
                 Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -138,16 +159,13 @@ class _OrderTileState extends State<OrderTile> {
                           children: [
                             TextSpan(
                                 text: '₹ ',
-                                style:
-                                    MyFonts.w700.setColor(kBlack).size(16)),
+                                style: MyFonts.w700.setColor(kBlack).size(16)),
                             TextSpan(
                                 text: "3350",
-                                style:
-                                    MyFonts.w700.setColor(kBlack).size(16)),
+                                style: MyFonts.w700.setColor(kBlack).size(16)),
                             TextSpan(
                                 text: "/-",
-                                style:
-                                    MyFonts.w700.setColor(kBlack).size(16)),
+                                style: MyFonts.w700.setColor(kBlack).size(16)),
                           ],
                         ),
                       ),
@@ -166,58 +184,61 @@ class _OrderTileState extends State<OrderTile> {
                               children: [
                                 TextSpan(
                                     text: '₹ ',
-                                    style: MyFonts.w500
-                                        .setColor(kWhite)
-                                        .size(12)),
+                                    style:
+                                        MyFonts.w500.setColor(kWhite).size(12)),
                                 TextSpan(
                                     text: "Proceed",
-                                    style: MyFonts.w500
-                                        .setColor(kWhite)
-                                        .size(12)),
+                                    style:
+                                        MyFonts.w500.setColor(kWhite).size(12)),
                               ],
                             ),
                           ),
                         ),
                       ),
                     ])
-              else if (widget.orderModel.paymentStatus == PaymentStatus.successful.status)
-                 Column(
-                     crossAxisAlignment: CrossAxisAlignment.end,
-                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                     children: [
-                      Text(widget.orderModel.prepStatus,style:MyFonts.w600.setColor(kBlack).size(12) ,),
-                       
-                       GestureDetector(
-                         onTap: () {},
-                         child: Container(
-                           width: 80,
-                           height: 24,
-                           alignment: Alignment.center,
-                           decoration: BoxDecoration(
-                               color: kBlack,
-                               border: Border.all(color: kBlack),
-                               borderRadius: BorderRadius.circular(4)),
-                           child: Row(
-                               mainAxisAlignment: MainAxisAlignment.center,
-                               crossAxisAlignment: CrossAxisAlignment.center,
-                               children: [
-                                 Icon(
-                                  widget.orderModel.orderMode==OrderModes.delivery.orderMode?Icons.delivery_dining_outlined: Icons.front_hand_outlined,
-                                   size: 12,
-                                   color: kWhite,
-                                 ),
-                                 const SizedBox(
-                                   width: 2,
-                                 ),
-                                 Text(
-                                  widget.orderModel.orderMode==OrderModes.delivery.orderMode?"Delivery" :"Takeaway",
-                                   style:
-                                       MyFonts.w500.setColor(kWhite).size(12),
-                                 )
-                               ]),
-                         ),
-                       ),
-                     ])
+              else if (widget.orderModel.paymentStatus ==
+                  PaymentStatus.successful.status)
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        widget.orderModel.prepStatus,
+                        style: MyFonts.w600.setColor(kBlack).size(12),
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          width: 80,
+                          height: 24,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: kBlack,
+                              border: Border.all(color: kBlack),
+                              borderRadius: BorderRadius.circular(4)),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  widget.orderModel.orderMode ==
+                                          OrderModes.delivery.orderMode
+                                      ? Icons.delivery_dining_outlined
+                                      : Icons.front_hand_outlined,
+                                  size: 12,
+                                  color: kWhite,
+                                ),
+                                const SizedBox(
+                                  width: 2,
+                                ),
+                                Text(
+                                  widget.orderModel.orderMode,
+                                  style: MyFonts.w500.setColor(kWhite).size(12),
+                                )
+                              ]),
+                        ),
+                      ),
+                    ])
             ]),
           ),
         ),

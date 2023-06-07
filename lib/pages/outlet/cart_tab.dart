@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
+import '../../models/order_model.dart';
 
 class CartTab extends StatefulWidget {
   final OutletModel outletModel;
@@ -201,7 +202,18 @@ class _CartTabState extends State<CartTab> {
                       child: ElevatedButton(
                         onPressed: (() {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const YourOrderPage()));
+                              builder: (context) =>  YourOrderPage(orderModel: OrderModel(
+                    outletID: "Florentine",
+                    userID: "userID",
+                    orderMode: "Delivery",
+                    instructions: "instructions",
+                    items: {},
+                    deliveryLocation: "deliveryLocation",
+                    prepStatus: PrepStatus.preparing.status,
+                    acceptanceStatus: AcceptanceStatus.queued.status,
+                    paymentStatus: PaymentStatus.pending.status,
+                    qrCodeSecret: "qrCodeSecret",
+                    orderDateTime: DateTime.now()),)));
                         }),
                         style: ElevatedButton.styleFrom(
                             backgroundColor: kBlack,

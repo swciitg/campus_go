@@ -1,13 +1,17 @@
 import 'package:campus_go/globals/my_colors.dart';
 import 'package:campus_go/globals/my_fonts.dart';
+import 'package:campus_go/models/order_model.dart';
 import 'package:campus_go/widgets/outlet/change_item_count_tile.dart';
 import 'package:campus_go/widgets/ui/appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../models/item_model.dart';
 
 class YourOrderPage extends StatefulWidget {
-  const YourOrderPage({super.key});
+  final OrderModel orderModel;
+  const YourOrderPage({super.key, required this.orderModel});
 
   @override
   State<YourOrderPage> createState() => _YourOrderPageState();
@@ -17,7 +21,8 @@ class _YourOrderPageState extends State<YourOrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context, "CampusGO", displayProfileIcon: true,displayBackButton: true),
+      appBar: appBar(context, "CampusGO",
+          displayProfileIcon: true, displayBackButton: true),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -48,25 +53,26 @@ class _YourOrderPageState extends State<YourOrderPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Lohit Canteen",
+                          widget.orderModel.outletID,
                           overflow: TextOverflow.ellipsis,
                           style: MyFonts.w600.setColor(kBlack).size(16),
                         ),
-                        const SizedBox(height: 8,),
+                        const SizedBox(
+                          height: 8,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Icon(
-                              Icons.pin_drop_outlined,
+                              Icons.call_outlined,
                               size: 14,
                             ),
                             const SizedBox(
                               width: 6,
                             ),
-                            Text("Lohit Hostel",
+                            Text("Outlet Phone number",
                                 overflow: TextOverflow.ellipsis,
-                                style:
-                                    MyFonts.w300.setColor(kBlack).size(12)),
+                                style: MyFonts.w300.setColor(kBlack).size(12)),
                           ],
                         )
                       ]),
@@ -75,89 +81,153 @@ class _YourOrderPageState extends State<YourOrderPage> {
               Container(
                 color: kWhite,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                   RichText(text: TextSpan(children: [
-                    TextSpan(text: "Status: ",style: MyFonts.w600.size(12).setColor(kBlack)),
-                    TextSpan(text: "Preparing",style: MyFonts.w300.size(12).setColor(kBlack)),
-                   ])),
+                    RichText(
+                        text: TextSpan(children: [
+                      TextSpan(
+                          text: "Order date: ",
+                          style: MyFonts.w600.size(12).setColor(kBlack)),
+                      TextSpan(
+                          text: DateFormat("dd/MM/yyyy")
+                              .format(widget.orderModel.orderDateTime),
+                          style: MyFonts.w300.size(12).setColor(kBlack)),
+                    ])),
                     const SizedBox(
                       height: 8,
                     ),
-                    RichText(text: TextSpan(children: [
-                    TextSpan(text: "Order Date: ",style: MyFonts.w600.size(12).setColor(kBlack)),
-                    TextSpan(text: "24/03/2023",style: MyFonts.w300.size(12).setColor(kBlack)),
-                   ])),
+                    RichText(
+                        text: TextSpan(children: [
+                      TextSpan(
+                          text: "Order Time: ",
+                          style: MyFonts.w600.size(12).setColor(kBlack)),
+                      TextSpan(
+                          text: DateFormat("h:mm a")
+                              .format(widget.orderModel.orderDateTime),
+                          style: MyFonts.w300.size(12).setColor(kBlack)),
+                    ])),
                   ],
                 ),
               ),
             ]),
-            const SizedBox(height: 30,),
-            ItemCountTile(
-                      itemModel: ItemModel(
-                          id: "id",
-                          name: "Papdi Chaat",
-                          price: "160",
-                          category: "VEG",
-                          offeringOutlet: "offeringOutlet"),
-                      editing: false,
-                      count: 1,
-                    ),
-                    ItemCountTile(
-                      itemModel: ItemModel(
-                          id: "id",
-                          name: "Chicken Biryani",
-                          price: "160",
-                          category: "NON-VEG",
-                          offeringOutlet: "offeringOutlet"),
-                      editing: false,
-                      count: 2,
-                    ),
             const SizedBox(
-                height: 16,
-              ),
-              Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    border: Border.all(color: kBlack),
-                    borderRadius: BorderRadius.circular(4)),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              height: 32,
+            ),
+
+            Center(
+              child: Column(
+                children: [
+                  Container(
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: kBlack, width: 4),
+                        borderRadius: BorderRadius.circular(16),
+                        color: kWhite),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "Total Order Value:",
-                          style: MyFonts.w500.setColor(kBlack).size(18),
+                        const SizedBox(height: 4,),
+                       const Text(
+                        "ORDER QR CODE",
+                        style: TextStyle(
+                            shadows: [
+                              Shadow(color: kBlack, offset: Offset(0, -1))
+                            ],
+                            color: Colors.transparent,
+                            fontFamily: "Poppins",
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.underline,
+                            decorationStyle: TextDecorationStyle.solid,
+                            decorationColor: kBlack,
+                            decorationThickness: 1),
+                      ),
+                      const SizedBox(height: 4,),
+                      QrImageView(
+                        data: widget.orderModel.qrCodeSecret,
+                        version: QrVersions.auto,
+                        size: 140,
+                        gapless: false,
+                        embeddedImage:
+                            const ResizeImage(AssetImage("assets/images/logo.jpg"),height: 70,width: 50),
+                        embeddedImageStyle: const QrEmbeddedImageStyle(
+                          size: Size(28, 20),
                         ),
-                        Text(
-                          "₹ " + "3350" + "/-",
-                          style: MyFonts.w700.setColor(kBlack).size(18),
-                        ),
-                      ]),
-                ),
-              ),
-              const SizedBox(
-                height: 32,
-              ),
-              SizedBox(
-                height: 56,
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: (() {
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //     builder: (context) => const YourOrderPage()));
-                  }),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: kBlack,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8))),
-                  child: Text(
-                    "Proceed to payment",
-                    style: MyFonts.w400.setColor(kWhite).size(18),
+                      ),
+                    ]),
                   ),
-                ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                ],
               ),
+            ),
+            ItemCountTile(
+              itemModel: ItemModel(
+                  id: "id",
+                  name: "Papdi Chaat",
+                  price: "160",
+                  category: "VEG",
+                  offeringOutlet: "offeringOutlet"),
+              editing: false,
+              count: 1,
+            ),
+            ItemCountTile(
+              itemModel: ItemModel(
+                  id: "id",
+                  name: "Chicken Biryani",
+                  price: "160",
+                  category: "NON-VEG",
+                  offeringOutlet: "offeringOutlet"),
+              editing: false,
+              count: 2,
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Container(
+              height: 40,
+              decoration: BoxDecoration(
+                  border: Border.all(color: kBlack),
+                  borderRadius: BorderRadius.circular(4)),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Total Order Value:",
+                        style: MyFonts.w500.setColor(kBlack).size(18),
+                      ),
+                      Text(
+                        "₹ " + "3350" + "/-",
+                        style: MyFonts.w700.setColor(kBlack).size(18),
+                      ),
+                    ]),
+              ),
+            ),
+            const SizedBox(
+              height: 32,
+            ),
+            // SizedBox(
+            //   height: 56,
+            //   width: double.infinity,
+            //   child: ElevatedButton(
+            //     onPressed: (() {
+            //       // Navigator.of(context).push(MaterialPageRoute(
+            //       //     builder: (context) => const YourOrderPage()));
+            //     }),
+            //     style: ElevatedButton.styleFrom(
+            //         backgroundColor: kBlack,
+            //         shape: RoundedRectangleBorder(
+            //             borderRadius: BorderRadius.circular(8))),
+            //     child: Text(
+            //       "Proceed to payment",
+            //       style: MyFonts.w400.setColor(kWhite).size(18),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       )),

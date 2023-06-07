@@ -14,6 +14,7 @@ class WaitingOrdersTab extends StatefulWidget {
 }
 
 class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
+  final ViewType viewType =ViewType.user;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -49,6 +50,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
+                    viewType: viewType,
               ),
               OrderTile(
                 orderModel: OrderModel(
@@ -63,6 +65,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
+                    viewType: viewType,
               ),
                OrderTile(
                 orderModel: OrderModel(
@@ -77,6 +80,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
+                    viewType: viewType,
               ),
              
             ],
@@ -112,6 +116,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
+                    viewType: viewType,
               ),
               OrderTile(
                 orderModel: OrderModel(
@@ -126,6 +131,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
+                    viewType: viewType,
               ),
               OrderTile(
                 orderModel: OrderModel(
@@ -140,6 +146,7 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
+                    viewType: viewType,
               ),
             ],
           ),

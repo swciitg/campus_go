@@ -344,6 +344,18 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "qr",
+      "rootUri": "file:///Users/y.chanchal/.pub-cache/hosted/pub.dev/qr-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
+      "name": "qr_flutter",
+      "rootUri": "file:///Users/y.chanchal/.pub-cache/hosted/pub.dev/qr_flutter-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "shelf",
       "rootUri": "file:///Users/y.chanchal/.pub-cache/hosted/pub.dev/shelf-1.4.1",
       "packageUri": "lib/",
@@ -488,7 +500,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-07T13:24:44.783238Z",
+  "generated": "2023-06-07T20:09:10.184747Z",
   "generator": "pub",
   "generatorVersion": "3.0.3"
 }
