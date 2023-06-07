@@ -4,8 +4,8 @@ import 'package:campus_go/widgets/common/custom_text_field.dart';
 import 'package:campus_go/widgets/ui/appbar.dart';
 import 'package:flutter/material.dart';
 
-import '../functions/utility/show_snackbar.dart';
-import '../globals/my_fonts.dart';
+import '../../functions/utility/show_snackbar.dart';
+import '../../globals/my_fonts.dart';
 
 class ProfileSetup extends StatefulWidget {
   static String id = "/ps";

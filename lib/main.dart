@@ -1,4 +1,4 @@
-import 'package:campus_go/pages/login_page.dart';
+import 'package:campus_go/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 import 'globals/my_colors.dart';

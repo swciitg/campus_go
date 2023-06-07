@@ -101,7 +101,7 @@ class _CartTabState extends State<CartTab> {
                                 child: GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      selectedRadio = 0;
+                                      selectedRadio = index;
                                     });
                                   },
                                   child: SizedBox(
@@ -127,10 +127,7 @@ class _CartTabState extends State<CartTab> {
                                           width: 6,
                                         ),
                                         Text(
-                                          widget.outletModel.service[index] ==
-                                                  OrderModes.delivery.toString()
-                                              ? "Delivery"
-                                              : "Takeaway",
+                                          widget.outletModel.service[index],
                                           style: MyFonts.w400
                                               .setColor(kBlack)
                                               .size(12),

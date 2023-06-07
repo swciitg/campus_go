@@ -63,14 +63,14 @@ class _ItemCountTileState extends State<ItemCountTile> {
                                 SizedBox(
                                     height: 8,
                                     width: 8,
-                                    child: SvgPicture.asset(widget.itemModel.category==FoodCategories.veg.toString()
+                                    child: SvgPicture.asset(widget.itemModel.category==FoodCategories.veg.category
                                         ? "assets/images/veg.svg"
                                         : "assets/images/nonveg.svg")),
                                 const SizedBox(
                                   width: 4,
                                 ),
                                 Text(
-                                  widget.itemModel.category==FoodCategories.veg.toString() ? "VEG" : "NON-VEG",
+                                  widget.itemModel.category==FoodCategories.veg.category ? "VEG" : "NON-VEG",
                                   style: MyFonts.w300.setColor(kBlack).size(12),
                                 ),
                               ],

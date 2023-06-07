@@ -58,7 +58,7 @@ class _OrderTileState extends State<OrderTile> {
                       ]),
                 ),
               ),
-              if (widget.orderModel.acceptanceStatus == AcceptanceStatus.queued.toString())
+              if (widget.orderModel.acceptanceStatus == AcceptanceStatus.queued.status)
                 Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,7 +108,7 @@ class _OrderTileState extends State<OrderTile> {
                         ),
                       ),
                     ])
-              else if (widget.orderModel.acceptanceStatus == AcceptanceStatus.rejected.toString())
+              else if (widget.orderModel.acceptanceStatus == AcceptanceStatus.rejected.status)
                 Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -128,7 +128,7 @@ class _OrderTileState extends State<OrderTile> {
                         ),
                       ),
                     ])
-              else if (widget.orderModel.paymentStatus == PaymentStatus.pending.toString())
+              else if (widget.orderModel.paymentStatus == PaymentStatus.pending.status)
                 Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -180,14 +180,13 @@ class _OrderTileState extends State<OrderTile> {
                         ),
                       ),
                     ])
-              else if (widget.orderModel.paymentStatus == PaymentStatus.successful.toString())
+              else if (widget.orderModel.paymentStatus == PaymentStatus.successful.status)
                  Column(
                      crossAxisAlignment: CrossAxisAlignment.end,
                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                      children: [
-                       if(widget.orderModel.prepStatus==PrepStatus.outForDelivery.toString()) Text("Out for delivery",style:MyFonts.w600.setColor(kBlack).size(12) ,)
-                       else if(widget.orderModel.prepStatus==PrepStatus.ready.toString()) Text("Ready",style:MyFonts.w600.setColor(kBlack).size(12) ,)
-                       else if(widget.orderModel.prepStatus==PrepStatus.preparing.toString()) Text("Preparing",style:MyFonts.w600.setColor(kBlack).size(12) ,),
+                      Text(widget.orderModel.prepStatus,style:MyFonts.w600.setColor(kBlack).size(12) ,),
+                       
                        GestureDetector(
                          onTap: () {},
                          child: Container(
@@ -203,7 +202,7 @@ class _OrderTileState extends State<OrderTile> {
                                crossAxisAlignment: CrossAxisAlignment.center,
                                children: [
                                  Icon(
-                                  widget.orderModel.orderMode==OrderModes.delivery.toString()?Icons.delivery_dining_outlined: Icons.front_hand_outlined,
+                                  widget.orderModel.orderMode==OrderModes.delivery.orderMode?Icons.delivery_dining_outlined: Icons.front_hand_outlined,
                                    size: 12,
                                    color: kWhite,
                                  ),
@@ -211,7 +210,7 @@ class _OrderTileState extends State<OrderTile> {
                                    width: 2,
                                  ),
                                  Text(
-                                  widget.orderModel.orderMode==OrderModes.delivery.toString()?"Delivery" :"Takeaway",
+                                  widget.orderModel.orderMode==OrderModes.delivery.orderMode?"Delivery" :"Takeaway",
                                    style:
                                        MyFonts.w500.setColor(kWhite).size(12),
                                  )
