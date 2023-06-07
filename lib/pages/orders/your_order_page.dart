@@ -4,6 +4,8 @@ import 'package:campus_go/widgets/outlet/change_item_count_tile.dart';
 import 'package:campus_go/widgets/ui/appbar.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/item_model.dart';
+
 class YourOrderPage extends StatefulWidget {
   const YourOrderPage({super.key});
 
@@ -91,9 +93,26 @@ class _YourOrderPageState extends State<YourOrderPage> {
               ),
             ]),
             const SizedBox(height: 30,),
-            const ItemCountTile(veg: true, editing: false),
-            const ItemCountTile(veg: true, editing: false),
-            const ItemCountTile(veg: true, editing: false),
+            ItemCountTile(
+                      itemModel: ItemModel(
+                          id: "id",
+                          name: "Papdi Chaat",
+                          price: "160",
+                          category: "VEG",
+                          offeringOutlet: "offeringOutlet"),
+                      editing: false,
+                      count: 1,
+                    ),
+                    ItemCountTile(
+                      itemModel: ItemModel(
+                          id: "id",
+                          name: "Chicken Biryani",
+                          price: "160",
+                          category: "NON-VEG",
+                          offeringOutlet: "offeringOutlet"),
+                      editing: false,
+                      count: 2,
+                    ),
             const SizedBox(
                 height: 16,
               ),

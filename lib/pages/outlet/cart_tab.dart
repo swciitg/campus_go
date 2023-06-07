@@ -1,3 +1,4 @@
+import 'package:campus_go/models/item_model.dart';
 import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/orders/your_order_page.dart';
 import 'package:campus_go/widgets/common/custom_text_field.dart';
@@ -15,10 +16,11 @@ class CartTab extends StatefulWidget {
 }
 
 class _CartTabState extends State<CartTab> {
-  int itemCount = 1;
+
   int selectedRadio = 0;
   @override
   Widget build(BuildContext context) {
+    int itemCount=0;
     return itemCount == 0
         ? Center(
             child: Text(
@@ -52,13 +54,25 @@ class _CartTabState extends State<CartTab> {
                     const SizedBox(
                       height: 8,
                     ),
-                    const ItemCountTile(
-                      veg: true,
+                    ItemCountTile(
+                      itemModel: ItemModel(
+                          id: "id",
+                          name: "Papdi Chaat",
+                          price: "160",
+                          category: "VEG",
+                          offeringOutlet: "offeringOutlet"),
                       editing: true,
+                      count: 1,
                     ),
-                    const ItemCountTile(
-                      veg: true,
+                    ItemCountTile(
+                      itemModel: ItemModel(
+                          id: "id",
+                          name: "Chicken Biryani",
+                          price: "160",
+                          category: "NON-VEG",
+                          offeringOutlet: "offeringOutlet"),
                       editing: true,
+                      count: 2,
                     ),
                     const SizedBox(
                       height: 16,
@@ -178,18 +192,20 @@ class _CartTabState extends State<CartTab> {
                     const SizedBox(
                       height: 24,
                     ),
-                   selectedRadio==1? Column(
-                      children: [
-                        const SizedBox(
-                            child: CustomTextField(
-                          hintText: "Delivery Location",
-                          isNecessary: false,
-                        )),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                      ],
-                    ):Container(),
+                    selectedRadio == 1
+                        ? Column(
+                            children: [
+                              const SizedBox(
+                                  child: CustomTextField(
+                                hintText: "Delivery Location",
+                                isNecessary: false,
+                              )),
+                              const SizedBox(
+                                height: 24,
+                              ),
+                            ],
+                          )
+                        : Container(),
                     const SizedBox(
                         height: 150,
                         child: CustomTextField(

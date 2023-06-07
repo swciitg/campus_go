@@ -10,3 +10,6 @@ enum PaymentStatus{
 enum OrderModes{
   delivery,takeaway
 }
+enum FoodCategories{
+  veg,nonveg,vegNonVeg
+}

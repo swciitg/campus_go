@@ -1,3 +1,5 @@
+import 'package:campus_go/globals/enums.dart';
+import 'package:campus_go/models/item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -5,9 +7,10 @@ import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
 
 class ItemCountTile extends StatefulWidget {
-  final bool veg;
+  final ItemModel itemModel;
   final bool editing;
-  const ItemCountTile({super.key, required this.veg, required this.editing});
+  final int count;
+  const ItemCountTile({super.key,required this.editing, required this.itemModel, required this.count});
 
   @override
   State<ItemCountTile> createState() => _ItemCountTileState();
@@ -34,7 +37,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Chicken Biryani",
+                        widget.itemModel.name,
                         overflow: TextOverflow.ellipsis,
                         style: MyFonts.w600.setColor(kBlack).size(16),
                       ),
@@ -51,7 +54,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                                   style: MyFonts.w300.setColor(kBlack).size(12),
                                 ),
                                 Text(
-                                  "₹ " + "160",
+                                  "₹ ${widget.itemModel.price}",
                                   style: MyFonts.w500.setColor(kBlack).size(12),
                                 ),
                                 const SizedBox(
@@ -60,14 +63,14 @@ class _ItemCountTileState extends State<ItemCountTile> {
                                 SizedBox(
                                     height: 8,
                                     width: 8,
-                                    child: SvgPicture.asset(widget.veg
+                                    child: SvgPicture.asset(widget.itemModel.category==FoodCategories.veg.toString()
                                         ? "assets/images/veg.svg"
                                         : "assets/images/nonveg.svg")),
                                 const SizedBox(
                                   width: 4,
                                 ),
                                 Text(
-                                  widget.veg ? "VEG" : "NON-VEG",
+                                  widget.itemModel.category==FoodCategories.veg.toString() ? "VEG" : "NON-VEG",
                                   style: MyFonts.w300.setColor(kBlack).size(12),
                                 ),
                               ],
@@ -100,7 +103,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                     child: Container(
                   color: kWhite,
                   alignment: Alignment.center,
-                  child: Text("1",style: MyFonts.w500.setColor(kBlack).size(14),) ,
+                  child: Text(widget.count.toString(),style: MyFonts.w500.setColor(kBlack).size(14),) ,
                 )),
                 Expanded(
                     child: Container(
@@ -116,7 +119,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
               padding: const EdgeInsets.only(right: 18),
               child: RichText(text: TextSpan(children: [
                 TextSpan(text: "x ",style: MyFonts.w500.setColor(kBlack).size(16),),
-                TextSpan(text: "1",style: MyFonts.w500.setColor(kBlack).size(18),)
+                TextSpan(text: widget.count.toString(),style: MyFonts.w500.setColor(kBlack).size(18),)
               ]),),
             )
           ]),
