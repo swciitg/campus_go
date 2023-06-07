@@ -1,4 +1,6 @@
+import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/orders/your_order_page.dart';
+import 'package:campus_go/widgets/common/custom_text_field.dart';
 import 'package:campus_go/widgets/outlet/change_item_count_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -6,226 +8,221 @@ import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
 
 class CartTab extends StatefulWidget {
-  const CartTab({super.key});
+  final OutletModel outletModel;
+  const CartTab({super.key, required this.outletModel});
   @override
   State<CartTab> createState() => _CartTabState();
 }
 
 class _CartTabState extends State<CartTab> {
+  int itemCount = 1;
   int selectedRadio = 0;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: SingleChildScrollView(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: 48,
-                alignment: Alignment.centerLeft,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Place you order",
-                        style: MyFonts.w600.setColor(kBlack).size(18),
-                      ),
-                      Text(
-                        "Use counter to select quantity",
-                        style: MyFonts.w300.setColor(kBlack).size(10),
-                      ),
-                    ]),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              const ItemCountTile(
-                veg: true,
-                editing: true,
-              ),
-              const ItemCountTile(
-                veg: true,
-                editing: true,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Text(
-                "Select order mode",
-                style: MyFonts.w500.setColor(kBlack).size(16),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Container(
-                height: 24,
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return itemCount == 0
+        ? Center(
+            child: Text(
+            "No item added to your cart!",
+            style: MyFonts.w500.setColor(kBlack).size(16),
+          ))
+        : Padding(
+            padding: const EdgeInsets.all(16),
+            child: SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedRadio = 0;
-                        });
-                      },
-                      child: SizedBox(
-                        width: 90,
-                        child: Row(
+                    Container(
+                      height: 48,
+                      alignment: Alignment.centerLeft,
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: Radio(
-                                value: 0,
-                                groupValue: selectedRadio,
-                                onChanged: (val) {
-                                  setState(() {
-                                    selectedRadio = val!;
-                                  });
-                                },
-                                activeColor: kBlack,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 6,
+                            Text(
+                              "Place you order",
+                              style: MyFonts.w600.setColor(kBlack).size(18),
                             ),
                             Text(
-                              "Takeaway",
-                              style: MyFonts.w400.setColor(kBlack).size(12),
+                              "Use counter to select quantity",
+                              style: MyFonts.w300.setColor(kBlack).size(10),
                             ),
-                          ],
-                        ),
-                      ),
+                          ]),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedRadio = 1;
-                        });
-                      },
-                      child: SizedBox(
-                        width: 90,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: Radio(
-                                value: 1,
-                                groupValue: selectedRadio,
-                                onChanged: (val) {
-                                  setState(() {
-                                    selectedRadio = val!;
-                                  });
-                                },
-                                activeColor: kBlack,
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const ItemCountTile(
+                      veg: true,
+                      editing: true,
+                    ),
+                    const ItemCountTile(
+                      veg: true,
+                      editing: true,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Text(
+                      "Select order mode",
+                      style: MyFonts.w500.setColor(kBlack).size(16),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Container(
+                      height: 24,
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedRadio = 0;
+                              });
+                            },
+                            child: SizedBox(
+                              width: 90,
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: Radio(
+                                      value: 0,
+                                      groupValue: selectedRadio,
+                                      onChanged: (val) {
+                                        setState(() {
+                                          selectedRadio = val!;
+                                        });
+                                      },
+                                      activeColor: kBlack,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 6,
+                                  ),
+                                  Text(
+                                    "Takeaway",
+                                    style:
+                                        MyFonts.w400.setColor(kBlack).size(12),
+                                  ),
+                                ],
                               ),
                             ),
-                            const SizedBox(
-                              width: 6,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedRadio = 1;
+                              });
+                            },
+                            child: SizedBox(
+                              width: 90,
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: Radio(
+                                      value: 1,
+                                      groupValue: selectedRadio,
+                                      onChanged: (val) {
+                                        setState(() {
+                                          selectedRadio = val!;
+                                        });
+                                      },
+                                      activeColor: kBlack,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 6,
+                                  ),
+                                  Text(
+                                    "Delivery",
+                                    style:
+                                        MyFonts.w400.setColor(kBlack).size(12),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text(
-                              "Delivery",
-                              style: MyFonts.w400.setColor(kBlack).size(12),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    border: Border.all(color: kBlack),
-                    borderRadius: BorderRadius.circular(4)),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: kBlack),
+                          borderRadius: BorderRadius.circular(4)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Total Order Value:",
+                                style: MyFonts.w500.setColor(kBlack).size(18),
+                              ),
+                              Text(
+                                "₹ " + "3350" + "/-",
+                                style: MyFonts.w700.setColor(kBlack).size(18),
+                              ),
+                            ]),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                   selectedRadio==1? Column(
                       children: [
-                        Text(
-                          "Total Order Value:",
-                          style: MyFonts.w500.setColor(kBlack).size(18),
+                        const SizedBox(
+                            child: CustomTextField(
+                          hintText: "Delivery Location",
+                          isNecessary: false,
+                        )),
+                        const SizedBox(
+                          height: 24,
                         ),
-                        Text(
-                          "₹ " + "3350" + "/-",
-                          style: MyFonts.w700.setColor(kBlack).size(18),
+                      ],
+                    ):Container(),
+                    const SizedBox(
+                        height: 150,
+                        child: CustomTextField(
+                          hintText: "Any Instruction",
+                          isNecessary: false,
+                          maxLines: null,
+                          inputType: TextInputType.multiline,
+                          expands: true,
+                          textAlignVertical: TextAlignVertical.top,
+                        )),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    SizedBox(
+                      height: 56,
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: (() {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const YourOrderPage()));
+                        }),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: kBlack,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8))),
+                        child: Text(
+                          "Make Order",
+                          style: MyFonts.w400.setColor(kWhite).size(18),
                         ),
-                      ]),
-                ),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              SizedBox(
-                height: 150,
-                child: TextField(
-                  cursorColor: kBlack,
-                  textAlign: TextAlign.left,
-                  textAlignVertical: TextAlignVertical.top,
-                  maxLines: null,
-                  expands: true,
-                  keyboardType: TextInputType.multiline,
-                  decoration: InputDecoration(
-                    alignLabelWithHint: true,
-                    label: const Text("Any Instruction"),
-                    labelStyle: MyFonts.w500.size(14).setColor(kBlack),
-                    hintStyle: MyFonts.w500.size(14).setColor(kgrey),
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 16),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: kBlack, width: 1),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(4),
                       ),
                     ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: kBlack, width: 1),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(4),
-                      ),
-                    ),
-                    disabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: kBlack, width: 1),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(4),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              SizedBox(
-                height: 56,
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: (() {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const YourOrderPage()));
-                  }),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: kBlack,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8))),
-                  child: Text(
-                    "Make Order",
-                    style: MyFonts.w400.setColor(kWhite).size(18),
-                  ),
-                ),
-              ),
-            ]),
-      ),
-    );
+                  ]),
+            ),
+          );
   }
 }

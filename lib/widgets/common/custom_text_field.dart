@@ -14,7 +14,10 @@ class CustomTextField extends StatefulWidget {
   final void Function()? onTap;
   final FocusNode? focusNode;
   final bool? isEnabled;
-  final Icon prefixIcon;
+  final Icon? prefixIcon;
+  final int? maxLines;
+  final bool? expands;
+  final TextAlignVertical? textAlignVertical;
 
   const CustomTextField(
       {super.key,
@@ -23,12 +26,12 @@ class CustomTextField extends StatefulWidget {
       this.value,
       this.onChanged,
       required this.isNecessary,
-      required this.prefixIcon,
+      this.prefixIcon,
       this.inputType,
       this.controller,
       this.onTap,
        this.isEnabled,
-      this.focusNode});
+      this.focusNode, this.maxLines, this.expands, this.textAlignVertical});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -49,7 +52,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
       onChanged: widget.onChanged,
       initialValue: widget.value == 'null' ? '' : widget.value,
       keyboardType: widget.inputType,
+      maxLines: widget.maxLines,
+      expands: widget.expands??false,
+      textAlign: TextAlign.left,
+      textAlignVertical: widget.textAlignVertical??TextAlignVertical.center,
       decoration: InputDecoration(
+        alignLabelWithHint: true,
         prefixIcon: widget.prefixIcon,
         prefixIconColor: kBlack,
         suffixIcon: widget.isEnabled==false? const Icon(Icons.lock_outline_rounded):const Icon(null),

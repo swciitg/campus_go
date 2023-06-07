@@ -1,3 +1,4 @@
+import 'package:campus_go/models/item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -5,9 +6,14 @@ import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
 
 class MenuTile extends StatefulWidget {
-  final bool veg;
+  final ItemModel itemModel;
   final bool isAdded;
-  const MenuTile({super.key, required this.veg, required this.isAdded});
+  final bool isOpen;
+  const MenuTile(
+      {super.key,
+      required this.isAdded,
+      required this.itemModel,
+      required this.isOpen});
 
   @override
   State<MenuTile> createState() => _MenuTileState();
@@ -34,7 +40,7 @@ class _MenuTileState extends State<MenuTile> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Chicken Biryani",
+                        widget.itemModel.name,
                         overflow: TextOverflow.ellipsis,
                         style: MyFonts.w600.setColor(kBlack).size(16),
                       ),
@@ -51,7 +57,7 @@ class _MenuTileState extends State<MenuTile> {
                                   style: MyFonts.w300.setColor(kBlack).size(12),
                                 ),
                                 Text(
-                                  "₹ " + "160",
+                                  "₹ ${widget.itemModel.price}",
                                   style: MyFonts.w500.setColor(kBlack).size(12),
                                 ),
                                 const SizedBox(
@@ -60,14 +66,15 @@ class _MenuTileState extends State<MenuTile> {
                                 SizedBox(
                                     height: 8,
                                     width: 8,
-                                    child: SvgPicture.asset(widget.veg
-                                        ? "assets/images/veg.svg"
-                                        : "assets/images/nonveg.svg")),
+                                    child: SvgPicture.asset(
+                                        widget.itemModel.category == "VEG"
+                                            ? "assets/images/veg.svg"
+                                            : "assets/images/nonveg.svg")),
                                 const SizedBox(
                                   width: 4,
                                 ),
                                 Text(
-                                  widget.veg ? "VEG" : "NON-VEG",
+                                  widget.itemModel.category,
                                   style: MyFonts.w300.setColor(kBlack).size(12),
                                 ),
                               ],
@@ -78,7 +85,7 @@ class _MenuTileState extends State<MenuTile> {
                     ]),
               ),
             ),
-            widget.isAdded
+            widget.isOpen? widget.isAdded
                 ? GestureDetector(
                     onTap: () {},
                     child: Container(
@@ -88,12 +95,22 @@ class _MenuTileState extends State<MenuTile> {
                           color: kWhite,
                           border: Border.all(color: kBlack),
                           borderRadius: BorderRadius.circular(4)),
-                          alignment: Alignment.center,
-                          child: Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                            const Icon(Icons.close_outlined,size: 12,),
-                            const SizedBox(width: 2,),
-                            Text("Remove",style: MyFonts.w500.setColor(kBlack).size(12),)
+                      alignment: Alignment.center,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.close_outlined,
+                              size: 12,
+                            ),
+                            const SizedBox(
+                              width: 2,
+                            ),
+                            Text(
+                              "Remove",
+                              style: MyFonts.w500.setColor(kBlack).size(12),
+                            )
                           ]),
                     ),
                   )
@@ -112,7 +129,7 @@ class _MenuTileState extends State<MenuTile> {
                         style: MyFonts.w500.setColor(kWhite).size(12),
                       ),
                     ),
-                  ),
+                  ):Container()
           ]),
         ),
       ),

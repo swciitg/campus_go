@@ -1,6 +1,6 @@
 import 'package:campus_go/functions/utility/validator.dart';
 import 'package:campus_go/globals/my_colors.dart';
-import 'package:campus_go/widgets/profile/custom_text_field.dart';
+import 'package:campus_go/widgets/common/custom_text_field.dart';
 import 'package:campus_go/widgets/ui/appbar.dart';
 import 'package:flutter/material.dart';
 

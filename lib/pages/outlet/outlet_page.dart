@@ -37,7 +37,7 @@ class _OutletPageState extends State<OutletPage> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                "Lohit Canteen",
+                                widget.outletModel.outletName,
                                 style: MyFonts.w600.setColor(kBlack).size(24),
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -53,7 +53,7 @@ class _OutletPageState extends State<OutletPage> {
                                     const SizedBox(
                                       width: 6,
                                     ),
-                                    Text("Lohit hostel",
+                                    Text(widget.outletModel.location,
                                         overflow: TextOverflow.ellipsis,
                                         style: MyFonts.w300
                                             .setColor(kBlack)
@@ -92,7 +92,7 @@ class _OutletPageState extends State<OutletPage> {
                                         width: 4,
                                       ),
                                       Text(
-                                        "+91 " + "8502909980",
+                                        "+91 ${widget.outletModel.phoneNumber}",
                                         style: MyFonts.w300,
                                         overflow: TextOverflow.ellipsis,
                                       )
@@ -110,7 +110,7 @@ class _OutletPageState extends State<OutletPage> {
                                         width: 4,
                                       ),
                                       Text(
-                                        "OPEN",
+                                        widget.outletModel.status?"OPEN":"CLOSED",
                                         style: MyFonts.w500
                                             .setColor(kBlack)
                                             .size(12),
@@ -151,10 +151,10 @@ class _OutletPageState extends State<OutletPage> {
                   thickness: 1,
                   height: 1,
                 ),
-                const Expanded(
+                Expanded(
                   child: TabBarView(children: [
-                    MenuTab(),
-                    CartTab(),
+                    MenuTab(outletModel: widget.outletModel,),
+                    CartTab(outletModel: widget.outletModel,),
                   ]),
                 )
               ],

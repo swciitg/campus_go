@@ -54,6 +54,7 @@ class _HomeTabState extends State<HomeTab> {
                 height: 12,
               ),
               OutletTile(outletModel: OutletModel(outletName: "Lohit Canteen", location: "Lohit Hostel", phoneNumber: "8502909980", category: "NON-VEG", status: true, outletKey: "outletKey", id: "id"),),
+              OutletTile(outletModel: OutletModel(outletName: "Lohit Canteen", location: "Lohit Hostel", phoneNumber: "8502909980", category: "NON-VEG", status: false, outletKey: "outletKey", id: "id"),),
              
             ],
           ),
