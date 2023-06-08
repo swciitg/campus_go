@@ -7,7 +7,7 @@ import 'pages/home/home_page.dart';
 final routes = {
   // LoginPage.id: (context) => const LoginPage(),
   AdminLoginPage.id:(context)=> const AdminLoginPage(),
-  HomePage.id: (context) => const HomePage(),
+  // HomePage.id: (context) => const HomePage(),
   ProfileSetup.id: (context)=> const ProfileSetup(),
   
   

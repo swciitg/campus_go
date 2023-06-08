@@ -1,4 +1,5 @@
 import 'package:campus_go/globals/enums.dart';
+import 'package:campus_go/pages/home/home_page.dart';
 import 'package:campus_go/stores/user_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -51,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                       // width: double.infinity,
                       child: ElevatedButton(
                         onPressed: (() {
-                          Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
+                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>HomePage()), (route) => false);
                           userStore.setViewType(ViewType.user);
                         }),
                         style: ElevatedButton.styleFrom(

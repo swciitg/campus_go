@@ -11,9 +11,11 @@ import '../../globals/my_fonts.dart';
 import '../orders/orders_tab.dart';
 import 'user_home_tab.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatefulWidget {
   static String id = "/home";
-  const HomePage({super.key});
+  int? index;
+  HomePage({super.key, this.index});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -21,14 +23,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int index = 0;
-  
+
   @override
   Widget build(BuildContext context) {
+    if (widget.index != null) {
+      index = widget.index!;
+      widget.index=null;
+    }
     var userStore = context.read<UserStore>();
     final tabs = [
-    userStore.viewType==ViewType.admin? const AdminHomeTab(): const UserHomeTab(),
-    const OrdersTab(),
-  ];
+      userStore.viewType == ViewType.admin
+          ? const AdminHomeTab()
+          : const UserHomeTab(),
+      const OrdersTab(),
+    ];
     return Observer(
       builder: (context) => Scaffold(
         appBar: appBar(context, "CampusGO"),
@@ -38,8 +46,8 @@ class _HomePageState extends State<HomePage> {
               labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
               labelTextStyle: MaterialStateProperty.all(
                   MyFonts.w500.setColor(kWhite).size(12)),
-              iconTheme:
-                  MaterialStateProperty.all(const IconThemeData(color: kWhite))),
+              iconTheme: MaterialStateProperty.all(
+                  const IconThemeData(color: kWhite))),
           child: NavigationBar(
             backgroundColor: kBlack,
             selectedIndex: index,

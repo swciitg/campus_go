@@ -13,6 +13,7 @@ abstract class _CartStore with Store {
   @action
   void emptyCart() {
     cart.clear();
+    totalItems=0;
   }
 
   @action

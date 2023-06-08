@@ -1,6 +1,8 @@
+import 'package:campus_go/functions/utility/calculate_order_value.dart';
 import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/outlet_model.dart';
-import 'package:campus_go/pages/orders/your_order_page.dart';
+import 'package:campus_go/pages/home/home_page.dart';
+
 import 'package:campus_go/stores/cart_store.dart';
 import 'package:campus_go/widgets/common/custom_text_field.dart';
 import 'package:campus_go/widgets/outlet/change_item_count_tile.dart';
@@ -10,7 +12,7 @@ import 'package:provider/provider.dart';
 
 import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
-import '../../models/order_model.dart';
+
 
 class CartTab extends StatefulWidget {
   final OutletModel outletModel;
@@ -163,7 +165,7 @@ class _CartTabState extends State<CartTab> {
                                   style: MyFonts.w500.setColor(kBlack).size(18),
                                 ),
                                 Text(
-                                  "₹ " + "3350" + "/-",
+                                  "₹ ${orderTotal(cartStore.cart)}/-",
                                   style: MyFonts.w700.setColor(kBlack).size(18),
                                 ),
                               ]),
@@ -208,24 +210,8 @@ class _CartTabState extends State<CartTab> {
                         child: ElevatedButton(
                           onPressed: (() {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => YourOrderPage(
-                                      orderModel: OrderModel(
-                                          outletID: "Florentine",
-                                          userID: "userID",
-                                          orderMode: "Delivery",
-                                          instructions: "instructions",
-                                          items: {},
-                                          deliveryLocation: "deliveryLocation",
-                                          prepStatus:
-                                              PrepStatus.preparing.status,
-                                          acceptanceStatus:
-                                              AcceptanceStatus.queued.status,
-                                          paymentStatus:
-                                              PaymentStatus.pending.status,
-                                          qrCodeSecret: "qrCodeSecret",
-                                          orderDateTime: DateTime.now(),
-                                          id: 'id'),
-                                    )));
+                                builder: (context) => HomePage(index: 1,)));
+                                cartStore.emptyCart();
                           }),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: kBlack,

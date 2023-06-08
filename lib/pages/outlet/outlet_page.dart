@@ -20,6 +20,7 @@ class _OutletPageState extends State<OutletPage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: appBar(context, "CampusGO", displayProfileIcon: false,displayBackButton: true),
         body: SafeArea(
             child: Column(
