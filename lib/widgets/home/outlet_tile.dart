@@ -82,7 +82,7 @@ class _OutletTileState extends State<OutletTile> {
                 Container(
                   color: kWhite,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       const SizedBox(
                         height: 6,

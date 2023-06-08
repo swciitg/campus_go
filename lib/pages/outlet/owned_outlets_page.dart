@@ -51,6 +51,7 @@ class _OwnedOutletsPageState extends State<OwnedOutletsPage> {
               itemCount: widget.adminModel.outletsOwned.length,
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context,index){
               return Align(
                 child: Padding(

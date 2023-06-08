@@ -1,5 +1,4 @@
 import 'package:campus_go/globals/enums.dart';
-import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/widgets/home/outlet_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -58,40 +57,15 @@ class _UserHomeTabState extends State<UserHomeTab> {
           const SizedBox(
             height: 12,
           ),
-          // OutletTile(
-          //   outletModel: OutletModel(
-          //     outletName: "Lohit Canteen",
-          //     location: "Lohit Hostel",
-          //     phoneNumber: "8502909980",
-          //     category: FoodCategories.veg.category,
-          //     status: true,
-          //     outletKey: "outletKey",
-          //     id: "id",
-          //     service: [OrderModes.delivery.orderMode,OrderModes.takeaway.orderMode],
-          //   ),
-          // ),
-          // OutletTile(
-          //   outletModel: OutletModel(
-          //       outletName: "Lohit Canteen",
-          //       location: "Lohit Hostel",
-          //       phoneNumber: "8502909980",
-          //       category: FoodCategories.nonveg.category,
-          //       status: false,
-          //       outletKey: "outletKey",
-          //       id: "id", service: [OrderModes.takeaway.orderMode]),
-          // ),
-          //  OutletTile(
-          //   outletModel: OutletModel(
-          //     outletName: "Lohit Canteen",
-          //     location: "Lohit Hostel",
-          //     phoneNumber: "8502909980",
-          //     category: FoodCategories.vegNonVeg.category,
-          //     status: true,
-          //     outletKey: "outletKey",
-          //     id: "id",
-          //     service: [OrderModes.delivery.orderMode,OrderModes.takeaway.orderMode],
-          //   ),
-          // ),
+
+          ListView.builder(
+            itemCount: outletModels.length,
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+            return OutletTile(outletID: outletModels.keys.elementAt(index));
+          })
         ],
       ),
     );

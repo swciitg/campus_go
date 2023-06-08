@@ -1,9 +1,8 @@
+
 import 'package:flutter/material.dart';
 
-import '../../globals/enums.dart';
 import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
-import '../../models/order_model.dart';
 import '../../widgets/orders/order_tile.dart';
 
 class WaitingOrdersTab extends StatefulWidget {
@@ -14,7 +13,6 @@ class WaitingOrdersTab extends StatefulWidget {
 }
 
 class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
-  final ViewType viewType =ViewType.admin;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -35,20 +33,14 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Column(
-            children: [
-             OrderTile(
-                orderID: "q",
-              ),
-              OrderTile(
-                orderID: 'q',
-              ),
-               OrderTile(
-                orderID: 'q',
-              ),
-             
-            ],
-          ),
+          child: ListView.builder(
+            itemCount: 3,
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context,index){
+            return OrderTile(orderID: "q");
+          }),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -64,20 +56,14 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Column(
-            children: [
-             
-              OrderTile(
-                orderID: "r",
-              ),
-              OrderTile(
-                orderID: 'r',
-              ),
-               OrderTile(
-                orderID: 'r',
-              ),
-            ],
-          ),
+          child: ListView.builder(
+           itemCount: 3,
+           shrinkWrap: true,
+           scrollDirection: Axis.vertical,
+           physics: const NeverScrollableScrollPhysics(),
+           itemBuilder: (context,index){
+           return OrderTile(orderID: "r");
+            }),
         )
       ]),
     );

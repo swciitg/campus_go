@@ -76,6 +76,7 @@ class _CartTabState extends State<CartTab> {
                         itemCount: cartStore.totalItems,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
+                        physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                         return ItemCountTile(
                           editing: true,
@@ -99,6 +100,7 @@ class _CartTabState extends State<CartTab> {
                               shrinkWrap: true,
                               itemCount: widget.outletModel.service.length,
                               scrollDirection: Axis.horizontal,
+                              physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (BuildContext context, index) {
                                 return Align(
                                   child: GestureDetector(

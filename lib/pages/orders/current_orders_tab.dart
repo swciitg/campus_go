@@ -1,7 +1,6 @@
-import 'package:campus_go/models/order_model.dart';
+
 import 'package:flutter/material.dart';
 
-import '../../globals/enums.dart';
 import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
 import '../../widgets/orders/order_tile.dart';
@@ -14,9 +13,9 @@ class CurrentOrdersTab extends StatefulWidget {
 }
 
 class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
-  final ViewType viewType=ViewType.user;
   @override
   Widget build(BuildContext context) {
+    List<String> ids = ['asp','asr','aso'];
     return SingleChildScrollView(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
@@ -33,19 +32,14 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Column(
-            children: [
-              OrderTile(
-                orderID: "asp",
-              ),
-              OrderTile(
-                orderID: 'asr',
-              ),
-               OrderTile(
-                orderID: 'aso',
-              ),
-            ],
-          ),
+          child: ListView.builder(
+          itemCount: 3,
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context,index){
+          return OrderTile(orderID: ids[index]);
+            }),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -61,19 +55,14 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Column(
-            children: [
-              OrderTile(
-                orderID: "ap",
-              ),
-              OrderTile(
-                orderID: 'ap',
-              ),
-               OrderTile(
-                orderID: 'ap',
-              ),
-            ],
-          ),
+          child: ListView.builder(
+          itemCount: 3,
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context,index){
+          return OrderTile(orderID: "ap");
+            }),
         )
       ]),
     );
