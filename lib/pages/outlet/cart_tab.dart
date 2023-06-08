@@ -4,6 +4,7 @@ import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/home/home_page.dart';
 
 import 'package:campus_go/stores/cart_store.dart';
+import 'package:campus_go/stores/user_store.dart';
 import 'package:campus_go/widgets/common/custom_text_field.dart';
 import 'package:campus_go/widgets/outlet/change_item_count_tile.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,12 @@ class _CartTabState extends State<CartTab> {
   final TextEditingController _instructionsController = TextEditingController();
 
   int selectedRadio = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _deliveryLocationController.text = context.read<UserStore>().userData['deliveryLocation']!;
+  }
 
   @override
   Widget build(BuildContext context) {

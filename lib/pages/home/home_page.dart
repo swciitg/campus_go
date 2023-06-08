@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
           : const UserHomeTab(),
       const OrdersTab(),
     ];
+    
     return Observer(
       builder: (context) => Scaffold(
         appBar: appBar(context, "CampusGO"),
