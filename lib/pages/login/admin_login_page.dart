@@ -1,6 +1,10 @@
+import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/admin_model.dart';
 import 'package:campus_go/pages/outlet/owned_outlets_page.dart';
+import 'package:campus_go/stores/user_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 
 import '../../functions/utility/show_snackbar.dart';
 import '../../functions/utility/validator.dart';
@@ -23,13 +27,13 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    var userStore = context.read<UserStore>();
     Future<void> onFormSubmit() async {
       if (!_formKey.currentState!.validate()) {
         showSnackBar('Please give all the inputs correctly');
         return;
       } else {
-        // Navigator.of(context)
-        //     .pushNamedAndRemoveUntil('/home', (route) => false);
+        userStore.setViewType(ViewType.admin);
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => OwnedOutletsPage(
                 adminModel: AdminModel(
@@ -40,64 +44,67 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
       }
     }
 
-    return Scaffold(
-      appBar: appBar(context, "Admin Login",
-          displayProfileIcon: false, displayBackButton: true),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-          child: SingleChildScrollView(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Form(
-                  key: _formKey,
-                  child: Column(children: [
-                    CustomTextField(
-                      hintText: "Username",
-                      isNecessary: true,
-                      prefixIcon: const Icon(Icons.person_outline),
-                      controller: _usernameController,
-                      isEnabled: true,
-                      inputType: TextInputType.phone,
-                      validator: validateField,
+    return Observer(
+      builder: (context) => Scaffold(
+        appBar: appBar(context, "Admin Login",
+            displayProfileIcon: false, displayBackButton: true),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+            child: SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Form(
+                        key: _formKey,
+                        child: Column(children: [
+                          CustomTextField(
+                            hintText: "Username",
+                            isNecessary: true,
+                            prefixIcon: const Icon(Icons.person_outline),
+                            controller: _usernameController,
+                            isEnabled: true,
+                            inputType: TextInputType.phone,
+                            validator: validateField,
+                          ),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          CustomTextField(
+                            hintText: "Password",
+                            isNecessary: true,
+                            prefixIcon: const Icon(Icons.key_outlined),
+                            controller: _passwordController,
+                            isEnabled: true,
+                            inputType: TextInputType.visiblePassword,
+                            validator: validateField,
+                          ),
+                        ])),
+                    Container(
+                      height: 32,
                     ),
-                    const SizedBox(
-                      height: 24,
+                    SizedBox(
+                      height: 56,
+                      width: double.infinity,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 0),
+                        child: ElevatedButton(
+                          onPressed: (() {
+                            onFormSubmit();
+                          }),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: kBlack,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8))),
+                          child: Text(
+                            "Submit",
+                            style: MyFonts.w400.setColor(kWhite).size(18),
+                          ),
+                        ),
+                      ),
                     ),
-                    CustomTextField(
-                      hintText: "Password",
-                      isNecessary: true,
-                      prefixIcon: const Icon(Icons.key_outlined),
-                      controller: _passwordController,
-                      isEnabled: true,
-                      inputType: TextInputType.visiblePassword,
-                      validator: validateField,
-                    ),
-                  ])),
-              Container(
-                height: 32,
-              ),
-              SizedBox(
-                height: 56,
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0),
-                  child: ElevatedButton(
-                    onPressed: (() {
-                      onFormSubmit();
-                    }),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: kBlack,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8))),
-                    child: Text(
-                      "Submit",
-                      style: MyFonts.w400.setColor(kWhite).size(18),
-                    ),
-                  ),
-                ),
-              ),
-            ]),
+                  ]),
+            ),
           ),
         ),
       ),
