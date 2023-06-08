@@ -1,4 +1,5 @@
 import 'package:campus_go/models/admin_model.dart';
+import 'package:campus_go/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../globals/my_colors.dart';
@@ -30,7 +31,7 @@ class _OwnedOutletsPageState extends State<OwnedOutletsPage> {
             onPressed: (() {
               // onFormSubmit();
                Navigator.of(context)
-            .pushNamedAndRemoveUntil('/home', (route) => false);
+            .pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>HomePage()), (route) => false);
             }),
             style: ElevatedButton.styleFrom(
                 backgroundColor: kBlack,

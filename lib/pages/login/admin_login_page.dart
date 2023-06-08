@@ -34,6 +34,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
         return;
       } else {
         userStore.setViewType(ViewType.admin);
+        userStore.signInAdmin(_usernameController.text, _passwordController.text);
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => OwnedOutletsPage(
                 adminModel: AdminModel(

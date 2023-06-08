@@ -1,4 +1,5 @@
 import 'package:campus_go/functions/utility/validator.dart';
+import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/globals/my_colors.dart';
 import 'package:campus_go/pages/home/home_page.dart';
 import 'package:campus_go/stores/user_store.dart';
@@ -31,11 +32,11 @@ class _ProfileSetupState extends State<ProfileSetup> {
   @override
   void initState() {
     super.initState();
-    _nameController.text = context.read<UserStore>().userData['username']!;
+    if(context.read<UserStore>().viewType==ViewType.user){_nameController.text = context.read<UserStore>().userData['username']!;
     _emailController.text = context.read<UserStore>().userData['email']!;
     _altEmailController.text = context.read<UserStore>().userData['alternateEmail']!;
     _phoneController.text = context.read<UserStore>().userData['phoneNo']!;
-    _deliveryLocationController.text = context.read<UserStore>().userData['deliveryLocation']!;
+    _deliveryLocationController.text = context.read<UserStore>().userData['deliveryLocation']!;}
   }
 
   @override

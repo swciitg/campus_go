@@ -9,6 +9,8 @@ class UserStore = _UserStore with _$UserStore;
 abstract class _UserStore with Store {
 
   Map<String, String> userData = <String, String>{};
+  Map<String, String> adminData = <String, String>{};
+
 
   Future<void> signInUser() async {
     var sharedPrefs = await SharedPreferences.getInstance();
@@ -45,7 +47,25 @@ abstract class _UserStore with Store {
     SharedPreferences user = await SharedPreferences.getInstance();
     user.clear();
     userData.clear();
+    adminData.clear;
     navigationPopCallBack();
+  }
+
+   Future<void> signInAdmin(String username,String password) async {
+    var sharedPrefs = await SharedPreferences.getInstance();
+    saveToPrefs(sharedPrefs, {
+      'username': username,
+      'password': password,
+    });
+    saveToAdminData(sharedPrefs);
+  }
+  void saveToPrefs(SharedPreferences instance, dynamic data) {
+    instance.setString("username", data["username"]);
+    instance.setString("password", data["password"]);
+  }
+  void saveToAdminData(SharedPreferences instance) {
+    userData["username"] = instance.getString("username") ?? "";
+    userData["password"] = instance.getString("password") ?? "";
   }
 
   @observable
