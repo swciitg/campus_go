@@ -11,11 +11,12 @@ import '../../globals/my_fonts.dart';
 
 class ItemCountTile extends StatefulWidget {
   final String itemID;
+  final int? count;
   final bool editing;
   const ItemCountTile({
     super.key,
     required this.editing,
-    required this.itemID,
+    required this.itemID, this.count,
   });
 
   @override
@@ -160,8 +161,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                             style: MyFonts.w500.setColor(kBlack).size(16),
                           ),
                           TextSpan(
-                            text: (cartStore.cart[itemModel.id] ?? 0)
-                                .toString(),
+                            text: (widget.count??0).toString(),
                             style: MyFonts.w500.setColor(kBlack).size(18),
                           )
                         ]),

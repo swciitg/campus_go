@@ -12,11 +12,9 @@ import '../../globals/my_fonts.dart';
 
 class OrderTile extends StatefulWidget {
   final String orderID;
-  // final ViewType viewType;
   const OrderTile({
     super.key,
     required this.orderID,
-    // required this.viewType,
   });
 
   @override
@@ -37,10 +35,9 @@ class _OrderTileState extends State<OrderTile> {
         DateTime.now().difference(orderModel.orderDateTime);
     String timeagoString =
         timeago.format(DateTime.now().subtract(passedDuration));
-        
+
     return Observer(
-      builder: (context) => 
-      Padding(
+      builder: (context) => Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: GestureDetector(
           onTap: (() {
@@ -99,25 +96,35 @@ class _OrderTileState extends State<OrderTile> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         RichText(
-                          text: viewType==ViewType.admin?TextSpan(
-                            children: [
-                              TextSpan(
-                                  text: "Or. ID. ",
-                                  style: MyFonts.w400.setColor(kBlack).size(16)),
-                              TextSpan(
-                                  text: orderModel.id,
-                                  style: MyFonts.w600.setColor(kBlack).size(16)),
-                            ],
-                          ): TextSpan(
-                            children: [
-                              TextSpan(
-                                  text: count.toString(),
-                                  style: MyFonts.w600.setColor(kBlack).size(16)),
-                              TextSpan(
-                                  text: " Items Ordered",
-                                  style: MyFonts.w300.setColor(kBlack).size(16)),
-                            ],
-                          ),
+                          text: viewType == ViewType.admin
+                              ? TextSpan(
+                                  children: [
+                                    TextSpan(
+                                        text: "Or. ID. ",
+                                        style: MyFonts.w400
+                                            .setColor(kBlack)
+                                            .size(16)),
+                                    TextSpan(
+                                        text: orderModel.id,
+                                        style: MyFonts.w600
+                                            .setColor(kBlack)
+                                            .size(16)),
+                                  ],
+                                )
+                              : TextSpan(
+                                  children: [
+                                    TextSpan(
+                                        text: count.toString(),
+                                        style: MyFonts.w600
+                                            .setColor(kBlack)
+                                            .size(16)),
+                                    TextSpan(
+                                        text: " Items Ordered",
+                                        style: MyFonts.w300
+                                            .setColor(kBlack)
+                                            .size(16)),
+                                  ],
+                                ),
                         ),
                         GestureDetector(
                           onTap: () {},
@@ -132,11 +139,13 @@ class _OrderTileState extends State<OrderTile> {
                             child: viewType == ViewType.admin
                                 ? Text(
                                     "Accept",
-                                    style: MyFonts.w500.size(12).setColor(kWhite),
+                                    style:
+                                        MyFonts.w500.size(12).setColor(kWhite),
                                   )
                                 : Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                         const Icon(
                                           Icons.close_outlined,
@@ -163,25 +172,35 @@ class _OrderTileState extends State<OrderTile> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         RichText(
-                          text: viewType==ViewType.admin?TextSpan(
-                            children: [
-                              TextSpan(
-                                  text: "Or. ID. ",
-                                  style: MyFonts.w400.setColor(kBlack).size(16)),
-                              TextSpan(
-                                  text: orderModel.id,
-                                  style: MyFonts.w600.setColor(kBlack).size(16)),
-                            ],
-                          ):TextSpan(
-                            children: [
-                              TextSpan(
-                                  text: count.toString(),
-                                  style: MyFonts.w600.setColor(kBlack).size(16)),
-                              TextSpan(
-                                  text: " Items Ordered",
-                                  style: MyFonts.w300.setColor(kBlack).size(16)),
-                            ],
-                          ),
+                          text: viewType == ViewType.admin
+                              ? TextSpan(
+                                  children: [
+                                    TextSpan(
+                                        text: "Or. ID. ",
+                                        style: MyFonts.w400
+                                            .setColor(kBlack)
+                                            .size(16)),
+                                    TextSpan(
+                                        text: orderModel.id,
+                                        style: MyFonts.w600
+                                            .setColor(kBlack)
+                                            .size(16)),
+                                  ],
+                                )
+                              : TextSpan(
+                                  children: [
+                                    TextSpan(
+                                        text: count.toString(),
+                                        style: MyFonts.w600
+                                            .setColor(kBlack)
+                                            .size(16)),
+                                    TextSpan(
+                                        text: " Items Ordered",
+                                        style: MyFonts.w300
+                                            .setColor(kBlack)
+                                            .size(16)),
+                                  ],
+                                ),
                         ),
                       ])
                 else if (orderModel.paymentStatus ==
@@ -195,42 +214,48 @@ class _OrderTileState extends State<OrderTile> {
                             children: [
                               TextSpan(
                                   text: '₹ ',
-                                  style: MyFonts.w700.setColor(kBlack).size(16)),
+                                  style:
+                                      MyFonts.w700.setColor(kBlack).size(16)),
                               TextSpan(
                                   text: "3350",
-                                  style: MyFonts.w700.setColor(kBlack).size(16)),
+                                  style:
+                                      MyFonts.w700.setColor(kBlack).size(16)),
                               TextSpan(
                                   text: "/-",
-                                  style: MyFonts.w700.setColor(kBlack).size(16)),
+                                  style:
+                                      MyFonts.w700.setColor(kBlack).size(16)),
                             ],
                           ),
                         ),
-                       if(viewType==ViewType.user) GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            width: 80,
-                            height: 24,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                                color: kBlack,
-                                border: Border.all(color: kBlack),
-                                borderRadius: BorderRadius.circular(4)),
-                            child: RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: '₹ ',
-                                      style:
-                                          MyFonts.w500.setColor(kWhite).size(12)),
-                                  TextSpan(
-                                      text: "Proceed",
-                                      style:
-                                          MyFonts.w500.setColor(kWhite).size(12)),
-                                ],
+                        if (viewType == ViewType.user)
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              width: 80,
+                              height: 24,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color: kBlack,
+                                  border: Border.all(color: kBlack),
+                                  borderRadius: BorderRadius.circular(4)),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                        text: '₹ ',
+                                        style: MyFonts.w500
+                                            .setColor(kWhite)
+                                            .size(12)),
+                                    TextSpan(
+                                        text: "Proceed",
+                                        style: MyFonts.w500
+                                            .setColor(kWhite)
+                                            .size(12)),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
                       ])
                 else if (orderModel.paymentStatus ==
                     PaymentStatus.successful.status)
@@ -269,7 +294,8 @@ class _OrderTileState extends State<OrderTile> {
                                   ),
                                   Text(
                                     orderModel.orderMode,
-                                    style: MyFonts.w500.setColor(kWhite).size(12),
+                                    style:
+                                        MyFonts.w500.setColor(kWhite).size(12),
                                   )
                                 ]),
                           ),

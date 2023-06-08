@@ -1,3 +1,4 @@
+import 'package:campus_go/functions/utility/calculate_order_value.dart';
 import 'package:campus_go/globals/my_colors.dart';
 import 'package:campus_go/globals/my_fonts.dart';
 import 'package:campus_go/models/order_model.dart';
@@ -6,7 +7,6 @@ import 'package:campus_go/widgets/ui/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-
 
 class YourOrderPage extends StatefulWidget {
   final OrderModel orderModel;
@@ -29,7 +29,7 @@ class _YourOrderPageState extends State<YourOrderPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Your Order",
+              "Your Order (${widget.orderModel.acceptanceStatus})",
               style: MyFonts.w500.setColor(kBlack).size(18),
             ),
             Padding(
@@ -124,37 +124,43 @@ class _YourOrderPageState extends State<YourOrderPage> {
                         borderRadius: BorderRadius.circular(16),
                         color: kWhite),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(height: 4,),
-                       const Text(
-                        "ORDER QR CODE",
-                        style: TextStyle(
-                            shadows: [
-                              Shadow(color: kBlack, offset: Offset(0, -1))
-                            ],
-                            color: Colors.transparent,
-                            fontFamily: "Poppins",
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            decoration: TextDecoration.underline,
-                            decorationStyle: TextDecorationStyle.solid,
-                            decorationColor: kBlack,
-                            decorationThickness: 1),
-                      ),
-                      const SizedBox(height: 4,),
-                      QrImageView(
-                        data: widget.orderModel.qrCodeSecret,
-                        version: QrVersions.auto,
-                        size: 140,
-                        gapless: false,
-                        embeddedImage:
-                            const ResizeImage(AssetImage("assets/images/logo.jpg"),height: 70,width: 50),
-                        embeddedImageStyle: const QrEmbeddedImageStyle(
-                          size: Size(28, 20),
-                        ),
-                      ),
-                    ]),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          const Text(
+                            "ORDER QR CODE",
+                            style: TextStyle(
+                                shadows: [
+                                  Shadow(color: kBlack, offset: Offset(0, -1))
+                                ],
+                                color: Colors.transparent,
+                                fontFamily: "Poppins",
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                decoration: TextDecoration.underline,
+                                decorationStyle: TextDecorationStyle.solid,
+                                decorationColor: kBlack,
+                                decorationThickness: 1),
+                          ),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          QrImageView(
+                            data: widget.orderModel.qrCodeSecret,
+                            version: QrVersions.auto,
+                            size: 140,
+                            gapless: false,
+                            embeddedImage: const ResizeImage(
+                                AssetImage("assets/images/logo.jpg"),
+                                height: 70,
+                                width: 50),
+                            embeddedImageStyle: const QrEmbeddedImageStyle(
+                              size: Size(28, 20),
+                            ),
+                          ),
+                        ]),
                   ),
                   const SizedBox(
                     height: 24,
@@ -162,14 +168,18 @@ class _YourOrderPageState extends State<YourOrderPage> {
                 ],
               ),
             ),
-            ItemCountTile(
-              itemID: 'pc',
-              editing: false,
-            ),
-            ItemCountTile(
-              itemID: 'cb',
-              editing: false,
-            ),
+            ListView.builder(
+                itemCount: widget.orderModel.items.length,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  String itemID = widget.orderModel.items.keys.elementAt(index);
+                  return ItemCountTile(
+                    editing: false,
+                    itemID: itemID,
+                    count: widget.orderModel.items[itemID],
+                  );
+                }),
             const SizedBox(
               height: 16,
             ),
@@ -187,10 +197,21 @@ class _YourOrderPageState extends State<YourOrderPage> {
                         "Total Order Value:",
                         style: MyFonts.w500.setColor(kBlack).size(18),
                       ),
-                      Text(
-                        "₹ " + "3350" + "/-",
-                        style: MyFonts.w700.setColor(kBlack).size(18),
-                      ),
+                      RichText(
+                          text: TextSpan(children: [
+                        TextSpan(
+                          text: "₹ ",
+                          style: MyFonts.w700.setColor(kBlack).size(18),
+                        ),
+                        TextSpan(
+                          text: orderTotal(widget.orderModel.items).toString(),
+                          style: MyFonts.w700.setColor(kBlack).size(18),
+                        ),
+                        TextSpan(
+                          text: "/-",
+                          style: MyFonts.w700.setColor(kBlack).size(18),
+                        )
+                      ]))
                     ]),
               ),
             ),
