@@ -9,6 +9,7 @@ class UserModel {
   final String email;
   final String phoneNumber;
   final String alternateEmail;
+  final String deliveryLocation;
   @JsonKey(defaultValue: [])
   late List<String> outletsOwned;
 
@@ -18,6 +19,7 @@ class UserModel {
     required this.email,
     required this.phoneNumber,
     required this.alternateEmail,
+    required this.deliveryLocation,
     required this.outletsOwned,
   });
   factory UserModel.fromJson(Map<String, dynamic> map) =>

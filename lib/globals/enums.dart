@@ -183,5 +183,6 @@ final Map<String, UserModel> userModels = {
       email: "y.chanchal@iitg.ac.in",
       phoneNumber: "8502909980",
       alternateEmail: "chanchalyadav272@gmail.com",
+      deliveryLocation: "B-245, Lohit Hostel, IIT Guwahati",
       outletsOwned: [])
 };

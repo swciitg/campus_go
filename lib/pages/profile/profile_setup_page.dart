@@ -20,6 +20,8 @@ class _ProfileSetupState extends State<ProfileSetup> {
   final TextEditingController _outlookController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _contactController = TextEditingController();
+  final TextEditingController _deliveryLocationController =
+      TextEditingController();
   final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
@@ -35,15 +37,19 @@ class _ProfileSetupState extends State<ProfileSetup> {
         showSnackBar('Please give all the inputs correctly');
         return;
       } else {
-        
-
-        Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('/home', (route) => false);
       }
     }
+
     return Scaffold(
-      appBar: appBar(context, "Profile Setup",displayProfileIcon: false,displayBackButton: true,displayLogoutButton: true),
+      resizeToAvoidBottomInset: true,
+      appBar: appBar(context, "Profile Setup",
+          displayProfileIcon: false,
+          displayBackButton: true,
+          displayLogoutButton: true),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: SizedBox(
+      floatingActionButton: MediaQuery.of(context).viewInsets.bottom != 0 ? null:SizedBox(
         height: 56,
         width: double.infinity,
         child: Padding(
@@ -65,6 +71,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        
         child: SingleChildScrollView(
           child: Column(children: [
             RichText(
@@ -93,53 +100,62 @@ class _ProfileSetupState extends State<ProfileSetup> {
               height: 48,
             ),
             Form(
-              key: _formKey,
+                key: _formKey,
                 child: Column(children: [
-              CustomTextField(
-                hintText: "Full Name",
-                isNecessary: false,
-                prefixIcon: const Icon(Icons.person_outline_outlined),
-                controller: _nameController,
-                isEnabled: false,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              CustomTextField(
-                hintText: "Email",
-                isNecessary: false,
-                prefixIcon: const Icon(Icons.email_outlined),
-                controller: _outlookController,
-                isEnabled: false,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              CustomTextField(
-                hintText: "Contact No.",
-                isNecessary: true,
-                prefixIcon: const Icon(Icons.phone_outlined),
-                controller: _contactController,
-                isEnabled: true,
-                inputType: TextInputType.phone,
-                validator: validateField,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              CustomTextField(
-                hintText: "Alternate Email",
-                isNecessary: true,
-                prefixIcon: const Icon(Icons.email_outlined),
-                controller: _emailController,
-                isEnabled: true,
-                inputType: TextInputType.emailAddress,
-                validator: validateField,
-              ),
-              Container(
-                height: 96,
-              )
-            ]))
+                  CustomTextField(
+                    hintText: "Full Name",
+                    isNecessary: false,
+                    prefixIcon: const Icon(Icons.person_outline_outlined),
+                    controller: _nameController,
+                    isEnabled: false,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  CustomTextField(
+                    hintText: "Email",
+                    isNecessary: false,
+                    prefixIcon: const Icon(Icons.email_outlined),
+                    controller: _outlookController,
+                    isEnabled: false,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  CustomTextField(
+                    hintText: "Contact No.",
+                    isNecessary: true,
+                    prefixIcon: const Icon(Icons.phone_outlined),
+                    controller: _contactController,
+                    isEnabled: true,
+                    inputType: TextInputType.phone,
+                    validator: validateField,
+                    textInputAction: TextInputAction.next,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  CustomTextField(
+                    hintText: "Alternate Email",
+                    isNecessary: true,
+                    prefixIcon: const Icon(Icons.email_outlined),
+                    controller: _emailController,
+                    isEnabled: true,
+                    inputType: TextInputType.emailAddress,
+                    validator: validateField,
+                    textInputAction: TextInputAction.next,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  CustomTextField(
+                    hintText: "Delivery Location",
+                    isNecessary: false,
+                    controller: _deliveryLocationController,
+                    prefixIcon: const Icon(Icons.location_on_outlined),
+                    inputType: TextInputType.streetAddress,
+                  ),
+                ]))
           ]),
         ),
       ),

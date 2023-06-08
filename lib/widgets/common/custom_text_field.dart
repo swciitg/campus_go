@@ -17,6 +17,7 @@ class CustomTextField extends StatefulWidget {
   final Icon? prefixIcon;
   final int? maxLines;
   final bool? expands;
+  final TextInputAction? textInputAction;
   final TextAlignVertical? textAlignVertical;
 
   const CustomTextField(
@@ -31,7 +32,7 @@ class CustomTextField extends StatefulWidget {
       this.controller,
       this.onTap,
        this.isEnabled,
-      this.focusNode, this.maxLines, this.expands, this.textAlignVertical});
+      this.focusNode, this.maxLines, this.expands, this.textAlignVertical, this.textInputAction});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -48,6 +49,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       controller: widget.controller,
       focusNode: widget.focusNode,
       cursorColor: kBlack,
+      textInputAction: widget.textInputAction ,
       onTap: widget.onTap,
       onChanged: widget.onChanged,
       initialValue: widget.value == 'null' ? '' : widget.value,
