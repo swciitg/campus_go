@@ -1,4 +1,5 @@
 import 'package:campus_go/functions/utility/calculate_order_value.dart';
+import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/globals/my_colors.dart';
 import 'package:campus_go/globals/my_fonts.dart';
 import 'package:campus_go/models/order_model.dart';
@@ -52,7 +53,7 @@ class _YourOrderPageState extends State<YourOrderPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.orderModel.outletID,
+                          outletModels[widget.orderModel.outletID]!.outletName,
                           overflow: TextOverflow.ellipsis,
                           style: MyFonts.w600.setColor(kBlack).size(16),
                         ),
@@ -69,7 +70,8 @@ class _YourOrderPageState extends State<YourOrderPage> {
                             const SizedBox(
                               width: 6,
                             ),
-                            Text("Outlet Phone number",
+                            Text(
+                                "+91 ${outletModels[widget.orderModel.outletID]!.phoneNumber}",
                                 overflow: TextOverflow.ellipsis,
                                 style: MyFonts.w300.setColor(kBlack).size(12)),
                           ],
@@ -112,8 +114,7 @@ class _YourOrderPageState extends State<YourOrderPage> {
             const SizedBox(
               height: 32,
             ),
-
-            Center(
+            if(widget.orderModel.acceptanceStatus==AcceptanceStatus.accepted.status && widget.orderModel.paymentStatus==PaymentStatus.successful.status)Center(
               child: Column(
                 children: [
                   Container(
@@ -218,24 +219,32 @@ class _YourOrderPageState extends State<YourOrderPage> {
             const SizedBox(
               height: 32,
             ),
-            // SizedBox(
-            //   height: 56,
-            //   width: double.infinity,
-            //   child: ElevatedButton(
-            //     onPressed: (() {
-            //       // Navigator.of(context).push(MaterialPageRoute(
-            //       //     builder: (context) => const YourOrderPage()));
-            //     }),
-            //     style: ElevatedButton.styleFrom(
-            //         backgroundColor: kBlack,
-            //         shape: RoundedRectangleBorder(
-            //             borderRadius: BorderRadius.circular(8))),
-            //     child: Text(
-            //       "Proceed to payment",
-            //       style: MyFonts.w400.setColor(kWhite).size(18),
-            //     ),
-            //   ),
-            // ),
+            if (widget.orderModel.acceptanceStatus ==
+                    AcceptanceStatus.queued.status ||
+                widget.orderModel.acceptanceStatus ==
+                        AcceptanceStatus.accepted.status &&
+                    widget.orderModel.paymentStatus ==
+                        PaymentStatus.pending.status)
+              SizedBox(
+                height: 56,
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: (() {
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => const YourOrderPage()));
+                  }),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: kBlack,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8))),
+                  child: 
+                  Text(
+                   widget.orderModel.acceptanceStatus ==
+                    AcceptanceStatus.queued.status? "Cancel":"Proceed to payment",
+                    style: MyFonts.w400.setColor(kWhite).size(18),
+                  ),
+                ),
+              ),
           ],
         ),
       )),

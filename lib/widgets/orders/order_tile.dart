@@ -1,3 +1,4 @@
+import 'package:campus_go/functions/utility/calculate_order_value.dart';
 import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/order_model.dart';
 import 'package:campus_go/pages/orders/customer_order.dart';
@@ -46,11 +47,7 @@ class _OrderTileState extends State<OrderTile> {
                   builder: (context) =>
                       CustomerOrderPage(orderModel: orderModel)));
             } else {
-              if (orderModel.acceptanceStatus ==
-                      AcceptanceStatus.queued.status ||
-                  (orderModel.paymentStatus ==
-                          PaymentStatus.successful.status &&
-                      orderModel.prepStatus == PrepStatus.ready.status)) {
+              {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
                         YourOrderPage(orderModel: orderModel)));
@@ -74,8 +71,8 @@ class _OrderTileState extends State<OrderTile> {
                         children: [
                           Text(
                             viewType == ViewType.admin
-                                ? orderModel.userID
-                                : orderModel.outletID,
+                                ? userModels[orderModel.userID]!.username
+                                : outletModels[orderModel.outletID]!.outletName,
                             overflow: TextOverflow.ellipsis,
                             style: MyFonts.w600.setColor(kBlack).size(16),
                           ),
@@ -217,7 +214,7 @@ class _OrderTileState extends State<OrderTile> {
                                   style:
                                       MyFonts.w700.setColor(kBlack).size(16)),
                               TextSpan(
-                                  text: "3350",
+                                  text: orderTotal(orderModel.items).toString(),
                                   style:
                                       MyFonts.w700.setColor(kBlack).size(16)),
                               TextSpan(

@@ -1,6 +1,7 @@
 import 'package:campus_go/models/item_model.dart';
 import 'package:campus_go/models/order_model.dart';
 import 'package:campus_go/models/outlet_model.dart';
+import 'package:campus_go/models/user_model.dart';
 
 enum AcceptanceStatus {
   queued("Queued"),
@@ -53,20 +54,20 @@ final Map<String, ItemModel> itemModels = {
       name: "Papdi Chaat",
       price: "160",
       category: "VEG",
-      offeringOutlet: "offeringOutlet"),
+      offeringOutlet: "a"),
   'cb': ItemModel(
       id: "cb",
       name: "Chicken Biryani",
       price: "160",
       category: "NON-VEG",
-      offeringOutlet: "offeringOutlet"),
+      offeringOutlet: "a"),
 };
 
 final Map<String, OutletModel> outletModels = {
   'a': OutletModel(
     outletName: "Lohit Canteen",
     location: "Lohit Hostel",
-    phoneNumber: "8502909980",
+    phoneNumber: "1234567890",
     category: FoodCategories.veg.category,
     status: true,
     outletKey: "outletKey",
@@ -76,7 +77,7 @@ final Map<String, OutletModel> outletModels = {
   'b': OutletModel(
       outletName: "Lohit Canteen",
       location: "Lohit Hostel",
-      phoneNumber: "8502909980",
+      phoneNumber: "1234567890",
       category: FoodCategories.nonveg.category,
       status: false,
       outletKey: "outletKey",
@@ -85,7 +86,7 @@ final Map<String, OutletModel> outletModels = {
   'c': OutletModel(
     outletName: "Lohit Canteen",
     location: "Lohit Hostel",
-    phoneNumber: "8502909980",
+    phoneNumber: "1234567890",
     category: FoodCategories.vegNonVeg.category,
     status: true,
     outletKey: "outletKey",
@@ -97,76 +98,76 @@ final Map<String, OutletModel> outletModels = {
 final Map<String, OrderModel> orderModels = {
   'r': OrderModel(
       id: "r",
-      outletID: "Florentine",
-      userID: "Chanchal Yadav",
+      outletID: "a",
+userID: "cyp",
       orderMode: OrderModes.delivery.orderMode,
       instructions: "instructions",
-      items: {'pc':2,'cb':1},
+      items: {'pc': 2, 'cb': 1},
       deliveryLocation: "deliveryLocation",
       prepStatus: PrepStatus.preparing.status,
       acceptanceStatus: AcceptanceStatus.rejected.status,
       paymentStatus: PaymentStatus.pending.status,
       qrCodeSecret: "qrCodeSecret",
       orderDateTime: DateTime.now()),
-       'q': OrderModel(
+  'q': OrderModel(
       id: "q",
-      outletID: "Florentine",
-      userID: "Chanchal Yadav",
+      outletID: "a",
+userID: "cyp",
       orderMode: OrderModes.delivery.orderMode,
       instructions: "instructions",
-      items: {'pc':2,'cb':1},
+      items: {'pc': 2, 'cb': 1},
       deliveryLocation: "deliveryLocation",
       prepStatus: PrepStatus.preparing.status,
       acceptanceStatus: AcceptanceStatus.queued.status,
       paymentStatus: PaymentStatus.pending.status,
       qrCodeSecret: "qrCodeSecret",
       orderDateTime: DateTime.now()),
-       'ap': OrderModel(
+  'ap': OrderModel(
       id: "ap",
-      outletID: "Florentine",
-      userID: "Chanchal Yadav",
+      outletID: "a",
+userID: "cyp",
       orderMode: OrderModes.delivery.orderMode,
       instructions: "instructions",
-      items: {'pc':2,'cb':2},
+      items: {'pc': 2, 'cb': 2},
       deliveryLocation: "deliveryLocation",
       prepStatus: PrepStatus.preparing.status,
       acceptanceStatus: AcceptanceStatus.accepted.status,
       paymentStatus: PaymentStatus.pending.status,
       qrCodeSecret: "qrCodeSecret",
       orderDateTime: DateTime.now()),
-       'asp': OrderModel(
+  'asp': OrderModel(
       id: "asp",
-      outletID: "Florentine",
-      userID: "Chanchal Yadav",
+      outletID: "a",
+userID: "cyp",
       orderMode: OrderModes.delivery.orderMode,
       instructions: "instructions",
-      items: {'pc':2,'cb':1},
+      items: {'pc': 2, 'cb': 1},
       deliveryLocation: "deliveryLocation",
       prepStatus: PrepStatus.preparing.status,
       acceptanceStatus: AcceptanceStatus.accepted.status,
       paymentStatus: PaymentStatus.successful.status,
       qrCodeSecret: "qrCodeSecret",
       orderDateTime: DateTime.now()),
-       'asr': OrderModel(
+  'asr': OrderModel(
       id: "asr",
-      outletID: "Florentine",
-      userID: "Chanchal Yadav",
+      outletID: "a",
+userID: "cyp",
       orderMode: OrderModes.takeaway.orderMode,
       instructions: "instructions",
-      items: {'pc':2,'cb':2},
+      items: {'pc': 2, 'cb': 2},
       deliveryLocation: "deliveryLocation",
       prepStatus: PrepStatus.ready.status,
       acceptanceStatus: AcceptanceStatus.accepted.status,
       paymentStatus: PaymentStatus.successful.status,
       qrCodeSecret: "qrCodeSecret",
       orderDateTime: DateTime.now()),
-       'aso': OrderModel(
+  'aso': OrderModel(
       id: "aso",
-      outletID: "Florentine",
-      userID: "Chanchal Yadav",
+      outletID: "a",
+      userID: "cyp",
       orderMode: OrderModes.delivery.orderMode,
       instructions: "instructions",
-      items: {'pc':2,'cb':1},
+      items: {'pc': 2, 'cb': 1},
       deliveryLocation: "deliveryLocation",
       prepStatus: PrepStatus.outForDelivery.status,
       acceptanceStatus: AcceptanceStatus.accepted.status,
@@ -175,3 +176,12 @@ final Map<String, OrderModel> orderModels = {
       orderDateTime: DateTime.now()),
 };
 
+final Map<String, UserModel> userModels = {
+  'cyp': UserModel(
+      id: "cyp",
+      username: "Chanchal Yadav",
+      email: "y.chanchal@iitg.ac.in",
+      phoneNumber: "8502909980",
+      alternateEmail: "chanchalyadav272@gmail.com",
+      outletsOwned: [])
+};
