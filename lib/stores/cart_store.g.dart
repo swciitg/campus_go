@@ -24,19 +24,19 @@ mixin _$CartStore on _CartStore, Store {
     });
   }
 
-  late final _$totalItemsAddedAtom =
-      Atom(name: '_CartStore.totalItemsAdded', context: context);
+  late final _$totalItemsAtom =
+      Atom(name: '_CartStore.totalItems', context: context);
 
   @override
-  int get totalItemsAdded {
-    _$totalItemsAddedAtom.reportRead();
-    return super.totalItemsAdded;
+  int get totalItems {
+    _$totalItemsAtom.reportRead();
+    return super.totalItems;
   }
 
   @override
-  set totalItemsAdded(int value) {
-    _$totalItemsAddedAtom.reportWrite(value, super.totalItemsAdded, () {
-      super.totalItemsAdded = value;
+  set totalItems(int value) {
+    _$totalItemsAtom.reportWrite(value, super.totalItems, () {
+      super.totalItems = value;
     });
   }
 
@@ -49,17 +49,6 @@ mixin _$CartStore on _CartStore, Store {
         _$_CartStoreActionController.startAction(name: '_CartStore.emptyCart');
     try {
       return super.emptyCart();
-    } finally {
-      _$_CartStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void calcTotalItems() {
-    final _$actionInfo = _$_CartStoreActionController.startAction(
-        name: '_CartStore.calcTotalItems');
-    try {
-      return super.calcTotalItems();
     } finally {
       _$_CartStoreActionController.endAction(_$actionInfo);
     }
@@ -113,7 +102,7 @@ mixin _$CartStore on _CartStore, Store {
   String toString() {
     return '''
 cart: ${cart},
-totalItemsAdded: ${totalItemsAdded}
+totalItems: ${totalItems}
     ''';
   }
 }

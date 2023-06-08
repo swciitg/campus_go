@@ -20,7 +20,6 @@ class _MenuTabState extends State<MenuTab> {
   @override
   Widget build(BuildContext context) {
     var cartStore = context.read<CartStore>();
-    cartStore.calcTotalItems();
     return Observer(
       builder: (context)=>Padding(
         padding: const EdgeInsets.all(16),
@@ -59,7 +58,7 @@ class _MenuTabState extends State<MenuTab> {
                   Container(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      "${cartStore.totalItemsAdded} Items Added",
+                      "${cartStore.totalItems} Items Added",
                       style: MyFonts.w500.setColor(kBlack).size(12),
                     ),
                   )

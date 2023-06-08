@@ -10,12 +10,12 @@ import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
 
 class ItemCountTile extends StatefulWidget {
-  final ItemModel itemModel;
+  final String itemID;
   final bool editing;
   const ItemCountTile({
     super.key,
     required this.editing,
-    required this.itemModel,
+    required this.itemID,
   });
 
   @override
@@ -25,6 +25,9 @@ class ItemCountTile extends StatefulWidget {
 class _ItemCountTileState extends State<ItemCountTile> {
   @override
   Widget build(BuildContext context) {
+    ItemModel itemModel = itemModels[widget.itemID]!;
+    
+     
     var cartStore = context.read<CartStore>();
     return Observer(
       builder: (context) => Padding(
@@ -45,7 +48,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.itemModel.name,
+                          itemModel.name,
                           overflow: TextOverflow.ellipsis,
                           style: MyFonts.w600.setColor(kBlack).size(16),
                         ),
@@ -63,7 +66,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                                         MyFonts.w300.setColor(kBlack).size(12),
                                   ),
                                   Text(
-                                    "₹ ${widget.itemModel.price}",
+                                    "₹ ${itemModel.price}",
                                     style:
                                         MyFonts.w500.setColor(kBlack).size(12),
                                   ),
@@ -74,7 +77,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                                       height: 8,
                                       width: 8,
                                       child: SvgPicture.asset(
-                                          widget.itemModel.category ==
+                                          itemModel.category ==
                                                   FoodCategories.veg.category
                                               ? "assets/images/veg.svg"
                                               : "assets/images/nonveg.svg")),
@@ -82,7 +85,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                                     width: 4,
                                   ),
                                   Text(
-                                    widget.itemModel.category,
+                                    itemModel.category,
                                     style:
                                         MyFonts.w300.setColor(kBlack).size(12),
                                   ),
@@ -108,7 +111,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                             child: GestureDetector(
                           onTap: (() {
                             setState(() {
-                              cartStore.decreaseItemCount(widget.itemModel.id);
+                              cartStore.decreaseItemCount(itemModel.id);
                             });
                           }),
                           child: Container(
@@ -125,7 +128,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                           color: kWhite,
                           alignment: Alignment.center,
                           child: Text(
-                            (cartStore.cart[widget.itemModel.id] ?? 0)
+                            (cartStore.cart[itemModel.id] ?? 0)
                                 .toString(),
                             style: MyFonts.w500.setColor(kBlack).size(14),
                           ),
@@ -134,7 +137,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                             child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              cartStore.increaseItemCount(widget.itemModel.id);
+                              cartStore.increaseItemCount(itemModel.id);
                             });
                           },
                           child: Container(
@@ -157,7 +160,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                             style: MyFonts.w500.setColor(kBlack).size(16),
                           ),
                           TextSpan(
-                            text: (cartStore.cart[widget.itemModel.id] ?? 0)
+                            text: (cartStore.cart[itemModel.id] ?? 0)
                                 .toString(),
                             style: MyFonts.w500.setColor(kBlack).size(18),
                           )

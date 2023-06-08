@@ -8,7 +8,7 @@ abstract class _CartStore with Store {
   Map<String, int> cart = {};
 
   @observable
-  int totalItemsAdded = 0;
+  int totalItems=0;
 
   @action
   void emptyCart() {
@@ -16,37 +16,26 @@ abstract class _CartStore with Store {
   }
 
   @action
-  void calcTotalItems() {
-    int cnt = 0;
-    for (var v in cart.values) {
-      cnt = cnt + v;
-    }
-    totalItemsAdded = cnt;
-  }
-
-  @action
   void addItem(String itemID) {
     cart[itemID] = 1;
-    calcTotalItems();
+    totalItems++;
   }
 
   @action
   void removeItem(String itemID) {
     cart.removeWhere((key, value) => key == itemID);
-    calcTotalItems();
+    totalItems--;
   }
 
   @action 
   void increaseItemCount(String itemID){
     cart[itemID]=cart[itemID]! + 1;
-    calcTotalItems();
   }
 
   @action 
   void decreaseItemCount(String itemID){
     cart[itemID]=cart[itemID]! - 1;
     if(cart[itemID]==0) removeItem(itemID);
-    calcTotalItems();
   }
 
 

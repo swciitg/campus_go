@@ -29,22 +29,23 @@ class _CartTabState extends State<CartTab> {
 
   @override
   Widget build(BuildContext context) {
-    var cartStore=context.read<CartStore>();
+    var cartStore = context.read<CartStore>();
 
-    return  Observer(
+    return Observer(
       builder: (context) => cartStore.cart.isEmpty
           ? Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
                   "No item added to your cart!",
                   style: MyFonts.w500.setColor(kBlack).size(16),
-                  
-            ),
-            const SizedBox(height: 64,)
-                ],
-              ))
+                ),
+                const SizedBox(
+                  height: 64,
+                )
+              ],
+            ))
           : Padding(
               padding: const EdgeInsets.all(16),
               child: SingleChildScrollView(
@@ -72,24 +73,16 @@ class _CartTabState extends State<CartTab> {
                       const SizedBox(
                         height: 8,
                       ),
-                      ItemCountTile(
-                        itemModel: ItemModel(
-                            id: "pc",
-                            name: "Papdi Chaat",
-                            price: "160",
-                            category: "VEG",
-                            offeringOutlet: "offeringOutlet"),
-                        editing: true,
-                      ),
-                      ItemCountTile(
-                        itemModel: ItemModel(
-                            id: "cb",
-                            name: "Chicken Biryani",
-                            price: "160",
-                            category: "NON-VEG",
-                            offeringOutlet: "offeringOutlet"),
-                        editing: true,
-                      ),
+                      ListView.builder(
+                        itemCount: cartStore.totalItems,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemBuilder: (context, index) {
+                        return ItemCountTile(
+                          editing: true,
+                          itemID: cartStore.cart.keys.elementAt(index),
+                        );
+                      }),
                       const SizedBox(
                         height: 16,
                       ),
@@ -104,7 +97,7 @@ class _CartTabState extends State<CartTab> {
                           height: 24,
                           alignment: Alignment.center,
                           child: ListView.builder(
-                            shrinkWrap: true,
+                              shrinkWrap: true,
                               itemCount: widget.outletModel.service.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (BuildContext context, index) {
@@ -116,9 +109,11 @@ class _CartTabState extends State<CartTab> {
                                       });
                                     },
                                     child: SizedBox(
-                                      width: MediaQuery.of(context).size.width*0.45,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.45,
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           SizedBox(
                                             width: 20,
@@ -212,18 +207,24 @@ class _CartTabState extends State<CartTab> {
                         child: ElevatedButton(
                           onPressed: (() {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>  YourOrderPage(orderModel: OrderModel(
-                      outletID: "Florentine",
-                      userID: "userID",
-                      orderMode: "Delivery",
-                      instructions: "instructions",
-                      items: {},
-                      deliveryLocation: "deliveryLocation",
-                      prepStatus: PrepStatus.preparing.status,
-                      acceptanceStatus: AcceptanceStatus.queued.status,
-                      paymentStatus: PaymentStatus.pending.status,
-                      qrCodeSecret: "qrCodeSecret",
-                      orderDateTime: DateTime.now(), id: 'id'),)));
+                                builder: (context) => YourOrderPage(
+                                      orderModel: OrderModel(
+                                          outletID: "Florentine",
+                                          userID: "userID",
+                                          orderMode: "Delivery",
+                                          instructions: "instructions",
+                                          items: {},
+                                          deliveryLocation: "deliveryLocation",
+                                          prepStatus:
+                                              PrepStatus.preparing.status,
+                                          acceptanceStatus:
+                                              AcceptanceStatus.queued.status,
+                                          paymentStatus:
+                                              PaymentStatus.pending.status,
+                                          qrCodeSecret: "qrCodeSecret",
+                                          orderDateTime: DateTime.now(),
+                                          id: 'id'),
+                                    )));
                           }),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: kBlack,

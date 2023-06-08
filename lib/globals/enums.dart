@@ -1,3 +1,5 @@
+import 'package:campus_go/models/item_model.dart';
+
 enum AcceptanceStatus {
   queued("Queued"),
   accepted("Accepted"),
@@ -43,3 +45,18 @@ enum FoodCategories {
 }
 
 enum ViewType { user, admin }
+
+final Map<String, ItemModel> itemModels = {
+  'pc': ItemModel(
+      id: "pc",
+      name: "Papdi Chaat",
+      price: "160",
+      category: "VEG",
+      offeringOutlet: "offeringOutlet"),
+  'cb': ItemModel(
+      id: "cb",
+      name: "Chicken Biryani",
+      price: "160",
+      category: "NON-VEG",
+      offeringOutlet: "offeringOutlet"),
+};

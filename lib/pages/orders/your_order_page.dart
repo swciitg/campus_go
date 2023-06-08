@@ -164,21 +164,11 @@ class _YourOrderPageState extends State<YourOrderPage> {
               ),
             ),
             ItemCountTile(
-              itemModel: ItemModel(
-                  id: "id",
-                  name: "Papdi Chaat",
-                  price: "160",
-                  category: "VEG",
-                  offeringOutlet: "offeringOutlet"),
+              itemID: 'pc',
               editing: false,
             ),
             ItemCountTile(
-              itemModel: ItemModel(
-                  id: "id",
-                  name: "Chicken Biryani",
-                  price: "160",
-                  category: "NON-VEG",
-                  offeringOutlet: "offeringOutlet"),
+              itemID: 'cb',
               editing: false,
             ),
             const SizedBox(
