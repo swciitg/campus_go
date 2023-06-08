@@ -19,7 +19,7 @@ class _OwnedOutletsPageState extends State<OwnedOutletsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(context, "Choose Outlet",
-          displayProfileIcon: false, displayBackButton: true),
+          displayProfileIcon: false, displayBackButton: false),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(
         height: 56,
