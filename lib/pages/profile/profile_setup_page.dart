@@ -73,26 +73,29 @@ class _ProfileSetupState extends State<ProfileSetup> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: MediaQuery.of(context).viewInsets.bottom != 0
           ? null
-          : SizedBox(
-              height: 56,
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: ElevatedButton(
-                  onPressed: (() {
-                    onFormSubmit();
-                  }),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: kBlack,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8))),
-                  child: Text(
-                    "Submit",
-                    style: MyFonts.w400.setColor(kWhite).size(18),
+          : Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: SizedBox(
+                height: 56,
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: ElevatedButton(
+                    onPressed: (() {
+                      onFormSubmit();
+                    }),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: kBlack,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
+                    child: Text(
+                      "Submit",
+                      style: MyFonts.w400.setColor(kWhite).size(18),
+                    ),
                   ),
                 ),
               ),
-            ),
+          ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: SingleChildScrollView(

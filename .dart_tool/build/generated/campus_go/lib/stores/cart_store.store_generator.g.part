@@ -36,6 +36,22 @@ mixin _$CartStore on _CartStore, Store {
     });
   }
 
+  late final _$cartTotalAtom =
+      Atom(name: '_CartStore.cartTotal', context: context);
+
+  @override
+  int get cartTotal {
+    _$cartTotalAtom.reportRead();
+    return super.cartTotal;
+  }
+
+  @override
+  set cartTotal(int value) {
+    _$cartTotalAtom.reportWrite(value, super.cartTotal, () {
+      super.cartTotal = value;
+    });
+  }
+
   late final _$_CartStoreActionController =
       ActionController(name: '_CartStore', context: context);
 
@@ -45,6 +61,17 @@ mixin _$CartStore on _CartStore, Store {
         _$_CartStoreActionController.startAction(name: '_CartStore.emptyCart');
     try {
       return super.emptyCart();
+    } finally {
+      _$_CartStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic calCartTotal() {
+    final _$actionInfo = _$_CartStoreActionController.startAction(
+        name: '_CartStore.calCartTotal');
+    try {
+      return super.calCartTotal();
     } finally {
       _$_CartStoreActionController.endAction(_$actionInfo);
     }
@@ -98,7 +125,8 @@ mixin _$CartStore on _CartStore, Store {
   String toString() {
     return '''
 cart: ${cart},
-totalItems: ${totalItems}
+totalItems: ${totalItems},
+cartTotal: ${cartTotal}
     ''';
   }
 }

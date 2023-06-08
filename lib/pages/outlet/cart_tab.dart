@@ -171,8 +171,8 @@ class _CartTabState extends State<CartTab> {
                                   "Total Order Value:",
                                   style: MyFonts.w500.setColor(kBlack).size(18),
                                 ),
-                                Text(
-                                  "₹ ${orderTotal(cartStore.cart)}/-",
+                                Text( 
+                                  "₹ ${cartStore.cartTotal}/-",
                                   style: MyFonts.w700.setColor(kBlack).size(18),
                                 ),
                               ]),
