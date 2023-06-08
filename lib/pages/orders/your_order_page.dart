@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-import '../../models/item_model.dart';
 
 class YourOrderPage extends StatefulWidget {
   final OrderModel orderModel;

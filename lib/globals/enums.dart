@@ -1,4 +1,6 @@
 import 'package:campus_go/models/item_model.dart';
+import 'package:campus_go/models/order_model.dart';
+import 'package:campus_go/models/outlet_model.dart';
 
 enum AcceptanceStatus {
   queued("Queued"),
@@ -19,7 +21,6 @@ enum PrepStatus {
 }
 
 enum PaymentStatus {
-  failed("Failed"),
   pending("Pending"),
   successful("Successful");
 
@@ -59,4 +60,117 @@ final Map<String, ItemModel> itemModels = {
       price: "160",
       category: "NON-VEG",
       offeringOutlet: "offeringOutlet"),
+};
+
+final Map<String, OutletModel> outletModels = {
+  'a': OutletModel(
+    outletName: "Lohit Canteen",
+    location: "Lohit Hostel",
+    phoneNumber: "8502909980",
+    category: FoodCategories.veg.category,
+    status: true,
+    outletKey: "outletKey",
+    id: "a",
+    service: [OrderModes.delivery.orderMode, OrderModes.takeaway.orderMode],
+  ),
+  'b': OutletModel(
+      outletName: "Lohit Canteen",
+      location: "Lohit Hostel",
+      phoneNumber: "8502909980",
+      category: FoodCategories.nonveg.category,
+      status: false,
+      outletKey: "outletKey",
+      id: "b",
+      service: [OrderModes.takeaway.orderMode]),
+  'c': OutletModel(
+    outletName: "Lohit Canteen",
+    location: "Lohit Hostel",
+    phoneNumber: "8502909980",
+    category: FoodCategories.vegNonVeg.category,
+    status: true,
+    outletKey: "outletKey",
+    id: "c",
+    service: [OrderModes.delivery.orderMode, OrderModes.takeaway.orderMode],
+  ),
+};
+
+final Map<String, OrderModel> orderModels = {
+  'r': OrderModel(
+      id: "r",
+      outletID: "Florentine",
+      userID: "Chanchal Yadav",
+      orderMode: "Delivery",
+      instructions: "instructions",
+      items: {},
+      deliveryLocation: "deliveryLocation",
+      prepStatus: PrepStatus.preparing.status,
+      acceptanceStatus: AcceptanceStatus.rejected.status,
+      paymentStatus: PaymentStatus.pending.status,
+      qrCodeSecret: "qrCodeSecret",
+      orderDateTime: DateTime.now()),
+       'q': OrderModel(
+      id: "q",
+      outletID: "Florentine",
+      userID: "Chanchal Yadav",
+      orderMode: "Delivery",
+      instructions: "instructions",
+      items: {},
+      deliveryLocation: "deliveryLocation",
+      prepStatus: PrepStatus.preparing.status,
+      acceptanceStatus: AcceptanceStatus.queued.status,
+      paymentStatus: PaymentStatus.pending.status,
+      qrCodeSecret: "qrCodeSecret",
+      orderDateTime: DateTime.now()),
+       'ap': OrderModel(
+      id: "ap",
+      outletID: "Florentine",
+      userID: "Chanchal Yadav",
+      orderMode: "Delivery",
+      instructions: "instructions",
+      items: {},
+      deliveryLocation: "deliveryLocation",
+      prepStatus: PrepStatus.preparing.status,
+      acceptanceStatus: AcceptanceStatus.accepted.status,
+      paymentStatus: PaymentStatus.pending.status,
+      qrCodeSecret: "qrCodeSecret",
+      orderDateTime: DateTime.now()),
+       'asp': OrderModel(
+      id: "asp",
+      outletID: "Florentine",
+      userID: "Chanchal Yadav",
+      orderMode: "Delivery",
+      instructions: "instructions",
+      items: {},
+      deliveryLocation: "deliveryLocation",
+      prepStatus: PrepStatus.preparing.status,
+      acceptanceStatus: AcceptanceStatus.accepted.status,
+      paymentStatus: PaymentStatus.successful.status,
+      qrCodeSecret: "qrCodeSecret",
+      orderDateTime: DateTime.now()),
+       'asr': OrderModel(
+      id: "asr",
+      outletID: "Florentine",
+      userID: "Chanchal Yadav",
+      orderMode: "Delivery",
+      instructions: "instructions",
+      items: {},
+      deliveryLocation: "deliveryLocation",
+      prepStatus: PrepStatus.ready.status,
+      acceptanceStatus: AcceptanceStatus.accepted.status,
+      paymentStatus: PaymentStatus.successful.status,
+      qrCodeSecret: "qrCodeSecret",
+      orderDateTime: DateTime.now()),
+       'aso': OrderModel(
+      id: "aso",
+      outletID: "Florentine",
+      userID: "Chanchal Yadav",
+      orderMode: "Delivery",
+      instructions: "instructions",
+      items: {},
+      deliveryLocation: "deliveryLocation",
+      prepStatus: PrepStatus.outForDelivery.status,
+      acceptanceStatus: AcceptanceStatus.accepted.status,
+      paymentStatus: PaymentStatus.successful.status,
+      qrCodeSecret: "qrCodeSecret",
+      orderDateTime: DateTime.now()),
 };

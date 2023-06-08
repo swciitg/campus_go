@@ -1,3 +1,4 @@
+import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/globals/my_colors.dart';
 import 'package:campus_go/globals/my_fonts.dart';
 import 'package:campus_go/models/outlet_model.dart';
@@ -8,10 +9,10 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 class OutletTile extends StatefulWidget {
-  final OutletModel outletModel;
+  final String outletID;
   const OutletTile({
     super.key,
-    required this.outletModel,
+    required this.outletID,
   });
 
   @override
@@ -21,6 +22,7 @@ class OutletTile extends StatefulWidget {
 class _OutletTileState extends State<OutletTile> {
   @override
   Widget build(BuildContext context) {
+    OutletModel outletModel = outletModels[widget.outletID]!;
     var cartStore = context.read<CartStore>();
 
     return Observer(
@@ -31,7 +33,7 @@ class _OutletTileState extends State<OutletTile> {
             cartStore.emptyCart();
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => OutletPage(
-                      outletModel: widget.outletModel,
+                      outletModel: outletModel,
                     )));
           }),
           child: Container(
@@ -50,7 +52,7 @@ class _OutletTileState extends State<OutletTile> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            widget.outletModel.outletName,
+                            outletModel.outletName,
                             overflow: TextOverflow.ellipsis,
                             style: MyFonts.w600.setColor(kBlack).size(16),
                           ),
@@ -67,7 +69,7 @@ class _OutletTileState extends State<OutletTile> {
                                 const SizedBox(
                                   width: 6,
                                 ),
-                                Text(widget.outletModel.location,
+                                Text(outletModel.location,
                                     overflow: TextOverflow.ellipsis,
                                     style:
                                         MyFonts.w300.setColor(kBlack).size(12)),
@@ -96,7 +98,7 @@ class _OutletTileState extends State<OutletTile> {
                             width: 4,
                           ),
                           Text(
-                            widget.outletModel.category,
+                            outletModel.category,
                             style: MyFonts.w500.setColor(kBlack).size(12),
                           )
                         ],
@@ -114,7 +116,7 @@ class _OutletTileState extends State<OutletTile> {
                             width: 4,
                           ),
                           Text(
-                            widget.outletModel.status ? "OPEN" : "CLOSE",
+                            outletModel.status ? "OPEN" : "CLOSE",
                             style: MyFonts.w500.setColor(kBlack).size(12),
                           )
                         ],

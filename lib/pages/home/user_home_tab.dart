@@ -58,40 +58,40 @@ class _UserHomeTabState extends State<UserHomeTab> {
           const SizedBox(
             height: 12,
           ),
-          OutletTile(
-            outletModel: OutletModel(
-              outletName: "Lohit Canteen",
-              location: "Lohit Hostel",
-              phoneNumber: "8502909980",
-              category: FoodCategories.veg.category,
-              status: true,
-              outletKey: "outletKey",
-              id: "id",
-              service: [OrderModes.delivery.orderMode,OrderModes.takeaway.orderMode],
-            ),
-          ),
-          OutletTile(
-            outletModel: OutletModel(
-                outletName: "Lohit Canteen",
-                location: "Lohit Hostel",
-                phoneNumber: "8502909980",
-                category: FoodCategories.nonveg.category,
-                status: false,
-                outletKey: "outletKey",
-                id: "id", service: [OrderModes.takeaway.orderMode]),
-          ),
-           OutletTile(
-            outletModel: OutletModel(
-              outletName: "Lohit Canteen",
-              location: "Lohit Hostel",
-              phoneNumber: "8502909980",
-              category: FoodCategories.vegNonVeg.category,
-              status: true,
-              outletKey: "outletKey",
-              id: "id",
-              service: [OrderModes.delivery.orderMode,OrderModes.takeaway.orderMode],
-            ),
-          ),
+          // OutletTile(
+          //   outletModel: OutletModel(
+          //     outletName: "Lohit Canteen",
+          //     location: "Lohit Hostel",
+          //     phoneNumber: "8502909980",
+          //     category: FoodCategories.veg.category,
+          //     status: true,
+          //     outletKey: "outletKey",
+          //     id: "id",
+          //     service: [OrderModes.delivery.orderMode,OrderModes.takeaway.orderMode],
+          //   ),
+          // ),
+          // OutletTile(
+          //   outletModel: OutletModel(
+          //       outletName: "Lohit Canteen",
+          //       location: "Lohit Hostel",
+          //       phoneNumber: "8502909980",
+          //       category: FoodCategories.nonveg.category,
+          //       status: false,
+          //       outletKey: "outletKey",
+          //       id: "id", service: [OrderModes.takeaway.orderMode]),
+          // ),
+          //  OutletTile(
+          //   outletModel: OutletModel(
+          //     outletName: "Lohit Canteen",
+          //     location: "Lohit Hostel",
+          //     phoneNumber: "8502909980",
+          //     category: FoodCategories.vegNonVeg.category,
+          //     status: true,
+          //     outletKey: "outletKey",
+          //     id: "id",
+          //     service: [OrderModes.delivery.orderMode,OrderModes.takeaway.orderMode],
+          //   ),
+          // ),
         ],
       ),
     );

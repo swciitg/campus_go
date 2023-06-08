@@ -1,5 +1,4 @@
 import 'package:campus_go/globals/enums.dart';
-import 'package:campus_go/models/item_model.dart';
 import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/orders/your_order_page.dart';
 import 'package:campus_go/stores/cart_store.dart';

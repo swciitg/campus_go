@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 
 import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
-import '../../models/item_model.dart';
 import '../../widgets/outlet/change_item_count_tile.dart';
 import '../../widgets/ui/appbar.dart';
 

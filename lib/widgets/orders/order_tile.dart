@@ -11,11 +11,11 @@ import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
 
 class OrderTile extends StatefulWidget {
-  final OrderModel orderModel;
+  final String orderID;
   // final ViewType viewType;
   const OrderTile({
     super.key,
-    required this.orderModel,
+    required this.orderID,
     // required this.viewType,
   });
 
@@ -26,14 +26,15 @@ class OrderTile extends StatefulWidget {
 class _OrderTileState extends State<OrderTile> {
   @override
   Widget build(BuildContext context) {
+    OrderModel orderModel = orderModels[widget.orderID]!;
     var userStore = context.read<UserStore>();
     final ViewType viewType = userStore.viewType;
     int count = 0;
-    for (var cnt in widget.orderModel.items.values) {
+    for (var cnt in orderModel.items.values) {
       count = count + cnt;
     }
     Duration passedDuration =
-        DateTime.now().difference(widget.orderModel.orderDateTime);
+        DateTime.now().difference(orderModel.orderDateTime);
     String timeagoString =
         timeago.format(DateTime.now().subtract(passedDuration));
         
@@ -46,16 +47,16 @@ class _OrderTileState extends State<OrderTile> {
             if (viewType == ViewType.admin) {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) =>
-                      CustomerOrderPage(orderModel: widget.orderModel)));
+                      CustomerOrderPage(orderModel: orderModel)));
             } else {
-              if (widget.orderModel.acceptanceStatus ==
+              if (orderModel.acceptanceStatus ==
                       AcceptanceStatus.queued.status ||
-                  (widget.orderModel.paymentStatus ==
+                  (orderModel.paymentStatus ==
                           PaymentStatus.successful.status &&
-                      widget.orderModel.prepStatus == PrepStatus.ready.status)) {
+                      orderModel.prepStatus == PrepStatus.ready.status)) {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        YourOrderPage(orderModel: widget.orderModel)));
+                        YourOrderPage(orderModel: orderModel)));
               }
             }
           }),
@@ -76,8 +77,8 @@ class _OrderTileState extends State<OrderTile> {
                         children: [
                           Text(
                             viewType == ViewType.admin
-                                ? widget.orderModel.userID
-                                : widget.orderModel.outletID,
+                                ? orderModel.userID
+                                : orderModel.outletID,
                             overflow: TextOverflow.ellipsis,
                             style: MyFonts.w600.setColor(kBlack).size(16),
                           ),
@@ -91,7 +92,7 @@ class _OrderTileState extends State<OrderTile> {
                         ]),
                   ),
                 ),
-                if (widget.orderModel.acceptanceStatus ==
+                if (orderModel.acceptanceStatus ==
                     AcceptanceStatus.queued.status)
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -104,7 +105,7 @@ class _OrderTileState extends State<OrderTile> {
                                   text: "Or. ID. ",
                                   style: MyFonts.w400.setColor(kBlack).size(16)),
                               TextSpan(
-                                  text: widget.orderModel.id,
+                                  text: orderModel.id,
                                   style: MyFonts.w600.setColor(kBlack).size(16)),
                             ],
                           ): TextSpan(
@@ -155,7 +156,7 @@ class _OrderTileState extends State<OrderTile> {
                           ),
                         ),
                       ])
-                else if (widget.orderModel.acceptanceStatus ==
+                else if (orderModel.acceptanceStatus ==
                     AcceptanceStatus.rejected.status)
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -168,7 +169,7 @@ class _OrderTileState extends State<OrderTile> {
                                   text: "Or. ID. ",
                                   style: MyFonts.w400.setColor(kBlack).size(16)),
                               TextSpan(
-                                  text: widget.orderModel.id,
+                                  text: orderModel.id,
                                   style: MyFonts.w600.setColor(kBlack).size(16)),
                             ],
                           ):TextSpan(
@@ -183,7 +184,7 @@ class _OrderTileState extends State<OrderTile> {
                           ),
                         ),
                       ])
-                else if (widget.orderModel.paymentStatus ==
+                else if (orderModel.paymentStatus ==
                     PaymentStatus.pending.status)
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -231,14 +232,14 @@ class _OrderTileState extends State<OrderTile> {
                           ),
                         ),
                       ])
-                else if (widget.orderModel.paymentStatus ==
+                else if (orderModel.paymentStatus ==
                     PaymentStatus.successful.status)
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          widget.orderModel.prepStatus,
+                          orderModel.prepStatus,
                           style: MyFonts.w600.setColor(kBlack).size(12),
                         ),
                         GestureDetector(
@@ -256,7 +257,7 @@ class _OrderTileState extends State<OrderTile> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
-                                    widget.orderModel.orderMode ==
+                                    orderModel.orderMode ==
                                             OrderModes.delivery.orderMode
                                         ? Icons.delivery_dining_outlined
                                         : Icons.front_hand_outlined,
@@ -267,7 +268,7 @@ class _OrderTileState extends State<OrderTile> {
                                     width: 2,
                                   ),
                                   Text(
-                                    widget.orderModel.orderMode,
+                                    orderModel.orderMode,
                                     style: MyFonts.w500.setColor(kWhite).size(12),
                                   )
                                 ]),
