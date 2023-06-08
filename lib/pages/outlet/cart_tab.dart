@@ -54,185 +54,189 @@ class _CartTabState extends State<CartTab> {
                 )
               ],
             ))
-          : Padding(
-              padding: const EdgeInsets.all(16),
-              child: SingleChildScrollView(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 48,
-                        alignment: Alignment.centerLeft,
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Place you order",
-                                style: MyFonts.w600.setColor(kBlack).size(18),
-                              ),
-                              Text(
-                                "Use counter to select quantity",
-                                style: MyFonts.w300.setColor(kBlack).size(10),
-                              ),
-                            ]),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      ListView.builder(
-                        itemCount: cartStore.totalItems,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                        return ItemCountTile(
-                          editing: true,
-                          itemID: cartStore.cart.keys.elementAt(index),
-                        );
-                      }),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Text(
-                        "Select order mode",
-                        style: MyFonts.w500.setColor(kBlack).size(16),
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Container(
-                          height: 24,
-                          alignment: Alignment.center,
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: widget.outletModel.service.length,
-                              scrollDirection: Axis.horizontal,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemBuilder: (BuildContext context, index) {
-                                return Align(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        selectedRadio = index;
-                                      });
-                                    },
-                                    child: SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.45,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                            width: 20,
-                                            height: 20,
-                                            child: Radio(
-                                              value: index,
-                                              groupValue: selectedRadio,
-                                              onChanged: (val) {
-                                                setState(() {
-                                                  selectedRadio = val!;
-                                                });
-                                              },
-                                              activeColor: kBlack,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 6,
-                                          ),
-                                          Text(
-                                            widget.outletModel.service[index],
-                                            style: MyFonts.w400
-                                                .setColor(kBlack)
-                                                .size(12),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              })),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Container(
-                        height: 40,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: kBlack),
-                            borderRadius: BorderRadius.circular(4)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: Row(
+          : GestureDetector(
+            onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+            child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: SingleChildScrollView(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 48,
+                          alignment: Alignment.centerLeft,
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Total Order Value:",
-                                  style: MyFonts.w500.setColor(kBlack).size(18),
+                                  "Place you order",
+                                  style: MyFonts.w600.setColor(kBlack).size(18),
                                 ),
-                                Text( 
-                                  "₹ ${cartStore.cartTotal}/-",
-                                  style: MyFonts.w700.setColor(kBlack).size(18),
+                                Text(
+                                  "Use counter to select quantity",
+                                  style: MyFonts.w300.setColor(kBlack).size(10),
                                 ),
                               ]),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      widget.outletModel.service[selectedRadio] ==
-                              OrderModes.delivery.orderMode
-                          ? Column(
-                              children: [
-                                SizedBox(
-                                    child: CustomTextField(
-                                  hintText: "Delivery Location",
-                                  isNecessary: false,
-                                  controller: _deliveryLocationController,
-                                )),
-                                const SizedBox(
-                                  height: 24,
-                                ),
-                              ],
-                            )
-                          : Container(),
-                      SizedBox(
-                          height: 150,
-                          child: CustomTextField(
-                            hintText: "Any Instruction",
-                            isNecessary: false,
-                            maxLines: null,
-                            inputType: TextInputType.multiline,
-                            expands: true,
-                            textAlignVertical: TextAlignVertical.top,
-                            controller: _instructionsController,
-                          )),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      SizedBox(
-                        height: 56,
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: (() {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => HomePage(index: 1,)));
-                                cartStore.emptyCart();
-                          }),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: kBlack,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8))),
-                          child: Text(
-                            "Make Order",
-                            style: MyFonts.w400.setColor(kWhite).size(18),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        ListView.builder(
+                          itemCount: cartStore.totalItems,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                          return ItemCountTile(
+                            editing: true,
+                            itemID: cartStore.cart.keys.elementAt(index),
+                          );
+                        }),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Text(
+                          "Select order mode",
+                          style: MyFonts.w500.setColor(kBlack).size(16),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Container(
+                            height: 24,
+                            alignment: Alignment.center,
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: widget.outletModel.service.length,
+                                scrollDirection: Axis.horizontal,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (BuildContext context, index) {
+                                  return Align(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          selectedRadio = index;
+                                        });
+                                      },
+                                      child: SizedBox(
+                                        width: MediaQuery.of(context).size.width *
+                                            0.45,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              width: 20,
+                                              height: 20,
+                                              child: Radio(
+                                                value: index,
+                                                groupValue: selectedRadio,
+                                                onChanged: (val) {
+                                                  setState(() {
+                                                    selectedRadio = val!;
+                                                  });
+                                                },
+                                                activeColor: kBlack,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              width: 6,
+                                            ),
+                                            Text(
+                                              widget.outletModel.service[index],
+                                              style: MyFonts.w400
+                                                  .setColor(kBlack)
+                                                  .size(12),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                })),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: kBlack),
+                              borderRadius: BorderRadius.circular(4)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Total Order Value:",
+                                    style: MyFonts.w500.setColor(kBlack).size(18),
+                                  ),
+                                  Text( 
+                                    "₹ ${cartStore.cartTotal}/-",
+                                    style: MyFonts.w700.setColor(kBlack).size(18),
+                                  ),
+                                ]),
                           ),
                         ),
-                      ),
-                    ]),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        widget.outletModel.service[selectedRadio] ==
+                                OrderModes.delivery.orderMode
+                            ? Column(
+                                children: [
+                                  SizedBox(
+                                      child: CustomTextField(
+                                    hintText: "Delivery Location",
+                                    isNecessary: false,
+                                    controller: _deliveryLocationController,
+                                  )),
+                                  const SizedBox(
+                                    height: 24,
+                                  ),
+                                ],
+                              )
+                            : Container(),
+                        SizedBox(
+                            height: 150,
+                            child: CustomTextField(
+                              focusNode: FocusNode(),
+                              hintText: "Any Instruction",
+                              isNecessary: false,
+                              maxLines: null,
+                              inputType: TextInputType.multiline,
+                              expands: true,
+                              textAlignVertical: TextAlignVertical.top,
+                              controller: _instructionsController,
+                            )),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        SizedBox(
+                          height: 56,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: (() {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => HomePage(index: 1,)));
+                                  cartStore.emptyCart();
+                            }),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: kBlack,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8))),
+                            child: Text(
+                              "Make Order",
+                              style: MyFonts.w400.setColor(kWhite).size(18),
+                            ),
+                          ),
+                        ),
+                      ]),
+                ),
               ),
-            ),
+          ),
     );
   }
 }
