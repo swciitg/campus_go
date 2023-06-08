@@ -51,7 +51,6 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
               OrderTile(
                 orderModel: OrderModel(
@@ -67,7 +66,6 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
                OrderTile(
                 orderModel: OrderModel(
@@ -83,7 +81,6 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
              
             ],
@@ -120,7 +117,6 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
               OrderTile(
                 orderModel: OrderModel(
@@ -136,7 +132,6 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
               OrderTile(
                 orderModel: OrderModel(
@@ -152,7 +147,6 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
             ],
           ),

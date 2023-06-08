@@ -49,7 +49,6 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
                     paymentStatus: PaymentStatus.successful.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
              OrderTile(
                 orderModel: OrderModel(
@@ -65,7 +64,6 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
                     paymentStatus: PaymentStatus.successful.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
               OrderTile(
                 orderModel: OrderModel(
@@ -81,7 +79,6 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
                     paymentStatus: PaymentStatus.successful.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
             ],
           ),
@@ -116,7 +113,6 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
               OrderTile(
                 orderModel: OrderModel(
@@ -132,7 +128,6 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
               OrderTile(
                 orderModel: OrderModel(
@@ -148,7 +143,6 @@ class _CurrentOrdersTabState extends State<CurrentOrdersTab> {
                     paymentStatus: PaymentStatus.pending.status,
                     qrCodeSecret: "qrCodeSecret",
                     orderDateTime: DateTime.now()),
-                    viewType: viewType,
               ),
             ],
           ),
