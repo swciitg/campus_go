@@ -44,6 +44,17 @@ mixin _$CartStore on _CartStore, Store {
       ActionController(name: '_CartStore', context: context);
 
   @override
+  void emptyCart() {
+    final _$actionInfo =
+        _$_CartStoreActionController.startAction(name: '_CartStore.emptyCart');
+    try {
+      return super.emptyCart();
+    } finally {
+      _$_CartStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void calcTotalItems() {
     final _$actionInfo = _$_CartStoreActionController.startAction(
         name: '_CartStore.calcTotalItems');
@@ -71,6 +82,28 @@ mixin _$CartStore on _CartStore, Store {
         _$_CartStoreActionController.startAction(name: '_CartStore.removeItem');
     try {
       return super.removeItem(itemID);
+    } finally {
+      _$_CartStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void increaseItemCount(String itemID) {
+    final _$actionInfo = _$_CartStoreActionController.startAction(
+        name: '_CartStore.increaseItemCount');
+    try {
+      return super.increaseItemCount(itemID);
+    } finally {
+      _$_CartStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void decreaseItemCount(String itemID) {
+    final _$actionInfo = _$_CartStoreActionController.startAction(
+        name: '_CartStore.decreaseItemCount');
+    try {
+      return super.decreaseItemCount(itemID);
     } finally {
       _$_CartStoreActionController.endAction(_$actionInfo);
     }

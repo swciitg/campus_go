@@ -163,7 +163,6 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                   category: "VEG",
                   offeringOutlet: "offeringOutlet"),
               editing: false,
-              count: 1,
             ),
             ItemCountTile(
               itemModel: ItemModel(
@@ -173,7 +172,6 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                   category: "NON-VEG",
                   offeringOutlet: "offeringOutlet"),
               editing: false,
-              count: 2,
             ),
             const SizedBox(
               height: 16,
