@@ -1,4 +1,3 @@
-import 'package:campus_go/functions/utility/calculate_order_value.dart';
 import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/home/home_page.dart';
@@ -13,7 +12,6 @@ import 'package:provider/provider.dart';
 
 import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
-
 
 class CartTab extends StatefulWidget {
   final OutletModel outletModel;
@@ -32,7 +30,8 @@ class _CartTabState extends State<CartTab> {
   @override
   void initState() {
     super.initState();
-    _deliveryLocationController.text = context.read<UserStore>().userData['deliveryLocation']!;
+    _deliveryLocationController.text =
+        context.read<UserStore>().userData['deliveryLocation']!;
   }
 
   @override
@@ -55,8 +54,8 @@ class _CartTabState extends State<CartTab> {
               ],
             ))
           : GestureDetector(
-            onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-            child: Padding(
+              onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+              child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: SingleChildScrollView(
                   child: Column(
@@ -84,16 +83,16 @@ class _CartTabState extends State<CartTab> {
                           height: 8,
                         ),
                         ListView.builder(
-                          itemCount: cartStore.totalItems,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                          return ItemCountTile(
-                            editing: true,
-                            itemID: cartStore.cart.keys.elementAt(index),
-                          );
-                        }),
+                            itemCount: cartStore.totalItems,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return ItemCountTile(
+                                editing: true,
+                                itemID: cartStore.cart.keys.elementAt(index),
+                              );
+                            }),
                         const SizedBox(
                           height: 16,
                         ),
@@ -121,8 +120,9 @@ class _CartTabState extends State<CartTab> {
                                         });
                                       },
                                       child: SizedBox(
-                                        width: MediaQuery.of(context).size.width *
-                                            0.45,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.45,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -167,15 +167,18 @@ class _CartTabState extends State<CartTab> {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 8),
                             child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "Total Order Value:",
-                                    style: MyFonts.w500.setColor(kBlack).size(18),
+                                    style:
+                                        MyFonts.w500.setColor(kBlack).size(18),
                                   ),
-                                  Text( 
+                                  Text(
                                     "₹ ${cartStore.cartTotal}/-",
-                                    style: MyFonts.w700.setColor(kBlack).size(18),
+                                    style:
+                                        MyFonts.w700.setColor(kBlack).size(18),
                                   ),
                                 ]),
                           ),
@@ -220,8 +223,10 @@ class _CartTabState extends State<CartTab> {
                           child: ElevatedButton(
                             onPressed: (() {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => HomePage(index: 1,)));
-                                  cartStore.emptyCart();
+                                  builder: (context) => HomePage(
+                                        index: 1,
+                                      )));
+                              cartStore.emptyCart();
                             }),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: kBlack,
@@ -236,7 +241,7 @@ class _CartTabState extends State<CartTab> {
                       ]),
                 ),
               ),
-          ),
+            ),
     );
   }
 }

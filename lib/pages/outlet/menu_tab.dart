@@ -57,10 +57,15 @@ class _MenuTabState extends State<MenuTab> {
                       ]),
                   Container(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      "${cartStore.totalItems} Items Added",
-                      style: MyFonts.w500.setColor(kBlack).size(12),
-                    ),
+                    child: RichText(text: TextSpan(children: [
+                      TextSpan(text: "${cartStore.totalItems} ",
+                      style: MyFonts.w500.setColor(kBlack).size(12),),
+                      TextSpan(text: cartStore.totalItems==1?"Item" :"Items",
+                      style: MyFonts.w500.setColor(kBlack).size(12),),
+                      TextSpan(text: " Added",
+                      style: MyFonts.w500.setColor(kBlack).size(12),),
+
+                    ]),)
                   )
                 ],
               ),
