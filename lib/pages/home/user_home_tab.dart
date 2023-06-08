@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 
 import '../../globals/my_colors.dart';
 
-class HomeTab extends StatefulWidget {
-  const HomeTab({super.key});
+class UserHomeTab extends StatefulWidget {
+  const UserHomeTab({super.key});
 
   @override
-  State<HomeTab> createState() => _HomeTabState();
+  State<UserHomeTab> createState() => _UserHomeTabState();
 }
 
-class _HomeTabState extends State<HomeTab> {
+class _UserHomeTabState extends State<UserHomeTab> {
   @override
   Widget build(BuildContext context) {
     return Padding(
