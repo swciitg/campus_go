@@ -36,9 +36,6 @@ class _OrderTileState extends State<OrderTile> {
         DateTime.now().difference(orderModel.orderDateTime);
     String timeagoString =
         timeago.format(DateTime.now().subtract(passedDuration));
-print(1);
-    print(userStore.userData);
-    print(userStore.adminData);
     return Observer(
       builder: (context) => Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
