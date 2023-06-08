@@ -3,6 +3,7 @@ import 'package:campus_go/models/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../functions/utility/calculate_order_value.dart';
 import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
 import '../../widgets/outlet/change_item_count_tile.dart';
@@ -89,7 +90,7 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                               text: "Call: ",
                               style: MyFonts.w300.size(12).setColor(kBlack)),
                           TextSpan(
-                              text: "Customer phone no",
+                              text:"+91 ${userModels[widget.orderModel.userID]!.phoneNumber}",
                               style: MyFonts.w600.size(12).setColor(kBlack)),
                         ])),
                       ]),
@@ -106,7 +107,7 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                           text: "By: ",
                           style: MyFonts.w300.size(12).setColor(kBlack)),
                       TextSpan(
-                          text: widget.orderModel.userID,
+                          text: userModels[widget.orderModel.userID]!.username,
                           style: MyFonts.w600.size(12).setColor(kBlack)),
                     ])),
                     const SizedBox(
@@ -142,7 +143,7 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
             const SizedBox(
               height: 16,
             ),
-            if (widget.orderModel.paymentStatus == PaymentStatus.pending.status)
+            if (widget.orderModel.acceptanceStatus==AcceptanceStatus.accepted.status && widget.orderModel.paymentStatus == PaymentStatus.pending.status)
               Column(
                 children: [
                   Text(
@@ -154,14 +155,18 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                   ),
                 ],
               ),
-            ItemCountTile(
-              itemID: 'pc',
-              editing: false,
-            ),
-            ItemCountTile(
-              itemID: 'cb',
-              editing: false,
-            ),
+            ListView.builder(
+                itemCount: widget.orderModel.items.length,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  String itemID = widget.orderModel.items.keys.elementAt(index);
+                  return ItemCountTile(
+                    editing: false,
+                    itemID: itemID,
+                    count: widget.orderModel.items[itemID],
+                  );
+                }),
             const SizedBox(
               height: 16,
             ),
@@ -179,10 +184,21 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                         "Total Order Value:",
                         style: MyFonts.w500.setColor(kBlack).size(18),
                       ),
-                      Text(
-                        "₹ " + "3350" + "/-",
-                        style: MyFonts.w700.setColor(kBlack).size(18),
-                      ),
+                      RichText(
+                          text: TextSpan(children: [
+                        TextSpan(
+                          text: "₹ ",
+                          style: MyFonts.w700.setColor(kBlack).size(18),
+                        ),
+                        TextSpan(
+                          text: orderTotal(widget.orderModel.items).toString(),
+                          style: MyFonts.w700.setColor(kBlack).size(18),
+                        ),
+                        TextSpan(
+                          text: "/-",
+                          style: MyFonts.w700.setColor(kBlack).size(18),
+                        )
+                      ]))
                     ]),
               ),
             ),

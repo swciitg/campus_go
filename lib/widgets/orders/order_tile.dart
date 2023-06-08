@@ -1,7 +1,7 @@
 import 'package:campus_go/functions/utility/calculate_order_value.dart';
 import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/order_model.dart';
-import 'package:campus_go/pages/orders/customer_order.dart';
+import 'package:campus_go/pages/orders/customer_order_page.dart';
 import 'package:campus_go/pages/orders/your_order_page.dart';
 import 'package:campus_go/stores/user_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
