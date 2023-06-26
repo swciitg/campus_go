@@ -16,7 +16,8 @@ class ItemCountTile extends StatefulWidget {
   const ItemCountTile({
     super.key,
     required this.editing,
-    required this.itemID, this.count,
+    required this.itemID,
+    this.count,
   });
 
   @override
@@ -27,8 +28,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
   @override
   Widget build(BuildContext context) {
     ItemModel itemModel = itemModels[widget.itemID]!;
-    
-     
+
     var cartStore = context.read<CartStore>();
     return Observer(
       builder: (context) => Padding(
@@ -129,8 +129,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                           color: kWhite,
                           alignment: Alignment.center,
                           child: Text(
-                            (cartStore.cart[itemModel.id] ?? 0)
-                                .toString(),
+                            (cartStore.cart[itemModel.id] ?? 0).toString(),
                             style: MyFonts.w500.setColor(kBlack).size(14),
                           ),
                         )),
@@ -161,12 +160,32 @@ class _ItemCountTileState extends State<ItemCountTile> {
                             style: MyFonts.w500.setColor(kBlack).size(16),
                           ),
                           TextSpan(
-                            text: (widget.count??0).toString(),
+                            text: (widget.count ?? 0).toString(),
                             style: MyFonts.w500.setColor(kBlack).size(18),
                           )
                         ]),
                       ),
-                    )
+                    ),
+              if (widget.editing)
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: GestureDetector(
+                    onTap: () {
+                      cartStore.removeItem(itemModel.id);
+                    },
+                    child: Container(
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4), color: kBlack),
+                          child: const Icon(
+                                Icons.clear_outlined,
+                                color: kWhite,
+                                size: 20,
+                              ),
+                    ),
+                  ),
+                )
             ]),
           ),
         ),
