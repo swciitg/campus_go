@@ -1,5 +1,7 @@
+import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/item_model.dart';
 import 'package:campus_go/stores/cart_store.dart';
+import 'package:campus_go/stores/user_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,6 +26,7 @@ class _MenuTileState extends State<MenuTile> {
   @override
   Widget build(BuildContext context) {
     var cartStore = context.read<CartStore>();
+    var userStore = context.read<UserStore>();
     return Observer(
       builder:(context)=>Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -33,7 +36,7 @@ class _MenuTileState extends State<MenuTile> {
               border: Border.all(width: 0.5, color: kBlack),
               borderRadius: BorderRadius.circular(8)),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+            padding: const EdgeInsets.fromLTRB(16, 6, 8, 6),
             child: Row(children: [
               Expanded(
                 // flex: 7,
@@ -88,7 +91,7 @@ class _MenuTileState extends State<MenuTile> {
                       ]),
                 ),
               ),
-              widget.isOpen? cartStore.cart.containsKey(widget.itemModel.id)
+           userStore.viewType==ViewType.user?   widget.isOpen? cartStore.cart.containsKey(widget.itemModel.id)
                   ? GestureDetector(
                       onTap: () {
                         cartStore.removeItem(widget.itemModel.id);
@@ -136,7 +139,11 @@ class _MenuTileState extends State<MenuTile> {
                           style: MyFonts.w500.setColor(kWhite).size(12),
                         ),
                       ),
-                    ):Container()
+                    ):Container():
+                    SizedBox(width: 66,height: 30,child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+                      const SizedBox(height: 30,width: 25,child: Icon(Icons.edit_outlined,size: 28,),),
+                      Container(height: 25,width: 25,decoration: BoxDecoration(borderRadius: BorderRadius.circular(4),color: kBlack),child: const Icon(Icons.clear_outlined,color: kWhite,size: 20,),),
+                    ],),)
             ]),
           ),
         ),

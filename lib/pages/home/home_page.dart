@@ -1,4 +1,5 @@
 import 'package:campus_go/globals/enums.dart';
+import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/home/admin_home_tab.dart';
 import 'package:campus_go/stores/user_store.dart';
 import 'package:campus_go/widgets/ui/appbar.dart';
@@ -13,9 +14,10 @@ import 'user_home_tab.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatefulWidget {
+  final OutletModel? outletModel;
   static String id = "/home";
   int? index;
-  HomePage({super.key, this.index});
+  HomePage({super.key, this.index, this.outletModel});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -33,7 +35,7 @@ class _HomePageState extends State<HomePage> {
     var userStore = context.read<UserStore>();
     final tabs = [
       userStore.viewType == ViewType.admin
-          ? const AdminHomeTab()
+          ? AdminHomeTab(outletModel: widget.outletModel!,)
           : const UserHomeTab(),
       const OrdersTab(),
     ];

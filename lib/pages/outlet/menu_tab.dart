@@ -1,8 +1,10 @@
+import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/globals/my_colors.dart';
 import 'package:campus_go/globals/my_fonts.dart';
 import 'package:campus_go/models/item_model.dart';
 import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/stores/cart_store.dart';
+import 'package:campus_go/stores/user_store.dart';
 import 'package:campus_go/widgets/outlet/menu_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -20,6 +22,7 @@ class _MenuTabState extends State<MenuTab> {
   @override
   Widget build(BuildContext context) {
     var cartStore = context.read<CartStore>();
+    var userStore = context.read<UserStore>();
     return Observer(
       builder: (context)=>Padding(
         padding: const EdgeInsets.all(16),
@@ -55,7 +58,7 @@ class _MenuTabState extends State<MenuTab> {
                           style: MyFonts.w300.setColor(kBlack).size(10),
                         ),
                       ]),
-                  Container(
+                if(userStore.viewType==ViewType.user)  Container(
                     alignment: Alignment.centerRight,
                     child: RichText(text: TextSpan(children: [
                       TextSpan(text: "${cartStore.totalItems} ",

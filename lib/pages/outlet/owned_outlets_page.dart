@@ -1,3 +1,4 @@
+import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/admin_model.dart';
 import 'package:campus_go/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class _OwnedOutletsPageState extends State<OwnedOutletsPage> {
               onPressed: (() {
                 // onFormSubmit();
                  Navigator.of(context)
-              .pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>HomePage()), (route) => false);
+              .pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>HomePage(outletModel: outletModels['a'],)), (route) => false);
               }),
               style: ElevatedButton.styleFrom(
                   backgroundColor: kBlack,

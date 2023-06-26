@@ -3,6 +3,7 @@ import 'package:campus_go/globals/my_fonts.dart';
 import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/outlet/cart_tab.dart';
 import 'package:campus_go/pages/outlet/menu_tab.dart';
+import 'package:campus_go/widgets/outlet/outlet_info.dart';
 import 'package:campus_go/widgets/ui/appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -25,110 +26,8 @@ class _OutletPageState extends State<OutletPage> {
         body: SafeArea(
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 32,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                widget.outletModel.outletName,
-                                style: MyFonts.w600.setColor(kBlack).size(24),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              SizedBox(
-                                width: 90,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    const Icon(
-                                      Icons.pin_drop_outlined,
-                                      size: 14,
-                                    ),
-                                    const SizedBox(
-                                      width: 6,
-                                    ),
-                                    Text(widget.outletModel.location,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: MyFonts.w300
-                                            .setColor(kBlack)
-                                            .size(12)),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 2),
-                          child: Container(
-                            height: 2,
-                            width: 30,
-                            color: kBlack,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 18,
-                        ),
-                        SizedBox(
-                          height: 18,
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      const Icon(
-                                        Icons.phone_outlined,
-                                        size: 16,
-                                      ),
-                                      const SizedBox(
-                                        width: 4,
-                                      ),
-                                      Text(
-                                        "+91 ${widget.outletModel.phoneNumber}",
-                                        style: MyFonts.w300,
-                                        overflow: TextOverflow.ellipsis,
-                                      )
-                                    ]),
-                                SizedBox(
-                                  width: 80,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      const Icon(
-                                        Icons.circle,
-                                        size: 14,
-                                      ),
-                                      const SizedBox(
-                                        width: 4,
-                                      ),
-                                      Text(
-                                        widget.outletModel.status?"OPEN":"CLOSED",
-                                        style: MyFonts.w500
-                                            .setColor(kBlack)
-                                            .size(12),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ]),
-                        ),
-                        // SizedBox(height: 16,),
-                      ]),
-                ),
-                const Divider(
-                  color: kBlack,
-                  thickness: 1,
-                  height: 1,
-                ),
+                OutletInfo(outletModel: widget.outletModel),
+                
                 TabBar(indicatorColor: kBlack,  tabs: [
                   Container(
                     height: 48,
