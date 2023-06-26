@@ -22,24 +22,27 @@ class _OwnedOutletsPageState extends State<OwnedOutletsPage> {
       appBar: appBar(context, "Choose Outlet",
           displayProfileIcon: false, displayBackButton: false),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: SizedBox(
-        height: 56,
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: ElevatedButton(
-            onPressed: (() {
-              // onFormSubmit();
-               Navigator.of(context)
-            .pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>HomePage()), (route) => false);
-            }),
-            style: ElevatedButton.styleFrom(
-                backgroundColor: kBlack,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8))),
-            child: Text(
-              "Proceed",
-              style: MyFonts.w400.setColor(kWhite).size(18),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 16),
+        child: SizedBox(
+          height: 56,
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: ElevatedButton(
+              onPressed: (() {
+                // onFormSubmit();
+                 Navigator.of(context)
+              .pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>HomePage()), (route) => false);
+              }),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: kBlack,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8))),
+              child: Text(
+                "Proceed",
+                style: MyFonts.w400.setColor(kWhite).size(18),
+              ),
             ),
           ),
         ),
