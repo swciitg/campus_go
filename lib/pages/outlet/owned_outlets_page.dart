@@ -48,35 +48,37 @@ class _OwnedOutletsPageState extends State<OwnedOutletsPage> {
           ),
         ),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-          child: Center(
-            child: ListView.builder(
-              itemCount: widget.adminModel.outletsOwned.length,
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context,index){
-              return Align(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedOutlet=index;
-                      });
-                    },
-                    child: Container(
-                      height: 64,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(border: Border.all(color: kBlack.withOpacity(selectedOutlet==index?1:0.25),width: selectedOutlet==index?2:1),color: kWhite,borderRadius: BorderRadius.circular(8)),
-                      child: Text(widget.adminModel.outletsOwned[index],style: MyFonts.w500.setColor(kBlack).size(24),),
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+            child: Center(
+              child: ListView.builder(
+                itemCount: widget.adminModel.outletsOwned.length,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context,index){
+                return Align(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedOutlet=index;
+                        });
+                      },
+                      child: Container(
+                        height: 64,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(border: Border.all(color: kBlack.withOpacity(selectedOutlet==index?1:0.25),width: selectedOutlet==index?2:1),color: kWhite,borderRadius: BorderRadius.circular(8)),
+                        child: Text(widget.adminModel.outletsOwned[index],style: MyFonts.w500.setColor(kBlack).size(24),),
+                      ),
                     ),
                   ),
-                ),
-              );
-            }),
+                );
+              }),
+            ),
           ),
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/item_model.dart';
+import 'package:campus_go/pages/outlet/edit_item_page.dart';
 import 'package:campus_go/stores/cart_store.dart';
 import 'package:campus_go/stores/user_store.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +14,7 @@ import '../../globals/my_fonts.dart';
 class MenuTile extends StatefulWidget {
   final ItemModel itemModel;
   final bool isOpen;
-  const MenuTile(
-      {super.key,
-      required this.itemModel,
-      required this.isOpen});
+  const MenuTile({super.key, required this.itemModel, required this.isOpen});
 
   @override
   State<MenuTile> createState() => _MenuTileState();
@@ -28,7 +26,7 @@ class _MenuTileState extends State<MenuTile> {
     var cartStore = context.read<CartStore>();
     var userStore = context.read<UserStore>();
     return Observer(
-      builder:(context)=>Padding(
+      builder: (context) => Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Container(
           height: 64,
@@ -60,11 +58,13 @@ class _MenuTileState extends State<MenuTile> {
                                 children: [
                                   Text(
                                     "Price: ",
-                                    style: MyFonts.w300.setColor(kBlack).size(12),
+                                    style:
+                                        MyFonts.w300.setColor(kBlack).size(12),
                                   ),
                                   Text(
                                     "₹ ${widget.itemModel.price}",
-                                    style: MyFonts.w500.setColor(kBlack).size(12),
+                                    style:
+                                        MyFonts.w500.setColor(kBlack).size(12),
                                   ),
                                   const SizedBox(
                                     width: 8,
@@ -81,7 +81,8 @@ class _MenuTileState extends State<MenuTile> {
                                   ),
                                   Text(
                                     widget.itemModel.category,
-                                    style: MyFonts.w300.setColor(kBlack).size(12),
+                                    style:
+                                        MyFonts.w300.setColor(kBlack).size(12),
                                   ),
                                 ],
                               )
@@ -91,59 +92,95 @@ class _MenuTileState extends State<MenuTile> {
                       ]),
                 ),
               ),
-           userStore.viewType==ViewType.user?   widget.isOpen? cartStore.cart.containsKey(widget.itemModel.id)
-                  ? GestureDetector(
-                      onTap: () {
-                        cartStore.removeItem(widget.itemModel.id);
-                      },
-                      child: Container(
-                        width: 74,
-                        height: 32,
-                        decoration: BoxDecoration(
-                            color: kWhite,
-                            border: Border.all(color: kBlack),
-                            borderRadius: BorderRadius.circular(4)),
-                        alignment: Alignment.center,
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(
-                                Icons.close_outlined,
-                                size: 12,
+              userStore.viewType == ViewType.user
+                  ? widget.isOpen
+                      ? cartStore.cart.containsKey(widget.itemModel.id)
+                          ? GestureDetector(
+                              onTap: () {
+                                cartStore.removeItem(widget.itemModel.id);
+                              },
+                              child: Container(
+                                width: 74,
+                                height: 32,
+                                decoration: BoxDecoration(
+                                    color: kWhite,
+                                    border: Border.all(color: kBlack),
+                                    borderRadius: BorderRadius.circular(4)),
+                                alignment: Alignment.center,
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        Icons.close_outlined,
+                                        size: 12,
+                                      ),
+                                      const SizedBox(
+                                        width: 2,
+                                      ),
+                                      Text(
+                                        "Remove",
+                                        style: MyFonts.w500
+                                            .setColor(kBlack)
+                                            .size(12),
+                                      )
+                                    ]),
                               ),
-                              const SizedBox(
-                                width: 2,
+                            )
+                          : GestureDetector(
+                              onTap: () {
+                                cartStore.addItem(widget.itemModel.id);
+                              },
+                              child: Container(
+                                width: 74,
+                                height: 32,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    color: kBlack,
+                                    border: Border.all(color: kBlack),
+                                    borderRadius: BorderRadius.circular(4)),
+                                child: Text(
+                                  "Add",
+                                  style: MyFonts.w500.setColor(kWhite).size(12),
+                                ),
                               ),
-                              Text(
-                                "Remove",
-                                style: MyFonts.w500.setColor(kBlack).size(12),
-                              )
-                            ]),
+                            )
+                      : Container()
+                  : SizedBox(
+                      width: 66,
+                      height: 30,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EditItemPage(itemModel: widget.itemModel,)));
+                            },
+                            child: const SizedBox(
+                              height: 30,
+                              width: 25,
+                              child: Icon(
+                                Icons.edit_outlined,
+                                size: 28,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                color: kBlack),
+                            child: const Icon(
+                              Icons.clear_outlined,
+                              color: kWhite,
+                              size: 20,
+                            ),
+                          ),
+                        ],
                       ),
                     )
-                  : GestureDetector(
-                      onTap: () {
-                        cartStore.addItem(widget.itemModel.id);
-                      },
-                      child: Container(
-                        width: 74,
-                        height: 32,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: kBlack,
-                            border: Border.all(color: kBlack),
-                            borderRadius: BorderRadius.circular(4)),
-                        child: Text(
-                          "Add",
-                          style: MyFonts.w500.setColor(kWhite).size(12),
-                        ),
-                      ),
-                    ):Container():
-                    SizedBox(width: 66,height: 30,child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-                      const SizedBox(height: 30,width: 25,child: Icon(Icons.edit_outlined,size: 28,),),
-                      Container(height: 25,width: 25,decoration: BoxDecoration(borderRadius: BorderRadius.circular(4),color: kBlack),child: const Icon(Icons.clear_outlined,color: kWhite,size: 20,),),
-                    ],),)
             ]),
           ),
         ),
