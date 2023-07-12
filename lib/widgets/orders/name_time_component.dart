@@ -25,7 +25,7 @@ class NameTimeComponent extends StatelessWidget {
     String timeagoString =
         timeago.format(DateTime.now().subtract(passedDuration));
     return Container(
-      color: kWhite,
+      // color: kWhite,
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,14 +34,14 @@ class NameTimeComponent extends StatelessWidget {
                   ? userModels[orderModel.userID]!.username
                   : outletModels[orderModel.outletID]!.outletName,
               overflow: TextOverflow.ellipsis,
-              style: MyFonts.w600.setColor(kBlack).size(16),
+              style: MyFonts.w600.setColor(kWhite).size(16),
             ),
             // const SizedBox(height: 8,),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 6),
               child: Text("Ordered $timeagoString",
                   overflow: TextOverflow.ellipsis,
-                  style: MyFonts.w300.setColor(kBlack).size(8)),
+                  style: MyFonts.w300.setColor(kWhite).size(8)),
             )
           ]),
     );
