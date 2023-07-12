@@ -1,7 +1,10 @@
+import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/pages/orders/current_orders_tab.dart';
 import 'package:campus_go/pages/orders/previous_orders_tab.dart';
 import 'package:campus_go/pages/orders/waiting_orders_tab.dart';
+import 'package:campus_go/stores/user_store.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../globals/my_colors.dart';
 import '../../globals/my_fonts.dart';
@@ -14,8 +17,11 @@ class OrdersTab extends StatefulWidget {
 }
 
 class _OrdersTabState extends State<OrdersTab> {
+
   @override
   Widget build(BuildContext context) {
+    var userStore= context.read<UserStore>();
+    ViewType viewType = userStore.viewType;
     return DefaultTabController(
       length: 3,
       child: Column(
@@ -26,7 +32,7 @@ class _OrdersTabState extends State<OrdersTab> {
               height: 48,
               alignment: Alignment.center,
               child: Text(
-                "Waiting",
+               viewType==ViewType.admin?"Incoming": "Waiting",
                 style: MyFonts.w500.setColor(kBlack).size(14),
               ),
             ),

@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     var userStore = context.read<UserStore>();
-    return Observer(
+    return Builder(
       builder: (context) => Scaffold(
         backgroundColor: kBlack,
         body: Center(

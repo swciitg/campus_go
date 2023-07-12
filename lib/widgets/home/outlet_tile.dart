@@ -25,7 +25,7 @@ class _OutletTileState extends State<OutletTile> {
     OutletModel outletModel = outletModels[widget.outletID]!;
     var cartStore = context.read<CartStore>();
 
-    return Observer(
+    return Builder(
       builder: (context) => Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: GestureDetector(

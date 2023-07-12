@@ -70,7 +70,7 @@ class QueuedOrderTileComponent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4)),
               child: viewType == ViewType.admin
                   ? Text(
-                      "Accept",
+                      "Handle",
                       style:
                           MyFonts.w500.size(12).setColor(kWhite),
                     )
