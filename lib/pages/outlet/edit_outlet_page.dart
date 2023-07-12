@@ -55,12 +55,12 @@ class _EditOutletPageState extends State<EditOutletPage> {
                     child: ElevatedButton(
                       onPressed: (() {}),
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: kBlack,
+                          backgroundColor: lBlue,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8))),
                       child: Text(
                         "Confirm Changes",
-                        style: MyFonts.w400.setColor(kWhite).size(18),
+                        style: MyFonts.w400.setColor(kButtonText).size(18),
                       ),
                     ),
                   ),
@@ -117,84 +117,91 @@ class _EditOutletPageState extends State<EditOutletPage> {
                     ])),
                 Text(
                   "Select Outlet Status",
-                  style: MyFonts.w500.setColor(kBlack).size(16),
+                  style: MyFonts.w500.setColor(kWhite).size(16),
                 ),
                 const SizedBox(
                   height: 8,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedRadio = 0;
-                      });
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: Radio(
-                            value: 0,
-                            groupValue: selectedRadio,
-                            onChanged: (val) {
-                              setState(() {
-                                selectedRadio = val!;
-                              });
-                            },
-                            activeColor: kBlack,
+                Theme(
+                  data: ThemeData(unselectedWidgetColor: kWhite),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedRadio = 0;
+                            });
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: Radio(
+                                  value: 0,
+                                  groupValue: selectedRadio,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      selectedRadio = val!;
+                                    });
+                                  },
+                                  activeColor: kWhite,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 6,
+                              ),
+                              Text(
+                                'Open',
+                                style: MyFonts.w400.setColor(kWhite).size(12),
+                              ),
+                            ],
                           ),
                         ),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        Text(
-                          'Open',
-                          style: MyFonts.w400.setColor(kBlack).size(12),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedRadio = 1;
-                      });
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: Radio(
-                            value: 1,
-                            groupValue: selectedRadio,
-                            onChanged: (val) {
-                              setState(() {
-                                selectedRadio = val!;
-                              });
-                            },
-                            activeColor: kBlack,
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedRadio = 1;
+                            });
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: Radio(
+                                  value: 1,
+                                  groupValue: selectedRadio,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      selectedRadio = val!;
+                                    });
+                                  },
+                                  activeColor: kWhite,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 6,
+                              ),
+                              Text(
+                                'Close',
+                                style: MyFonts.w400.setColor(kWhite).size(12),
+                              ),
+                            ],
                           ),
                         ),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        Text(
-                          'Close',
-                          style: MyFonts.w400.setColor(kBlack).size(12),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ],

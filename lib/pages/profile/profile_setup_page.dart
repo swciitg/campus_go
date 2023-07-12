@@ -6,6 +6,7 @@ import 'package:campus_go/stores/user_store.dart';
 import 'package:campus_go/widgets/common/custom_text_field.dart';
 import 'package:campus_go/widgets/ui/appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -160,6 +161,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                       inputType: TextInputType.phone,
                       validator: validateField,
                       textInputAction: TextInputAction.next,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly,LengthLimitingTextInputFormatter(10)],
                     ),
                     const SizedBox(
                       height: 24,
