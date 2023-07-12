@@ -127,11 +127,11 @@ class _ItemCountTileState extends State<ItemCountTile> {
                         )),
                         Expanded(
                             child: Container(
-                          // color: kWhite,
+                          color: kWhite,
                           alignment: Alignment.center,
                           child: Text(
                             (cartStore.cart[itemModel.id] ?? 0).toString(),
-                            style: MyFonts.w500.setColor(kWhite).size(14),
+                            style: MyFonts.w500.setColor(kButtonText).size(14),
                           ),
                         )),
                         Expanded(
