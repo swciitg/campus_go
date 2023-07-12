@@ -35,13 +35,13 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
       } else {
         userStore.setViewType(ViewType.admin);
         userStore.signInAdmin(_usernameController.text, _passwordController.text);
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
             builder: (context) => OwnedOutletsPage(
                 adminModel: AdminModel(
                     id: "id",
                     username: _usernameController.text,
                     password: _passwordController.text,
-                    outletsOwned: ["Lohit Canteen", "Florentine"]))));
+                    outletsOwned: ["Lohit Canteen", "Florentine"]))),(route)=>false);
       }
     }
 
@@ -96,12 +96,12 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                               onFormSubmit();
                             }),
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: kBlack,
+                                backgroundColor: lBlue,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8))),
                             child: Text(
                               "Submit",
-                              style: MyFonts.w400.setColor(kWhite).size(18),
+                              style: MyFonts.w400.setColor(kButtonText).size(18),
                             ),
                           ),
                         ),
