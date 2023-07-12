@@ -32,14 +32,14 @@ class _YourOrderPageState extends State<YourOrderPage> {
             children: [
               Text(
                 "Your Order (${widget.orderModel.acceptanceStatus})",
-                style: MyFonts.w500.setColor(kBlack).size(18),
+                style: MyFonts.w500.setColor(kWhite).size(18),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2),
                 child: Container(
                   height: 2,
                   width: 30,
-                  color: kBlack,
+                  color: kWhite,
                 ),
               ),
               const SizedBox(
@@ -49,14 +49,14 @@ class _YourOrderPageState extends State<YourOrderPage> {
                 Expanded(
                   // flex: 7,
                   child: Container(
-                    color: kWhite,
+                    // color: kWhite,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             outletModels[widget.orderModel.outletID]!.outletName,
                             overflow: TextOverflow.ellipsis,
-                            style: MyFonts.w600.setColor(kBlack).size(16),
+                            style: MyFonts.w600.setColor(kWhite).size(16),
                           ),
                           const SizedBox(
                             height: 8,
@@ -66,6 +66,7 @@ class _YourOrderPageState extends State<YourOrderPage> {
                             children: [
                               const Icon(
                                 Icons.call_outlined,
+                                color: kGrey2,
                                 size: 14,
                               ),
                               const SizedBox(
@@ -74,14 +75,14 @@ class _YourOrderPageState extends State<YourOrderPage> {
                               Text(
                                   "+91 ${outletModels[widget.orderModel.outletID]!.phoneNumber}",
                                   overflow: TextOverflow.ellipsis,
-                                  style: MyFonts.w300.setColor(kBlack).size(12)),
+                                  style: MyFonts.w300.setColor(kWhite).size(12)),
                             ],
                           )
                         ]),
                   ),
                 ),
                 Container(
-                  color: kWhite,
+                  // color: kWhite,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -89,11 +90,11 @@ class _YourOrderPageState extends State<YourOrderPage> {
                           text: TextSpan(children: [
                         TextSpan(
                             text: "Order date: ",
-                            style: MyFonts.w600.size(12).setColor(kBlack)),
+                            style: MyFonts.w600.size(12).setColor(kWhite)),
                         TextSpan(
                             text: DateFormat("dd/MM/yyyy")
                                 .format(widget.orderModel.orderDateTime),
-                            style: MyFonts.w300.size(12).setColor(kBlack)),
+                            style: MyFonts.w300.size(12).setColor(kWhite)),
                       ])),
                       const SizedBox(
                         height: 8,
@@ -102,11 +103,11 @@ class _YourOrderPageState extends State<YourOrderPage> {
                           text: TextSpan(children: [
                         TextSpan(
                             text: "Order Time: ",
-                            style: MyFonts.w600.size(12).setColor(kBlack)),
+                            style: MyFonts.w600.size(12).setColor(kWhite)),
                         TextSpan(
                             text: DateFormat("h:mm a")
                                 .format(widget.orderModel.orderDateTime),
-                            style: MyFonts.w300.size(12).setColor(kBlack)),
+                            style: MyFonts.w300.size(12).setColor(kWhite)),
                       ])),
                     ],
                   ),
@@ -122,7 +123,7 @@ class _YourOrderPageState extends State<YourOrderPage> {
                       height: 200,
                       width: 200,
                       decoration: BoxDecoration(
-                          border: Border.all(color: kBlack, width: 4),
+                          border: Border.all(color: kAppBarGrey, width: 4),
                           borderRadius: BorderRadius.circular(16),
                           color: kWhite),
                       child: Column(
@@ -135,7 +136,7 @@ class _YourOrderPageState extends State<YourOrderPage> {
                               "ORDER QR CODE",
                               style: TextStyle(
                                   shadows: [
-                                    Shadow(color: kBlack, offset: Offset(0, -1))
+                                    Shadow(color: kButtonText, offset: Offset(0, -1))
                                   ],
                                   color: Colors.transparent,
                                   fontFamily: "Poppins",
@@ -188,7 +189,8 @@ class _YourOrderPageState extends State<YourOrderPage> {
               Container(
                 height: 40,
                 decoration: BoxDecoration(
-                    border: Border.all(color: kBlack),
+                    // border: Border.all(color: kWhite),
+                    color: kAppBarGrey,
                     borderRadius: BorderRadius.circular(4)),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -197,21 +199,21 @@ class _YourOrderPageState extends State<YourOrderPage> {
                       children: [
                         Text(
                           "Total Order Value:",
-                          style: MyFonts.w500.setColor(kBlack).size(18),
+                          style: MyFonts.w500.setColor(kWhite).size(18),
                         ),
                         RichText(
                             text: TextSpan(children: [
                           TextSpan(
                             text: "₹ ",
-                            style: MyFonts.w700.setColor(kBlack).size(18),
+                            style: MyFonts.w700.setColor(kWhite).size(18),
                           ),
                           TextSpan(
                             text: orderTotal(widget.orderModel.items).toString(),
-                            style: MyFonts.w700.setColor(kBlack).size(18),
+                            style: MyFonts.w700.setColor(kWhite).size(18),
                           ),
                           TextSpan(
                             text: "/-",
-                            style: MyFonts.w700.setColor(kBlack).size(18),
+                            style: MyFonts.w700.setColor(kWhite).size(18),
                           )
                         ]))
                       ]),
@@ -235,14 +237,15 @@ class _YourOrderPageState extends State<YourOrderPage> {
                       //     builder: (context) => const YourOrderPage()));
                     }),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: kBlack,
+                        backgroundColor:widget.orderModel.acceptanceStatus ==
+                      AcceptanceStatus.queued.status?kRed: lBlue,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8))),
                     child: 
                     Text(
                      widget.orderModel.acceptanceStatus ==
                       AcceptanceStatus.queued.status? "Cancel":"Proceed to payment",
-                      style: MyFonts.w400.setColor(kWhite).size(18),
+                      style: MyFonts.w400.setColor(kButtonText).size(18),
                     ),
                   ),
                 ),
