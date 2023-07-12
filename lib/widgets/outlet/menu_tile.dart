@@ -103,8 +103,8 @@ class _MenuTileState extends State<MenuTile> {
                                 width: 74,
                                 height: 32,
                                 decoration: BoxDecoration(
-                                    color: kWhite,
-                                    border: Border.all(color: kBlack),
+                                    color: kRed,
+                                    // border: Border.all(color: kRed),
                                     borderRadius: BorderRadius.circular(4)),
                                 alignment: Alignment.center,
                                 child: Row(
@@ -122,7 +122,7 @@ class _MenuTileState extends State<MenuTile> {
                                       Text(
                                         "Remove",
                                         style: MyFonts.w500
-                                            .setColor(kBlack)
+                                            .setColor(kButtonText)
                                             .size(12),
                                       )
                                     ]),
@@ -137,7 +137,7 @@ class _MenuTileState extends State<MenuTile> {
                                 height: 32,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                    color: kBlack,
+                                    color: lBlue,
                                     border: Border.all(color: lBlue),
                                     borderRadius: BorderRadius.circular(4)),
                                 child: Text(
