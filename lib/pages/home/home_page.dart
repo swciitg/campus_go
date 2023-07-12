@@ -42,17 +42,18 @@ class _HomePageState extends State<HomePage> {
     
     return Observer(
       builder: (context) => Scaffold(
+        backgroundColor: kBackgroundColor,
         appBar: appBar(context, "CampusGO",displayQRScanner: true),
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
-              indicatorColor: kWhite,
+              indicatorColor: lGrey,
               labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
               labelTextStyle: MaterialStateProperty.all(
-                  MyFonts.w500.setColor(kWhite).size(12)),
+                  MyFonts.w500.setColor(kTabText).size(12)),
               iconTheme: MaterialStateProperty.all(
-                  const IconThemeData(color: kWhite))),
+                  const IconThemeData(color: kTabText))),
           child: NavigationBar(
-            backgroundColor: kBlack,
+            backgroundColor: kTabBar,
             selectedIndex: index,
             onDestinationSelected: (index) => setState(() {
               this.index = index;
@@ -75,7 +76,7 @@ List<Widget> bottomNavIcons() {
       label: 'Home',
       selectedIcon: Icon(
         Icons.store_mall_directory_outlined,
-        color: kBlack,
+        color: kBlue1,
       ),
     ),
     const NavigationDestination(
@@ -83,7 +84,7 @@ List<Widget> bottomNavIcons() {
       label: 'Orders',
       selectedIcon: Icon(
         Icons.shopping_bag_outlined,
-        color: kBlack,
+        color: kBlue1,
       ),
     ),
   ];

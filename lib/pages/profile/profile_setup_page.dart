@@ -67,6 +67,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Scaffold(
+        backgroundColor: kBackgroundColor,
         resizeToAvoidBottomInset: true,
         appBar: appBar(context, "Profile Setup",
             displayProfileIcon: false,
