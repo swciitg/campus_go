@@ -76,7 +76,7 @@ List<Widget> bottomNavIcons() {
       label: 'Home',
       selectedIcon: Icon(
         Icons.store_mall_directory_outlined,
-        color: kBlue1,
+        color: lBlue,
       ),
     ),
     const NavigationDestination(
@@ -84,7 +84,7 @@ List<Widget> bottomNavIcons() {
       label: 'Orders',
       selectedIcon: Icon(
         Icons.shopping_bag_outlined,
-        color: kBlue1,
+        color: lBlue,
       ),
     ),
   ];
