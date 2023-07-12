@@ -28,13 +28,13 @@ class _OutletPageState extends State<OutletPage> {
               children: [
                 OutletInfo(outletModel: widget.outletModel),
                 
-                TabBar(indicatorColor: kBlack,  tabs: [
+                TabBar(indicatorColor: kWhite,  tabs: [
                   Container(
                     height: 48,
                     alignment: Alignment.center,
                     child: Text(
                       "Menu",
-                      style: MyFonts.w500.setColor(kBlack).size(14),
+                      style: MyFonts.w500.setColor(kWhite).size(14),
                     ),
                   ),
                   Container(
@@ -42,12 +42,12 @@ class _OutletPageState extends State<OutletPage> {
                     alignment: Alignment.center,
                     child: Text(
                       "Cart",
-                      style: MyFonts.w500.setColor(kBlack).size(14),
+                      style: MyFonts.w500.setColor(kWhite).size(14),
                     ),
                   ),
                 ]),
                 const Divider(
-                  color: Colors.black12,
+                  color: Colors.white12,
                   thickness: 1,
                   height: 1,
                 ),
