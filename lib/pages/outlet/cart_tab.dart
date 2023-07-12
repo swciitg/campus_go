@@ -1,3 +1,5 @@
+import 'package:campus_go/functions/utility/show_snackbar.dart';
+import 'package:campus_go/functions/utility/validator.dart';
 import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/home/home_page.dart';
@@ -24,6 +26,7 @@ class _CartTabState extends State<CartTab> {
   final TextEditingController _deliveryLocationController =
       TextEditingController();
   final TextEditingController _instructionsController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   int selectedRadio = 0;
 
@@ -124,7 +127,8 @@ class _CartTabState extends State<CartTab> {
                                             MediaQuery.of(context).size.width *
                                                 0.45,
                                         child: Theme(
-                                          data: ThemeData(unselectedWidgetColor: kWhite),
+                                          data: ThemeData(
+                                              unselectedWidgetColor: kWhite),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -147,7 +151,8 @@ class _CartTabState extends State<CartTab> {
                                                 width: 6,
                                               ),
                                               Text(
-                                                widget.outletModel.service[index],
+                                                widget
+                                                    .outletModel.service[index],
                                                 style: MyFonts.w400
                                                     .setColor(kWhite)
                                                     .size(12),
@@ -190,22 +195,25 @@ class _CartTabState extends State<CartTab> {
                         const SizedBox(
                           height: 24,
                         ),
-                        widget.outletModel.service[selectedRadio] ==
-                                OrderModes.delivery.orderMode
-                            ? Column(
-                                children: [
-                                  SizedBox(
-                                      child: CustomTextField(
-                                    hintText: "Delivery Location",
-                                    isNecessary: false,
-                                    controller: _deliveryLocationController,
-                                  )),
-                                  const SizedBox(
-                                    height: 24,
-                                  ),
-                                ],
-                              )
-                            : Container(),
+                        if (widget.outletModel.service[selectedRadio] ==
+                            OrderModes.delivery.orderMode)
+                          Column(
+                            children: [
+                              Form(
+                                key: _formKey,
+                                child: SizedBox(
+                                    child: CustomTextField(
+                                  hintText: "Delivery Location",
+                                  isNecessary: true,
+                                  controller: _deliveryLocationController,
+                                  validator: validateField,
+                                )),
+                              ),
+                              const SizedBox(
+                                height: 24,
+                              ),
+                            ],
+                          ),
                         SizedBox(
                             height: 150,
                             child: CustomTextField(
@@ -226,11 +234,20 @@ class _CartTabState extends State<CartTab> {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: (() {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => HomePage(
-                                        index: 1,
-                                      )));
-                              cartStore.emptyCart();
+                              if (widget.outletModel.service[selectedRadio] ==
+                                      OrderModes.delivery.orderMode &&
+                                  !_formKey.currentState!.validate()) {
+                                showSnackBar(
+                                    'Please give all the inputs correctly');
+                              } else {
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage(
+                                              index: 1,
+                                            )),
+                                    (route) => false);
+                                cartStore.emptyCart();
+                              }
                             }),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: lBlue,
@@ -238,7 +255,8 @@ class _CartTabState extends State<CartTab> {
                                     borderRadius: BorderRadius.circular(8))),
                             child: Text(
                               "Make Order",
-                              style: MyFonts.w400.setColor(kButtonText).size(18),
+                              style:
+                                  MyFonts.w400.setColor(kButtonText).size(18),
                             ),
                           ),
                         ),

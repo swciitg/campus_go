@@ -16,4 +16,5 @@ const Color lGrey = Color.fromRGBO(68, 71, 79, 1);
 const Color kGrey2 = Color.fromRGBO(224, 226, 235, 1);
 const Color kButtonText = Color.fromRGBO(0, 27, 62, 1);
 const Color kTabText = Color.fromRGBO(135, 145, 163, 1);
+const Color kfocusColor = Color.fromRGBO(94, 94, 94, 1);
 
