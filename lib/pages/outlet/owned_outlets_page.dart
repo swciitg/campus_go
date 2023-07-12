@@ -83,7 +83,7 @@ class _OwnedOutletsPageState extends State<OwnedOutletsPage> {
                                 borderRadius: BorderRadius.circular(8)),
                             child: Text(
                               widget.adminModel.outletsOwned[index],
-                              style: MyFonts.w500.setColor(selectedOutlet == index?kWhite:kWhite).size(24),
+                              style: MyFonts.w500.setColor(selectedOutlet == index?lBlue:kWhite).size(24),
                             ),
                           ),
                         ),
