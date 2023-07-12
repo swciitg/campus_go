@@ -1,5 +1,6 @@
 import 'package:campus_go/globals/my_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../globals/my_fonts.dart';
 
@@ -19,6 +20,7 @@ class CustomTextField extends StatefulWidget {
   final bool? expands;
   final TextInputAction? textInputAction;
   final TextAlignVertical? textAlignVertical;
+  final List<TextInputFormatter>? inputFormatters;
 
   const CustomTextField(
       {super.key,
@@ -32,7 +34,7 @@ class CustomTextField extends StatefulWidget {
       this.controller,
       this.onTap,
        this.isEnabled,
-      this.focusNode, this.maxLines, this.expands, this.textAlignVertical, this.textInputAction});
+      this.focusNode, this.maxLines, this.expands, this.textAlignVertical, this.textInputAction, this.inputFormatters});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -57,6 +59,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       maxLines: widget.maxLines,
       expands: widget.expands??false,
       textAlign: TextAlign.left,
+      inputFormatters: widget.inputFormatters??[],
       textAlignVertical: widget.textAlignVertical??TextAlignVertical.center,
       decoration: InputDecoration(
         alignLabelWithHint: true,

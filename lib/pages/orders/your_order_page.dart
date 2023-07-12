@@ -26,226 +26,228 @@ class _YourOrderPageState extends State<YourOrderPage> {
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Your Order (${widget.orderModel.acceptanceStatus})",
-              style: MyFonts.w500.setColor(kBlack).size(18),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 2),
-              child: Container(
-                height: 2,
-                width: 30,
-                color: kBlack,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Your Order (${widget.orderModel.acceptanceStatus})",
+                style: MyFonts.w500.setColor(kBlack).size(18),
               ),
-            ),
-            const SizedBox(
-              height: 18,
-            ),
-            Row(children: [
-              Expanded(
-                // flex: 7,
+              Padding(
+                padding: const EdgeInsets.only(left: 2),
                 child: Container(
-                  color: kWhite,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          outletModels[widget.orderModel.outletID]!.outletName,
-                          overflow: TextOverflow.ellipsis,
-                          style: MyFonts.w600.setColor(kBlack).size(16),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const Icon(
-                              Icons.call_outlined,
-                              size: 14,
-                            ),
-                            const SizedBox(
-                              width: 6,
-                            ),
-                            Text(
-                                "+91 ${outletModels[widget.orderModel.outletID]!.phoneNumber}",
-                                overflow: TextOverflow.ellipsis,
-                                style: MyFonts.w300.setColor(kBlack).size(12)),
-                          ],
-                        )
-                      ]),
+                  height: 2,
+                  width: 30,
+                  color: kBlack,
                 ),
               ),
-              Container(
-                color: kWhite,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    RichText(
-                        text: TextSpan(children: [
-                      TextSpan(
-                          text: "Order date: ",
-                          style: MyFonts.w600.size(12).setColor(kBlack)),
-                      TextSpan(
-                          text: DateFormat("dd/MM/yyyy")
-                              .format(widget.orderModel.orderDateTime),
-                          style: MyFonts.w300.size(12).setColor(kBlack)),
-                    ])),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    RichText(
-                        text: TextSpan(children: [
-                      TextSpan(
-                          text: "Order Time: ",
-                          style: MyFonts.w600.size(12).setColor(kBlack)),
-                      TextSpan(
-                          text: DateFormat("h:mm a")
-                              .format(widget.orderModel.orderDateTime),
-                          style: MyFonts.w300.size(12).setColor(kBlack)),
-                    ])),
-                  ],
-                ),
+              const SizedBox(
+                height: 18,
               ),
-            ]),
-            const SizedBox(
-              height: 32,
-            ),
-            if(widget.orderModel.acceptanceStatus==AcceptanceStatus.accepted.status && widget.orderModel.paymentStatus==PaymentStatus.successful.status)Center(
-              child: Column(
-                children: [
-                  Container(
-                    height: 200,
-                    width: 200,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: kBlack, width: 4),
-                        borderRadius: BorderRadius.circular(16),
-                        color: kWhite),
+              Row(children: [
+                Expanded(
+                  // flex: 7,
+                  child: Container(
+                    color: kWhite,
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          const Text(
-                            "ORDER QR CODE",
-                            style: TextStyle(
-                                shadows: [
-                                  Shadow(color: kBlack, offset: Offset(0, -1))
-                                ],
-                                color: Colors.transparent,
-                                fontFamily: "Poppins",
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                decoration: TextDecoration.underline,
-                                decorationStyle: TextDecorationStyle.solid,
-                                decorationColor: kBlack,
-                                decorationThickness: 1),
+                          Text(
+                            outletModels[widget.orderModel.outletID]!.outletName,
+                            overflow: TextOverflow.ellipsis,
+                            style: MyFonts.w600.setColor(kBlack).size(16),
                           ),
                           const SizedBox(
-                            height: 4,
+                            height: 8,
                           ),
-                          QrImageView(
-                            data: widget.orderModel.qrCodeSecret,
-                            version: QrVersions.auto,
-                            size: 140,
-                            gapless: false,
-                            embeddedImage: const ResizeImage(
-                                AssetImage("assets/images/logo.jpg"),
-                                height: 70,
-                                width: 50),
-                            embeddedImageStyle: const QrEmbeddedImageStyle(
-                              size: Size(28, 20),
-                            ),
-                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const Icon(
+                                Icons.call_outlined,
+                                size: 14,
+                              ),
+                              const SizedBox(
+                                width: 6,
+                              ),
+                              Text(
+                                  "+91 ${outletModels[widget.orderModel.outletID]!.phoneNumber}",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: MyFonts.w300.setColor(kBlack).size(12)),
+                            ],
+                          )
                         ]),
                   ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                ],
-              ),
-            ),
-            ListView.builder(
-                itemCount: widget.orderModel.items.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  String itemID = widget.orderModel.items.keys.elementAt(index);
-                  return ItemCountTile(
-                    editing: false,
-                    itemID: itemID,
-                    count: widget.orderModel.items[itemID],
-                  );
-                }),
-            const SizedBox(
-              height: 16,
-            ),
-            Container(
-              height: 40,
-              decoration: BoxDecoration(
-                  border: Border.all(color: kBlack),
-                  borderRadius: BorderRadius.circular(4)),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ),
+                Container(
+                  color: kWhite,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
-                        "Total Order Value:",
-                        style: MyFonts.w500.setColor(kBlack).size(18),
+                      RichText(
+                          text: TextSpan(children: [
+                        TextSpan(
+                            text: "Order date: ",
+                            style: MyFonts.w600.size(12).setColor(kBlack)),
+                        TextSpan(
+                            text: DateFormat("dd/MM/yyyy")
+                                .format(widget.orderModel.orderDateTime),
+                            style: MyFonts.w300.size(12).setColor(kBlack)),
+                      ])),
+                      const SizedBox(
+                        height: 8,
                       ),
                       RichText(
                           text: TextSpan(children: [
                         TextSpan(
-                          text: "₹ ",
-                          style: MyFonts.w700.setColor(kBlack).size(18),
-                        ),
+                            text: "Order Time: ",
+                            style: MyFonts.w600.size(12).setColor(kBlack)),
                         TextSpan(
-                          text: orderTotal(widget.orderModel.items).toString(),
-                          style: MyFonts.w700.setColor(kBlack).size(18),
-                        ),
-                        TextSpan(
-                          text: "/-",
-                          style: MyFonts.w700.setColor(kBlack).size(18),
-                        )
-                      ]))
-                    ]),
-              ),
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            if (widget.orderModel.acceptanceStatus ==
-                    AcceptanceStatus.queued.status ||
-                widget.orderModel.acceptanceStatus ==
-                        AcceptanceStatus.accepted.status &&
-                    widget.orderModel.paymentStatus ==
-                        PaymentStatus.pending.status)
-              SizedBox(
-                height: 56,
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: (() {
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //     builder: (context) => const YourOrderPage()));
-                  }),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: kBlack,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8))),
-                  child: 
-                  Text(
-                   widget.orderModel.acceptanceStatus ==
-                    AcceptanceStatus.queued.status? "Cancel":"Proceed to payment",
-                    style: MyFonts.w400.setColor(kWhite).size(18),
+                            text: DateFormat("h:mm a")
+                                .format(widget.orderModel.orderDateTime),
+                            style: MyFonts.w300.size(12).setColor(kBlack)),
+                      ])),
+                    ],
                   ),
                 ),
+              ]),
+              const SizedBox(
+                height: 32,
               ),
-          ],
+              if(widget.orderModel.acceptanceStatus==AcceptanceStatus.accepted.status && widget.orderModel.paymentStatus==PaymentStatus.successful.status)Center(
+                child: Column(
+                  children: [
+                    Container(
+                      height: 200,
+                      width: 200,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: kBlack, width: 4),
+                          borderRadius: BorderRadius.circular(16),
+                          color: kWhite),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            const Text(
+                              "ORDER QR CODE",
+                              style: TextStyle(
+                                  shadows: [
+                                    Shadow(color: kBlack, offset: Offset(0, -1))
+                                  ],
+                                  color: Colors.transparent,
+                                  fontFamily: "Poppins",
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  decoration: TextDecoration.underline,
+                                  decorationStyle: TextDecorationStyle.solid,
+                                  decorationColor: kBlack,
+                                  decorationThickness: 1),
+                            ),
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            QrImageView(
+                              data: widget.orderModel.qrCodeSecret,
+                              version: QrVersions.auto,
+                              size: 140,
+                              gapless: false,
+                              embeddedImage: const ResizeImage(
+                                  AssetImage("assets/images/logo.jpg"),
+                                  height: 70,
+                                  width: 50),
+                              embeddedImageStyle: const QrEmbeddedImageStyle(
+                                size: Size(28, 20),
+                              ),
+                            ),
+                          ]),
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                  ],
+                ),
+              ),
+              ListView.builder(
+                  itemCount: widget.orderModel.items.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    String itemID = widget.orderModel.items.keys.elementAt(index);
+                    return ItemCountTile(
+                      editing: false,
+                      itemID: itemID,
+                      count: widget.orderModel.items[itemID],
+                    );
+                  }),
+              const SizedBox(
+                height: 16,
+              ),
+              Container(
+                height: 40,
+                decoration: BoxDecoration(
+                    border: Border.all(color: kBlack),
+                    borderRadius: BorderRadius.circular(4)),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Total Order Value:",
+                          style: MyFonts.w500.setColor(kBlack).size(18),
+                        ),
+                        RichText(
+                            text: TextSpan(children: [
+                          TextSpan(
+                            text: "₹ ",
+                            style: MyFonts.w700.setColor(kBlack).size(18),
+                          ),
+                          TextSpan(
+                            text: orderTotal(widget.orderModel.items).toString(),
+                            style: MyFonts.w700.setColor(kBlack).size(18),
+                          ),
+                          TextSpan(
+                            text: "/-",
+                            style: MyFonts.w700.setColor(kBlack).size(18),
+                          )
+                        ]))
+                      ]),
+                ),
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              if (widget.orderModel.acceptanceStatus ==
+                      AcceptanceStatus.queued.status ||
+                  widget.orderModel.acceptanceStatus ==
+                          AcceptanceStatus.accepted.status &&
+                      widget.orderModel.paymentStatus ==
+                          PaymentStatus.pending.status)
+                SizedBox(
+                  height: 56,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: (() {
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (context) => const YourOrderPage()));
+                    }),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: kBlack,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
+                    child: 
+                    Text(
+                     widget.orderModel.acceptanceStatus ==
+                      AcceptanceStatus.queued.status? "Cancel":"Proceed to payment",
+                      style: MyFonts.w400.setColor(kWhite).size(18),
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
       )),
     );

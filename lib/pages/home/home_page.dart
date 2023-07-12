@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
     
     return Observer(
       builder: (context) => Scaffold(
-        appBar: appBar(context, "CampusGO"),
+        appBar: appBar(context, "CampusGO",displayQRScanner: true),
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
               indicatorColor: kWhite,
