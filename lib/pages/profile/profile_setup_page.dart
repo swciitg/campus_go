@@ -88,12 +88,12 @@ class _ProfileSetupState extends State<ProfileSetup> {
                         onFormSubmit();
                       }),
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: kBlack,
+                          backgroundColor: lBlue,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8))),
                       child: Text(
                         "Submit",
-                        style: MyFonts.w400.setColor(kWhite).size(18),
+                        style: MyFonts.w400.setColor(kButtonText).size(18),
                       ),
                     ),
                   ),
@@ -112,7 +112,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                             fontFamily: "Poppins",
                             decoration: TextDecoration.underline,
                             fontSize: 12,
-                            color: kBlack,
+                            color: kWhite,
                             fontWeight: FontWeight.w400)),
                     TextSpan(
                         text:
@@ -120,7 +120,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                         style: TextStyle(
                             fontFamily: "Poppins",
                             fontSize: 12,
-                            color: kBlack,
+                            color: kWhite,
                             fontWeight: FontWeight.w400)),
                   ],
                 ),
