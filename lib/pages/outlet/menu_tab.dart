@@ -41,7 +41,7 @@ class _MenuTabState extends State<MenuTab> {
                           children: [
                             const Icon(
                               Icons.menu_book_outlined,
-                              color: kBlack,
+                              color: kWhite,
                               size: 22,
                             ),
                             const SizedBox(
@@ -49,24 +49,24 @@ class _MenuTabState extends State<MenuTab> {
                             ),
                             Text(
                               "Explore Menu",
-                              style: MyFonts.w600.setColor(kBlack).size(18),
+                              style: MyFonts.w600.setColor(kWhite).size(18),
                             )
                           ],
                         ),
                         Text(
                           "Click \"ADD\" for adding to cart",
-                          style: MyFonts.w300.setColor(kBlack).size(10),
+                          style: MyFonts.w300.setColor(kWhite).size(10),
                         ),
                       ]),
                 if(userStore.viewType==ViewType.user)  Container(
                     alignment: Alignment.centerRight,
                     child: RichText(text: TextSpan(children: [
                       TextSpan(text: "${cartStore.totalItems} ",
-                      style: MyFonts.w500.setColor(kBlack).size(12),),
+                      style: MyFonts.w500.setColor(kWhite).size(12),),
                       TextSpan(text: cartStore.totalItems==1?"Item" :"Items",
-                      style: MyFonts.w500.setColor(kBlack).size(12),),
+                      style: MyFonts.w500.setColor(kWhite).size(12),),
                       TextSpan(text: " Added",
-                      style: MyFonts.w500.setColor(kBlack).size(12),),
+                      style: MyFonts.w500.setColor(kWhite).size(12),),
 
                     ]),)
                   )
