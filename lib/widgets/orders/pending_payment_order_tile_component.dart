@@ -31,15 +31,15 @@ class PendingPaymentOrderTileComponent extends StatelessWidget {
                 TextSpan(
                     text: '₹ ',
                     style:
-                        MyFonts.w700.setColor(kBlack).size(16)),
+                        MyFonts.w700.setColor(kWhite).size(16)),
                 TextSpan(
                     text: orderTotal(orderModel.items).toString(),
                     style:
-                        MyFonts.w700.setColor(kBlack).size(16)),
+                        MyFonts.w700.setColor(kWhite).size(16)),
                 TextSpan(
                     text: "/-",
                     style:
-                        MyFonts.w700.setColor(kBlack).size(16)),
+                        MyFonts.w700.setColor(kWhite).size(16)),
               ],
             ),
           ),
@@ -51,8 +51,8 @@ class PendingPaymentOrderTileComponent extends StatelessWidget {
                 height: 24,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                    color: kBlack,
-                    border: Border.all(color: kBlack),
+                    color: lBlue,
+                    // border: Border.all(color: kAppBarGrey),
                     borderRadius: BorderRadius.circular(4)),
                 child: RichText(
                   text: TextSpan(
@@ -60,12 +60,12 @@ class PendingPaymentOrderTileComponent extends StatelessWidget {
                       TextSpan(
                           text: '₹ ',
                           style: MyFonts.w500
-                              .setColor(kWhite)
+                              .setColor(kButtonText)
                               .size(12)),
                       TextSpan(
                           text: "Proceed",
                           style: MyFonts.w500
-                              .setColor(kWhite)
+                              .setColor(kButtonText)
                               .size(12)),
                     ],
                   ),
