@@ -95,9 +95,17 @@ class _EditOutletPageState extends State<EditOutletPage> {
                         controller: _phoneController,
                         isEnabled: true,
                         inputType: TextInputType.phone,
-                        validator: validateField,
+                        validator: (String? value) {
+                          if (value?.length!=10) {
+                            return 'Field cannot be empty';
+                          }
+                          return null;
+                        },
                         textInputAction: TextInputAction.done,
-                        inputFormatters: [FilteringTextInputFormatter.digitsOnly,LengthLimitingTextInputFormatter(10)],
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                          LengthLimitingTextInputFormatter(10)
+                        ],
                       ),
                       const SizedBox(
                         height: 16,

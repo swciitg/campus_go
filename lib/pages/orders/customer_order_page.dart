@@ -33,11 +33,11 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                 text: TextSpan(children: [
               TextSpan(
                 text: "Customer Order ",
-                style: MyFonts.w500.setColor(kBlack).size(18),
+                style: MyFonts.w500.setColor(kWhite).size(18),
               ),
               TextSpan(
                 text: "(${widget.orderModel.acceptanceStatus})",
-                style: MyFonts.w500.setColor(kBlack).size(18),
+                style: MyFonts.w500.setColor(kWhite).size(18),
               ),
             ])),
             Padding(
@@ -45,7 +45,7 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
               child: Container(
                 height: 2,
                 width: 30,
-                color: kBlack,
+                color: kWhite,
               ),
             ),
             const SizedBox(
@@ -55,7 +55,7 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
               Expanded(
                 // flex: 7,
                 child: Container(
-                  color: kWhite,
+                  // color: kWhite,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -63,10 +63,10 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                             text: TextSpan(children: [
                           TextSpan(
                               text: "Or. No.: ",
-                              style: MyFonts.w300.size(16).setColor(kBlack)),
+                              style: MyFonts.w300.size(16).setColor(kWhite)),
                           TextSpan(
                               text: widget.orderModel.id,
-                              style: MyFonts.w600.size(16).setColor(kBlack)),
+                              style: MyFonts.w600.size(16).setColor(kWhite)),
                         ])),
                         const SizedBox(
                           height: 8,
@@ -76,10 +76,10 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                             text: TextSpan(children: [
                           TextSpan(
                               text: "Mode: ",
-                              style: MyFonts.w300.size(12).setColor(kBlack)),
+                              style: MyFonts.w300.size(12).setColor(kWhite)),
                           TextSpan(
                               text: widget.orderModel.orderMode,
-                              style: MyFonts.w600.size(12).setColor(kBlack)),
+                              style: MyFonts.w600.size(12).setColor(kWhite)),
                         ])),
                         const SizedBox(
                           height: 4,
@@ -88,16 +88,16 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                             text: TextSpan(children: [
                           TextSpan(
                               text: "Call: ",
-                              style: MyFonts.w300.size(12).setColor(kBlack)),
+                              style: MyFonts.w300.size(12).setColor(kWhite)),
                           TextSpan(
                               text:"+91 ${userModels[widget.orderModel.userID]!.phoneNumber}",
-                              style: MyFonts.w600.size(12).setColor(kBlack)),
+                              style: MyFonts.w600.size(12).setColor(kWhite)),
                         ])),
                       ]),
                 ),
               ),
               Container(
-                color: kWhite,
+                // color: kWhite,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -105,10 +105,10 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                         text: TextSpan(children: [
                       TextSpan(
                           text: "By: ",
-                          style: MyFonts.w300.size(12).setColor(kBlack)),
+                          style: MyFonts.w300.size(12).setColor(kWhite)),
                       TextSpan(
                           text: userModels[widget.orderModel.userID]!.username,
-                          style: MyFonts.w600.size(12).setColor(kBlack)),
+                          style: MyFonts.w600.size(12).setColor(kWhite)),
                     ])),
                     const SizedBox(
                       height: 8,
@@ -117,11 +117,11 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                         text: TextSpan(children: [
                       TextSpan(
                           text: "Order date: ",
-                          style: MyFonts.w600.size(12).setColor(kBlack)),
+                          style: MyFonts.w600.size(12).setColor(kWhite)),
                       TextSpan(
                           text: DateFormat("dd/MM/yyyy")
                               .format(widget.orderModel.orderDateTime),
-                          style: MyFonts.w300.size(12).setColor(kBlack)),
+                          style: MyFonts.w300.size(12).setColor(kWhite)),
                     ])),
                     const SizedBox(
                       height: 4,
@@ -130,11 +130,11 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                         text: TextSpan(children: [
                       TextSpan(
                           text: "Order Time: ",
-                          style: MyFonts.w600.size(12).setColor(kBlack)),
+                          style: MyFonts.w600.size(12).setColor(kWhite)),
                       TextSpan(
                           text: DateFormat("h:mm a")
                               .format(widget.orderModel.orderDateTime),
-                          style: MyFonts.w300.size(12).setColor(kBlack)),
+                          style: MyFonts.w300.size(12).setColor(kWhite)),
                     ])),
                   ],
                 ),
@@ -148,7 +148,7 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                 children: [
                   Text(
                     "Payment is still pending by user!!",
-                    style: MyFonts.w700.size(16).setColor(kBlack),
+                    style: MyFonts.w700.size(16).setColor(kWhite),
                   ),
                   const SizedBox(
                     height: 16,
@@ -173,7 +173,7 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
             Container(
               height: 40,
               decoration: BoxDecoration(
-                  border: Border.all(color: kBlack),
+                  border: Border.all(color: kWhite),
                   borderRadius: BorderRadius.circular(4)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -182,21 +182,21 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                     children: [
                       Text(
                         "Total Order Value:",
-                        style: MyFonts.w500.setColor(kBlack).size(18),
+                        style: MyFonts.w500.setColor(kWhite).size(18),
                       ),
                       RichText(
                           text: TextSpan(children: [
                         TextSpan(
                           text: "₹ ",
-                          style: MyFonts.w700.setColor(kBlack).size(18),
+                          style: MyFonts.w700.setColor(kWhite).size(18),
                         ),
                         TextSpan(
                           text: orderTotal(widget.orderModel.items).toString(),
-                          style: MyFonts.w700.setColor(kBlack).size(18),
+                          style: MyFonts.w700.setColor(kWhite).size(18),
                         ),
                         TextSpan(
                           text: "/-",
-                          style: MyFonts.w700.setColor(kBlack).size(18),
+                          style: MyFonts.w700.setColor(kWhite).size(18),
                         )
                       ]))
                     ]),
@@ -219,7 +219,7 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                           height: 56,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: kBlack),
+                              color: lBlue),
                           child: Text(
                             "Accept",
                             style: MyFonts.w400.setColor(kWhite).size(18),
@@ -236,12 +236,12 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                           alignment: Alignment.center,
                           height: 56,
                           decoration: BoxDecoration(
-                              border: Border.all(color: kBlack),
+                              border: Border.all(color: kRed),
                               borderRadius: BorderRadius.circular(8),
-                              color: kWhite),
+                              color: kRed),
                           child: Text(
                             "Reject",
-                            style: MyFonts.w400.setColor(kBlack).size(18),
+                            style: MyFonts.w400.setColor(kWhite).size(18),
                           ),
                         ),
                       ))
@@ -261,7 +261,7 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                 children: [
                   Text(
                     "Pressing below button send notification to customer. Press only when order is ready!",
-                    style: MyFonts.w400.setColor(kBlack).size(12),
+                    style: MyFonts.w400.setColor(kWhite).size(12),
                   ),
                   const SizedBox(
                     height: 16,
@@ -275,7 +275,7 @@ class _CustomerOrderPageState extends State<CustomerOrderPage> {
                         //     builder: (context) => const YourOrderPage()));
                       }),
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: kBlack,
+                          backgroundColor: lBlue,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8))),
                       child: Text(
