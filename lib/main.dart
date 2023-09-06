@@ -22,12 +22,12 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<UserStore>(create: (_) => UserStore(),),
-        Provider<CartStore>(create: (context) => CartStore(),)
+        Provider<CartStore>(create: (_) => CartStore(),)
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          scaffoldBackgroundColor: kWhite,
+          scaffoldBackgroundColor: kBackgroundColor,
           splashColor: Colors.transparent,
         ),
         title: 'CampusGO',

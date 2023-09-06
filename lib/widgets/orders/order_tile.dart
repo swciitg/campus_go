@@ -58,7 +58,8 @@ class _OrderTileState extends State<OrderTile> {
           child: Container(
             height: 64,
             decoration: BoxDecoration(
-                border: Border.all(width: 0.5, color: kBlack),
+                border: Border.all(width: 0.5, color: kAppBarGrey),
+                color: kAppBarGrey,
                 borderRadius: BorderRadius.circular(8)),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(14, 6, 8, 6),

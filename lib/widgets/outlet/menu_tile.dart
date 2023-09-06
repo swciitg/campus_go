@@ -31,22 +31,22 @@ class _MenuTileState extends State<MenuTile> {
         child: Container(
           height: 64,
           decoration: BoxDecoration(
-              border: Border.all(width: 0.5, color: kBlack),
-              borderRadius: BorderRadius.circular(8)),
+              border: Border.all(width: 0.5, color: kAppBarGrey),
+              borderRadius: BorderRadius.circular(8),color: kAppBarGrey),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 6, 8, 6),
+            padding: const EdgeInsets.fromLTRB(16, 6, 16, 6),
             child: Row(children: [
               Expanded(
                 // flex: 7,
                 child: Container(
-                  color: kWhite,
+                  color: kAppBarGrey,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           widget.itemModel.name,
                           overflow: TextOverflow.ellipsis,
-                          style: MyFonts.w600.setColor(kBlack).size(16),
+                          style: MyFonts.w600.setColor(kWhite).size(16),
                         ),
                         // const SizedBox(height: 8,),
                         Padding(
@@ -59,12 +59,12 @@ class _MenuTileState extends State<MenuTile> {
                                   Text(
                                     "Price: ",
                                     style:
-                                        MyFonts.w300.setColor(kBlack).size(12),
+                                        MyFonts.w300.setColor(kWhite).size(12),
                                   ),
                                   Text(
                                     "₹ ${widget.itemModel.price}",
                                     style:
-                                        MyFonts.w500.setColor(kBlack).size(12),
+                                        MyFonts.w500.setColor(kWhite).size(12),
                                   ),
                                   const SizedBox(
                                     width: 8,
@@ -82,7 +82,7 @@ class _MenuTileState extends State<MenuTile> {
                                   Text(
                                     widget.itemModel.category,
                                     style:
-                                        MyFonts.w300.setColor(kBlack).size(12),
+                                        MyFonts.w300.setColor(kWhite).size(12),
                                   ),
                                 ],
                               )
@@ -103,8 +103,8 @@ class _MenuTileState extends State<MenuTile> {
                                 width: 74,
                                 height: 32,
                                 decoration: BoxDecoration(
-                                    color: kWhite,
-                                    border: Border.all(color: kBlack),
+                                    color: kRed,
+                                    // border: Border.all(color: kRed),
                                     borderRadius: BorderRadius.circular(4)),
                                 alignment: Alignment.center,
                                 child: Row(
@@ -122,7 +122,7 @@ class _MenuTileState extends State<MenuTile> {
                                       Text(
                                         "Remove",
                                         style: MyFonts.w500
-                                            .setColor(kBlack)
+                                            .setColor(kButtonText)
                                             .size(12),
                                       )
                                     ]),
@@ -137,12 +137,12 @@ class _MenuTileState extends State<MenuTile> {
                                 height: 32,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                    color: kBlack,
-                                    border: Border.all(color: kBlack),
+                                    color: lBlue,
+                                    border: Border.all(color: lBlue),
                                     borderRadius: BorderRadius.circular(4)),
                                 child: Text(
                                   "Add",
-                                  style: MyFonts.w500.setColor(kWhite).size(12),
+                                  style: MyFonts.w500.setColor(kButtonText).size(12),
                                 ),
                               ),
                             )
@@ -163,6 +163,7 @@ class _MenuTileState extends State<MenuTile> {
                               child: Icon(
                                 Icons.edit_outlined,
                                 size: 28,
+                                color: lBlue,
                               ),
                             ),
                           ),
@@ -171,10 +172,10 @@ class _MenuTileState extends State<MenuTile> {
                             width: 25,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4),
-                                color: kBlack),
+                                color: kRed),
                             child: const Icon(
                               Icons.clear_outlined,
-                              color: kWhite,
+                              color: kButtonText,
                               size: 20,
                             ),
                           ),

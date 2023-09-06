@@ -2,6 +2,7 @@ import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/item_model.dart';
 import 'package:campus_go/widgets/ui/appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../functions/utility/validator.dart';
 import '../../globals/my_colors.dart';
@@ -25,16 +26,14 @@ class _EditItemPageState extends State<EditItemPage> {
   @override
   void initState() {
     super.initState();
-    if(widget.itemModel!=null){
-      _nameController.text=widget.itemModel!.name;
-      _priceController.text=widget.itemModel!.price;
-      if(widget.itemModel!.category==FoodCategories.veg.category){
-        selectedRadio=0;
+    if (widget.itemModel != null) {
+      _nameController.text = widget.itemModel!.name;
+      _priceController.text = widget.itemModel!.price;
+      if (widget.itemModel!.category == FoodCategories.veg.category) {
+        selectedRadio = 0;
+      } else {
+        selectedRadio = 1;
       }
-      else{
-        selectedRadio=1;
-      }
-
     }
   }
 
@@ -60,14 +59,17 @@ class _EditItemPageState extends State<EditItemPage> {
               child: ElevatedButton(
                 onPressed: (() {
 
+
+
+
                 }),
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: kBlack,
+                    backgroundColor: lBlue,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8))),
                 child: Text(
                   "Confirm Item",
-                  style: MyFonts.w400.setColor(kWhite).size(18),
+                  style: MyFonts.w400.setColor(kButtonText).size(18),
                 ),
               ),
             ),
@@ -104,6 +106,7 @@ class _EditItemPageState extends State<EditItemPage> {
                         inputType: TextInputType.number,
                         validator: validateField,
                         textInputAction: TextInputAction.done,
+                        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       ),
                       const SizedBox(
                         height: 24,
@@ -111,84 +114,93 @@ class _EditItemPageState extends State<EditItemPage> {
                     ])),
                 Text(
                   "Select Item Type",
-                  style: MyFonts.w500.setColor(kBlack).size(16),
+                  style: MyFonts.w500.setColor(kWhite).size(16),
                 ),
                 const SizedBox(
                   height: 8,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedRadio = 0;
-                      });
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: Radio(
-                            value: 0,
-                            groupValue: selectedRadio,
-                            onChanged: (val) {
-                              setState(() {
-                                selectedRadio = val!;
-                              });
-                            },
-                            activeColor: kBlack,
+                Theme(
+                  data: ThemeData(unselectedWidgetColor: kWhite),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedRadio = 0;
+                            });
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: Radio(
+                                  value: 0,
+                                  groupValue: selectedRadio,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      selectedRadio = val!;
+                                    });
+                                  },
+                                  activeColor: kWhite,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 6,
+                              ),
+                              Text(
+                                'Veg',
+                                style: MyFonts.w400.setColor(kWhite).size(12),
+                              ),
+                            ],
                           ),
                         ),
-                        const SizedBox(
-                          width: 6,
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedRadio = 1;
+                            });
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: Radio(
+                                  value: 1,
+                                  groupValue: selectedRadio,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      selectedRadio = val!;
+                                    });
+                                  },
+                                  activeColor: kWhite,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 6,
+                              ),
+                              Text(
+                                'Non-Veg',
+                                style: MyFonts.w400.setColor(kWhite).size(12),
+                              ),
+                            ],
+                          ),
                         ),
-                        Text(
-                          'Veg',
-                          style: MyFonts.w400.setColor(kBlack).size(12),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 16,),
-                 Padding(
-                   padding: const EdgeInsets.symmetric(horizontal: 8),
-                   child: GestureDetector(
-                      onTap: () {
-                      setState(() {
-                        selectedRadio = 1;
-                      });
-                    },
-                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: Radio(
-                            value: 1,
-                            groupValue: selectedRadio,
-                            onChanged: (val) {
-                              setState(() {
-                                selectedRadio = val!;
-                              });
-                            },
-                            activeColor: kBlack,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        Text(
-                          'Non-Veg',
-                          style: MyFonts.w400.setColor(kBlack).size(12),
-                        ),
-                      ],
-                                   ),
-                   ),
-                 ),
               ],
             ),
           ),

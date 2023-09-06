@@ -22,7 +22,7 @@ class SuccessfulPaymentOrderTileComponent extends StatelessWidget {
         children: [
           Text(
             orderModel.prepStatus,
-            style: MyFonts.w600.setColor(kBlack).size(12),
+            style: MyFonts.w600.setColor(kWhite).size(12),
           ),
           GestureDetector(
             onTap: () {},
@@ -31,8 +31,8 @@ class SuccessfulPaymentOrderTileComponent extends StatelessWidget {
               height: 24,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: kBlack,
-                  border: Border.all(color: kBlack),
+                  color: lBlue,
+                  // border: Border.all(color: kBlack),
                   borderRadius: BorderRadius.circular(4)),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -44,7 +44,7 @@ class SuccessfulPaymentOrderTileComponent extends StatelessWidget {
                           ? Icons.delivery_dining_outlined
                           : Icons.front_hand_outlined,
                       size: 12,
-                      color: kWhite,
+                      color: kButtonText,
                     ),
                     const SizedBox(
                       width: 2,
@@ -52,7 +52,7 @@ class SuccessfulPaymentOrderTileComponent extends StatelessWidget {
                     Text(
                       orderModel.orderMode,
                       style:
-                          MyFonts.w500.setColor(kWhite).size(12),
+                          MyFonts.w500.setColor(kButtonText).size(12),
                     )
                   ]),
             ),

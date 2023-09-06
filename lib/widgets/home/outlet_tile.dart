@@ -39,22 +39,23 @@ class _OutletTileState extends State<OutletTile> {
           child: Container(
             height: 64,
             decoration: BoxDecoration(
-                border: Border.all(width: 0.5, color: kBlack),
-                borderRadius: BorderRadius.circular(8)),
+                border: Border.all(width: 0.5, color: kAppBarGrey),
+                borderRadius: BorderRadius.circular(8),
+                color: kAppBarGrey),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
               child: Row(children: [
                 Expanded(
                   // flex: 7,
                   child: Container(
-                    color: kWhite,
+                    // color: kWhite,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             outletModel.outletName,
                             overflow: TextOverflow.ellipsis,
-                            style: MyFonts.w600.setColor(kBlack).size(16),
+                            style: MyFonts.w600.setColor(kWhite).size(16),
                           ),
                           // const SizedBox(height: 8,),
                           Padding(
@@ -64,6 +65,7 @@ class _OutletTileState extends State<OutletTile> {
                               children: [
                                 const Icon(
                                   Icons.pin_drop_outlined,
+                                  color: kGrey2,
                                   size: 14,
                                 ),
                                 const SizedBox(
@@ -72,7 +74,7 @@ class _OutletTileState extends State<OutletTile> {
                                 Text(outletModel.location,
                                     overflow: TextOverflow.ellipsis,
                                     style:
-                                        MyFonts.w300.setColor(kBlack).size(12)),
+                                        MyFonts.w300.setColor(kWhite).size(12)),
                               ],
                             ),
                           )
@@ -80,7 +82,7 @@ class _OutletTileState extends State<OutletTile> {
                   ),
                 ),
                 Container(
-                  color: kWhite,
+                  // color: kWhite,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -92,6 +94,7 @@ class _OutletTileState extends State<OutletTile> {
                         children: [
                           const Icon(
                             Icons.local_dining_outlined,
+                            color: kGrey2,
                             size: 14,
                           ),
                           const SizedBox(
@@ -99,7 +102,7 @@ class _OutletTileState extends State<OutletTile> {
                           ),
                           Text(
                             outletModel.category,
-                            style: MyFonts.w500.setColor(kBlack).size(12),
+                            style: MyFonts.w500.setColor(kWhite).size(12),
                           )
                         ],
                       ),
@@ -110,6 +113,7 @@ class _OutletTileState extends State<OutletTile> {
                         children: [
                           const Icon(
                             Icons.circle,
+                            color: kGrey2,
                             size: 14,
                           ),
                           const SizedBox(
@@ -117,7 +121,7 @@ class _OutletTileState extends State<OutletTile> {
                           ),
                           Text(
                             outletModel.status ? "OPEN" : "CLOSE",
-                            style: MyFonts.w500.setColor(kBlack).size(12),
+                            style: MyFonts.w500.setColor(kWhite).size(12),
                           )
                         ],
                       ),

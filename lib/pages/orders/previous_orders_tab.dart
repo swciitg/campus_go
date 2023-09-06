@@ -23,11 +23,11 @@ class _PreviousOrdersTabState extends State<PreviousOrdersTab> {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Text(
             "All orders",
-            style: MyFonts.w400.setColor(kBlack).size(12),
+            style: MyFonts.w400.setColor(kWhite).size(12),
           ),
         ),
         const Divider(
-          color: Colors.black12,
+          color: Colors.white12,
           thickness: 1,
           height: 1,
         ),

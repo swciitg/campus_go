@@ -15,7 +15,7 @@ AppBar appBar(BuildContext context, String title,
     bool displayQRScanner=false}) {
        var userStore = context.read<UserStore>();
   return AppBar(
-    backgroundColor: kBlack,
+    backgroundColor: kAppBarGrey,
     centerTitle: true,
     title: Text(
       title,

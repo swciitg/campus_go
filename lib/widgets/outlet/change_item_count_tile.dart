@@ -36,7 +36,8 @@ class _ItemCountTileState extends State<ItemCountTile> {
         child: Container(
           height: 64,
           decoration: BoxDecoration(
-              border: Border.all(width: 0.5, color: kBlack),
+              border: Border.all(width: 0.5, color: kAppBarGrey),
+              color: kAppBarGrey,
               borderRadius: BorderRadius.circular(8)),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
@@ -44,14 +45,14 @@ class _ItemCountTileState extends State<ItemCountTile> {
               Expanded(
                 // flex: 7,
                 child: Container(
-                  color: kWhite,
+                  // color: kWhite,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           itemModel.name,
                           overflow: TextOverflow.ellipsis,
-                          style: MyFonts.w600.setColor(kBlack).size(16),
+                          style: MyFonts.w600.setColor(kWhite).size(16),
                         ),
                         // const SizedBox(height: 8,),
                         Padding(
@@ -64,12 +65,12 @@ class _ItemCountTileState extends State<ItemCountTile> {
                                   Text(
                                     "Price: ",
                                     style:
-                                        MyFonts.w300.setColor(kBlack).size(12),
+                                        MyFonts.w300.setColor(kWhite).size(12),
                                   ),
                                   Text(
                                     "₹ ${itemModel.price}",
                                     style:
-                                        MyFonts.w500.setColor(kBlack).size(12),
+                                        MyFonts.w500.setColor(kWhite).size(12),
                                   ),
                                   const SizedBox(
                                     width: 8,
@@ -88,7 +89,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                                   Text(
                                     itemModel.category,
                                     style:
-                                        MyFonts.w300.setColor(kBlack).size(12),
+                                        MyFonts.w300.setColor(kWhite).size(12),
                                   ),
                                 ],
                               )
@@ -103,8 +104,8 @@ class _ItemCountTileState extends State<ItemCountTile> {
                       width: 75,
                       height: 25,
                       decoration: BoxDecoration(
-                          color: kWhite,
-                          border: Border.all(color: kBlack),
+                          // color: lBlue,
+                          border: Border.all(color: lBlue),
                           borderRadius: BorderRadius.circular(4)),
                       alignment: Alignment.center,
                       child: Row(children: [
@@ -116,11 +117,11 @@ class _ItemCountTileState extends State<ItemCountTile> {
                             });
                           }),
                           child: Container(
-                            color: kBlack,
+                            color: lBlue,
                             alignment: Alignment.center,
                             child: const Icon(
                               Icons.remove_outlined,
-                              color: kWhite,
+                              color: kButtonText,
                             ),
                           ),
                         )),
@@ -130,7 +131,7 @@ class _ItemCountTileState extends State<ItemCountTile> {
                           alignment: Alignment.center,
                           child: Text(
                             (cartStore.cart[itemModel.id] ?? 0).toString(),
-                            style: MyFonts.w500.setColor(kBlack).size(14),
+                            style: MyFonts.w500.setColor(kButtonText).size(14),
                           ),
                         )),
                         Expanded(
@@ -141,11 +142,11 @@ class _ItemCountTileState extends State<ItemCountTile> {
                             });
                           },
                           child: Container(
-                            color: kBlack,
+                            color: lBlue,
                             alignment: Alignment.center,
                             child: const Icon(
                               Icons.add_outlined,
-                              color: kWhite,
+                              color: kButtonText,
                             ),
                           ),
                         )),
@@ -157,11 +158,11 @@ class _ItemCountTileState extends State<ItemCountTile> {
                         text: TextSpan(children: [
                           TextSpan(
                             text: "x ",
-                            style: MyFonts.w500.setColor(kBlack).size(16),
+                            style: MyFonts.w500.setColor(kWhite).size(16),
                           ),
                           TextSpan(
                             text: (widget.count ?? 0).toString(),
-                            style: MyFonts.w500.setColor(kBlack).size(18),
+                            style: MyFonts.w500.setColor(kWhite).size(18),
                           )
                         ]),
                       ),
@@ -177,10 +178,10 @@ class _ItemCountTileState extends State<ItemCountTile> {
                       height: 25,
                       width: 25,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4), color: kBlack),
+                          borderRadius: BorderRadius.circular(4), color: kRed),
                           child: const Icon(
                                 Icons.clear_outlined,
-                                color: kWhite,
+                                color: kButtonText,
                                 size: 20,
                               ),
                     ),

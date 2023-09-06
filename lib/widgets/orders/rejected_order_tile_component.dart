@@ -34,12 +34,12 @@ class RejectedOrderTileComponent extends StatelessWidget {
                       TextSpan(
                           text: "Or. ID. ",
                           style: MyFonts.w400
-                              .setColor(kBlack)
+                              .setColor(kWhite)
                               .size(16)),
                       TextSpan(
                           text: orderModel.id,
                           style: MyFonts.w600
-                              .setColor(kBlack)
+                              .setColor(kWhite)
                               .size(16)),
                     ],
                   )
@@ -48,12 +48,12 @@ class RejectedOrderTileComponent extends StatelessWidget {
                       TextSpan(
                           text: count.toString(),
                           style: MyFonts.w600
-                              .setColor(kBlack)
+                              .setColor(kWhite)
                               .size(16)),
                       TextSpan(
                           text: " Items Ordered",
                           style: MyFonts.w300
-                              .setColor(kBlack)
+                              .setColor(kWhite)
                               .size(16)),
                     ],
                   ),

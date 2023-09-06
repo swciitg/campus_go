@@ -27,13 +27,13 @@ class _OrdersTabState extends State<OrdersTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TabBar(indicatorColor: kBlack, tabs: [
+          TabBar(indicatorColor: kWhite, tabs: [
             Container(
               height: 48,
               alignment: Alignment.center,
               child: Text(
                viewType==ViewType.admin?"Incoming": "Waiting",
-                style: MyFonts.w500.setColor(kBlack).size(14),
+                style: MyFonts.w500.setColor(kWhite).size(14),
               ),
             ),
             Container(
@@ -41,7 +41,7 @@ class _OrdersTabState extends State<OrdersTab> {
               alignment: Alignment.center,
               child: Text(
                 "Current",
-                style: MyFonts.w500.setColor(kBlack).size(14),
+                style: MyFonts.w500.setColor(kWhite).size(14),
               ),
             ),
             Container(
@@ -49,11 +49,11 @@ class _OrdersTabState extends State<OrdersTab> {
               alignment: Alignment.center,
               child: Text(
                 "Previous",
-                style: MyFonts.w500.setColor(kBlack).size(14),
+                style: MyFonts.w500.setColor(kWhite).size(14),
               ),
             ),
           ]),
-          const SizedBox(height: 16,),
+          const SizedBox(height: 21,),
           const Expanded(child: TabBarView(children: [
             WaitingOrdersTab(),
             CurrentOrdersTab(),

@@ -1,3 +1,5 @@
+import 'package:campus_go/functions/utility/show_snackbar.dart';
+import 'package:campus_go/functions/utility/validator.dart';
 import 'package:campus_go/globals/enums.dart';
 import 'package:campus_go/models/outlet_model.dart';
 import 'package:campus_go/pages/home/home_page.dart';
@@ -24,6 +26,7 @@ class _CartTabState extends State<CartTab> {
   final TextEditingController _deliveryLocationController =
       TextEditingController();
   final TextEditingController _instructionsController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   int selectedRadio = 0;
 
@@ -46,7 +49,7 @@ class _CartTabState extends State<CartTab> {
               children: [
                 Text(
                   "No item added to your cart!",
-                  style: MyFonts.w500.setColor(kBlack).size(16),
+                  style: MyFonts.w500.setColor(kWhite).size(16),
                 ),
                 const SizedBox(
                   height: 64,
@@ -71,11 +74,11 @@ class _CartTabState extends State<CartTab> {
                               children: [
                                 Text(
                                   "Place you order",
-                                  style: MyFonts.w600.setColor(kBlack).size(18),
+                                  style: MyFonts.w600.setColor(kWhite).size(18),
                                 ),
                                 Text(
                                   "Use counter to select quantity",
-                                  style: MyFonts.w300.setColor(kBlack).size(10),
+                                  style: MyFonts.w300.setColor(kWhite).size(10),
                                 ),
                               ]),
                         ),
@@ -98,7 +101,7 @@ class _CartTabState extends State<CartTab> {
                         ),
                         Text(
                           "Select order mode",
-                          style: MyFonts.w500.setColor(kBlack).size(16),
+                          style: MyFonts.w500.setColor(kWhite).size(16),
                         ),
                         const SizedBox(
                           height: 16,
@@ -123,34 +126,39 @@ class _CartTabState extends State<CartTab> {
                                         width:
                                             MediaQuery.of(context).size.width *
                                                 0.45,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            SizedBox(
-                                              width: 20,
-                                              height: 20,
-                                              child: Radio(
-                                                value: index,
-                                                groupValue: selectedRadio,
-                                                onChanged: (val) {
-                                                  setState(() {
-                                                    selectedRadio = val!;
-                                                  });
-                                                },
-                                                activeColor: kBlack,
+                                        child: Theme(
+                                          data: ThemeData(
+                                              unselectedWidgetColor: kWhite),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              SizedBox(
+                                                width: 20,
+                                                height: 20,
+                                                child: Radio(
+                                                  value: index,
+                                                  groupValue: selectedRadio,
+                                                  onChanged: (val) {
+                                                    setState(() {
+                                                      selectedRadio = val!;
+                                                    });
+                                                  },
+                                                  activeColor: kWhite,
+                                                ),
                                               ),
-                                            ),
-                                            const SizedBox(
-                                              width: 6,
-                                            ),
-                                            Text(
-                                              widget.outletModel.service[index],
-                                              style: MyFonts.w400
-                                                  .setColor(kBlack)
-                                                  .size(12),
-                                            ),
-                                          ],
+                                              const SizedBox(
+                                                width: 6,
+                                              ),
+                                              Text(
+                                                widget
+                                                    .outletModel.service[index],
+                                                style: MyFonts.w400
+                                                    .setColor(kWhite)
+                                                    .size(12),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -162,7 +170,8 @@ class _CartTabState extends State<CartTab> {
                         Container(
                           height: 40,
                           decoration: BoxDecoration(
-                              border: Border.all(color: kBlack),
+                              // border: Border.all(color: kBlack),
+                              color: kAppBarGrey,
                               borderRadius: BorderRadius.circular(4)),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -173,12 +182,12 @@ class _CartTabState extends State<CartTab> {
                                   Text(
                                     "Total Order Value:",
                                     style:
-                                        MyFonts.w500.setColor(kBlack).size(18),
+                                        MyFonts.w500.setColor(kWhite).size(18),
                                   ),
                                   Text(
                                     "₹ ${cartStore.cartTotal}/-",
                                     style:
-                                        MyFonts.w700.setColor(kBlack).size(18),
+                                        MyFonts.w700.setColor(kWhite).size(18),
                                   ),
                                 ]),
                           ),
@@ -186,22 +195,25 @@ class _CartTabState extends State<CartTab> {
                         const SizedBox(
                           height: 24,
                         ),
-                        widget.outletModel.service[selectedRadio] ==
-                                OrderModes.delivery.orderMode
-                            ? Column(
-                                children: [
-                                  SizedBox(
-                                      child: CustomTextField(
-                                    hintText: "Delivery Location",
-                                    isNecessary: false,
-                                    controller: _deliveryLocationController,
-                                  )),
-                                  const SizedBox(
-                                    height: 24,
-                                  ),
-                                ],
-                              )
-                            : Container(),
+                        if (widget.outletModel.service[selectedRadio] ==
+                            OrderModes.delivery.orderMode)
+                          Column(
+                            children: [
+                              Form(
+                                key: _formKey,
+                                child: SizedBox(
+                                    child: CustomTextField(
+                                  hintText: "Delivery Location",
+                                  isNecessary: true,
+                                  controller: _deliveryLocationController,
+                                  validator: validateField,
+                                )),
+                              ),
+                              const SizedBox(
+                                height: 24,
+                              ),
+                            ],
+                          ),
                         SizedBox(
                             height: 150,
                             child: CustomTextField(
@@ -222,19 +234,29 @@ class _CartTabState extends State<CartTab> {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: (() {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => HomePage(
-                                        index: 1,
-                                      )));
-                              cartStore.emptyCart();
+                              if (widget.outletModel.service[selectedRadio] ==
+                                      OrderModes.delivery.orderMode &&
+                                  !_formKey.currentState!.validate()) {
+                                showSnackBar(
+                                    'Please give all the inputs correctly');
+                              } else {
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage(
+                                              index: 1,
+                                            )),
+                                    (route) => false);
+                                cartStore.emptyCart();
+                              }
                             }),
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: kBlack,
+                                backgroundColor: lBlue,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8))),
                             child: Text(
                               "Make Order",
-                              style: MyFonts.w400.setColor(kWhite).size(18),
+                              style:
+                                  MyFonts.w400.setColor(kButtonText).size(18),
                             ),
                           ),
                         ),

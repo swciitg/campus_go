@@ -27,7 +27,7 @@ class _AdminHomeTabState extends State<AdminHomeTab> {
           height: 56,
           width: 116,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16), color: kBlack),
+              borderRadius: BorderRadius.circular(16), color: lBlue),
           child: Row(
             children: [
               const SizedBox(
@@ -39,7 +39,7 @@ class _AdminHomeTabState extends State<AdminHomeTab> {
                 child: Icon(
                   Icons.edit_outlined,
                   size: 20,
-                  color: kWhite,
+                  color: kButtonText,
                 ),
               ),
               const SizedBox(
@@ -47,7 +47,7 @@ class _AdminHomeTabState extends State<AdminHomeTab> {
               ),
               Text(
                 "Outlet",
-                style: MyFonts.w500.setColor(kWhite).size(14),
+                style: MyFonts.w500.setColor(kButtonText).size(14),
               )
             ],
           ),

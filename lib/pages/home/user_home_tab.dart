@@ -32,14 +32,14 @@ class _UserHomeTabState extends State<UserHomeTab> {
                           // decoration: TextDecoration.underline,
                           // decorationThickness: 2,
                           fontSize: 18,
-                          color: kBlack,
+                          color: kWhite,
                           fontWeight: FontWeight.w500)),
                   TextSpan(
                       text: "lets Available",
                       style: TextStyle(
                           fontFamily: "Poppins",
                           fontSize: 18,
-                          color: kBlack,
+                          color: kWhite,
                           fontWeight: FontWeight.w500)),
                 ],
               ),
@@ -51,7 +51,7 @@ class _UserHomeTabState extends State<UserHomeTab> {
             child: Container(
               height: 2,
               width: 30,
-              color: kBlack,
+              color: kWhite,
             ),
           ),
           const SizedBox(

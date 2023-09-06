@@ -23,11 +23,11 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Text(
             "In Queue",
-            style: MyFonts.w400.setColor(kBlack).size(12),
+            style: MyFonts.w400.setColor(kWhite).size(12),
           ),
         ),
         const Divider(
-          color: Colors.black12,
+          color: Colors.white12,
           thickness: 1,
           height: 1,
         ),
@@ -46,11 +46,11 @@ class _WaitingOrdersTabState extends State<WaitingOrdersTab> {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Text(
             "Rejected Orders",
-            style: MyFonts.w400.setColor(kBlack).size(12),
+            style: MyFonts.w400.setColor(kWhite).size(12),
           ),
         ),
         const Divider(
-          color: Colors.black12,
+          color: Colors.white12,
           thickness: 1,
           height: 1,
         ),

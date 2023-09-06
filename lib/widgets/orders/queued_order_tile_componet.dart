@@ -34,12 +34,12 @@ class QueuedOrderTileComponent extends StatelessWidget {
                       TextSpan(
                           text: "Or. ID. ",
                           style: MyFonts.w400
-                              .setColor(kBlack)
+                              .setColor(kWhite)
                               .size(16)),
                       TextSpan(
                           text: orderModel.id,
                           style: MyFonts.w600
-                              .setColor(kBlack)
+                              .setColor(kWhite)
                               .size(16)),
                     ],
                   )
@@ -48,12 +48,12 @@ class QueuedOrderTileComponent extends StatelessWidget {
                       TextSpan(
                           text: count.toString(),
                           style: MyFonts.w600
-                              .setColor(kBlack)
+                              .setColor(kWhite)
                               .size(16)),
                       TextSpan(
                           text: " Items Ordered",
                           style: MyFonts.w300
-                              .setColor(kBlack)
+                              .setColor(kWhite)
                               .size(16)),
                     ],
                   ),
@@ -65,14 +65,14 @@ class QueuedOrderTileComponent extends StatelessWidget {
               height: 24,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: kBlack,
-                  border: Border.all(color: kBlack),
+                  color:viewType == ViewType.admin?lBlue: kRed,
+                  // border: Border.all(color: kButtonText),
                   borderRadius: BorderRadius.circular(4)),
               child: viewType == ViewType.admin
                   ? Text(
                       "Handle",
                       style:
-                          MyFonts.w500.size(12).setColor(kWhite),
+                          MyFonts.w500.size(12).setColor(kButtonText),
                     )
                   : Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +82,7 @@ class QueuedOrderTileComponent extends StatelessWidget {
                           const Icon(
                             Icons.close_outlined,
                             size: 12,
-                            color: kWhite,
+                            color: kButtonText,
                           ),
                           const SizedBox(
                             width: 2,
@@ -90,7 +90,7 @@ class QueuedOrderTileComponent extends StatelessWidget {
                           Text(
                             "Cancel",
                             style: MyFonts.w500
-                                .setColor(kWhite)
+                                .setColor(kButtonText)
                                 .size(12),
                           )
                         ]),
